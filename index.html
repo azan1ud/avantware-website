@@ -3,17 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avantware — Software, Trading & Digital Products</title>
+  <title>Avantware — Software, Trading &amp; Digital Products</title>
   <meta name="description" content="Avantware is a UK-based software studio building trading tools, SaaS products, Chrome extensions, and mobile applications across finance, e-commerce, property, and productivity.">
   <meta name="keywords" content="Avantware, trading indicators, PineScript, SaaS, Chrome extensions, Flutter apps, UK software studio">
-  <meta property="og:title" content="Avantware — Software, Trading & Digital Products">
+  <meta property="og:title" content="Avantware — Software, Trading &amp; Digital Products">
   <meta property="og:description" content="UK-based software studio building tools for traders, sellers, landlords, and professionals.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text x='50' y='68' font-size='55' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'>A</text></svg>">
+  <meta property="og:image" content="Logo.png">
+  <meta property="og:url" content="https://avantware.com">
+  <meta property="og:site_name" content="Avantware">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Avantware — Software, Trading &amp; Digital Products">
+  <meta name="twitter:description" content="UK-based software studio building tools for traders, sellers, landlords, and professionals.">
+  <meta name="twitter:image" content="Logo.png">
+  <link rel="icon" type="image/png" href="Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Avantware",
+    "url": "https://avantware.com",
+    "logo": "https://avantware.com/Logo.png",
+    "description": "UK-based software studio building trading tools, SaaS products, Chrome extensions, and mobile applications.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Liverpool",
+      "addressCountry": "GB"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@avantware.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
   <style>
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -52,6 +85,16 @@
 
     ::selection { background: var(--accent); color: white; }
 
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: white; padding: 0.75rem 1.5rem;
+      border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600;
+      text-decoration: none; font-size: 0.875rem;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 0; }
+
     /* ===== NAVIGATION ===== */
     .nav {
       position: fixed; top: 0; width: 100%; z-index: 1000;
@@ -69,30 +112,161 @@
     .nav-logo {
       display: flex; align-items: center; gap: 0.6rem;
       text-decoration: none; color: var(--text-primary);
+      transition: all 0.3s ease;
     }
-    .nav-logo-icon {
-      width: 32px; height: 32px; background: var(--accent); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.95rem; color: white;
+    .nav-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 8px rgba(124,58,237,0.5));
+    }
+    .nav-logo:focus-visible {
+      outline: 2px solid var(--accent-light);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    .nav-logo img {
+      height: 32px; width: auto;
     }
     .nav-logo-text { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
     .nav-logo-text span { color: var(--accent-light); }
-    .nav-links { display: flex; align-items: center; gap: 0.25rem; }
-    .nav-links a {
+
+    .nav-menu { display: flex; align-items: center; gap: 0.25rem; }
+
+    .nav-item { position: relative; }
+    .nav-trigger {
+      display: flex; align-items: center; gap: 0.3rem;
       color: var(--text-secondary); text-decoration: none; font-size: 0.875rem;
       font-weight: 500; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.2s;
+      background: none; border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
+      position: relative;
     }
-    .nav-links a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
-    .nav-cta {
-      background: var(--accent) !important; color: white !important;
-      padding: 0.5rem 1.25rem !important; font-weight: 600 !important;
+    .nav-trigger::after {
+      content: ''; position: absolute; bottom: 2px; left: 1rem; right: 1rem;
+      height: 2px; background: var(--accent); border-radius: 1px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
     }
-    .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+    .nav-trigger:hover::after,
+    .nav-trigger:focus-visible::after { transform: scaleX(1); }
+    .nav-trigger:hover, .nav-trigger:focus-visible { color: var(--text-primary); }
+    .nav-trigger:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; border-radius: 8px; }
+    .nav-trigger svg.chevron {
+      width: 14px; height: 14px; transition: transform 0.2s ease;
+    }
+    .nav-item:hover .nav-trigger svg.chevron,
+    .nav-item:focus-within .nav-trigger svg.chevron { transform: rotate(180deg); }
+
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+      background: rgba(12,12,20,0.98); backdrop-filter: blur(24px);
+      border: 1px solid rgba(124,58,237,0.15); border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      padding: 1.5rem 2rem;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateX(-50%) translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      min-width: 240px;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown.dropdown-3col {
+      min-width: 720px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;
+    }
+    .nav-dropdown.dropdown-2col {
+      min-width: 500px; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .nav-dropdown.dropdown-1col { min-width: 220px; }
+
+    .dropdown-col-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim);
+      margin-bottom: 0.75rem; font-weight: 500;
+    }
+    .dropdown-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.6rem 0.75rem; border-radius: 10px;
+      text-decoration: none; color: var(--text-primary);
+      transition: background 0.15s ease;
+    }
+    .dropdown-item:hover { background: rgba(255,255,255,0.04); }
+    .dropdown-item:focus-visible {
+      outline: 2px solid var(--accent-light); outline-offset: -2px; border-radius: 10px;
+    }
+    .dropdown-item svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--accent-light); }
+    .dropdown-item-text { display: flex; flex-direction: column; }
+    .dropdown-item-name { font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+    .dropdown-item-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; margin-top: 1px; }
+
+    .nav-cta-btn {
+      background: var(--accent); color: white;
+      padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 600;
+      font-size: 0.875rem; text-decoration: none; transition: all 0.25s ease;
+      border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
+      white-space: nowrap;
+    }
+    .nav-cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .nav-cta-btn:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+
     .nav-mobile-toggle {
       display: none; background: none; border: none; color: var(--text-primary);
       cursor: pointer; padding: 0.5rem;
     }
+    .nav-mobile-toggle:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; border-radius: 4px; }
     .nav-mobile-toggle svg { width: 24px; height: 24px; }
+
+    /* Mobile Menu */
+    .mobile-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6); z-index: 1001;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active { display: block; opacity: 1; }
+
+    .mobile-menu {
+      position: fixed; top: 0; right: -320px; bottom: 0; width: 320px; max-width: 85vw;
+      background: var(--bg-secondary); z-index: 1002;
+      transition: right 0.3s ease; overflow-y: auto;
+      padding: 1.5rem; border-left: 1px solid var(--border);
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    }
+    .mobile-close {
+      background: none; border: none; color: var(--text-primary); cursor: pointer;
+      padding: 0.5rem; border-radius: 8px; transition: background 0.2s;
+    }
+    .mobile-close:hover { background: rgba(255,255,255,0.05); }
+    .mobile-close:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+    .mobile-close svg { width: 24px; height: 24px; }
+
+    .mobile-accordion { margin-bottom: 0.5rem; }
+    .mobile-accordion-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: 0.75rem 0.5rem; background: none; border: none;
+      color: var(--text-primary); font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; font-family: 'Outfit', sans-serif;
+      border-bottom: 1px solid var(--border); transition: color 0.2s;
+    }
+    .mobile-accordion-trigger:hover { color: var(--accent-light); }
+    .mobile-accordion-trigger:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+    .mobile-accordion-trigger svg {
+      width: 16px; height: 16px; transition: transform 0.2s ease;
+    }
+    .mobile-accordion-trigger.active svg { transform: rotate(180deg); }
+    .mobile-accordion-content {
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+      padding-left: 0.5rem;
+    }
+    .mobile-accordion-content.active { max-height: 600px; }
+    .mobile-accordion-content .dropdown-item {
+      padding: 0.5rem 0.5rem;
+    }
+    .mobile-menu .nav-cta-btn {
+      display: block; text-align: center; margin-top: 1.5rem; padding: 0.75rem;
+    }
 
     /* ===== HERO ===== */
     .hero {
@@ -108,17 +282,17 @@
     .hero-glow-1 {
       width: 700px; height: 700px; top: -250px; left: 50%; transform: translateX(-50%);
       background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      animation: glowPulse1 8s ease-in-out infinite;
+      animation: glowPulse1 8s ease-in-out infinite, glowShift1 20s linear infinite;
     }
     .hero-glow-2 {
       width: 550px; height: 550px; bottom: -300px; right: -200px;
       background: linear-gradient(135deg, #06b6d4, #a855f7);
-      animation: glowPulse2 10s ease-in-out infinite;
+      animation: glowPulse2 10s ease-in-out infinite, glowShift2 20s linear infinite;
     }
     .hero-glow-3 {
       width: 400px; height: 400px; top: 30%; left: -150px;
       background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      animation: glowPulse3 12s ease-in-out infinite;
+      animation: glowPulse3 12s ease-in-out infinite, glowShift3 20s linear infinite;
     }
     @keyframes glowPulse1 {
       0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
@@ -132,6 +306,22 @@
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(1.1) translate(20px, 10px); }
     }
+    @keyframes glowShift1 {
+      0% { filter: blur(120px) hue-rotate(0deg); }
+      50% { filter: blur(120px) hue-rotate(25deg); }
+      100% { filter: blur(120px) hue-rotate(0deg); }
+    }
+    @keyframes glowShift2 {
+      0% { filter: blur(120px) hue-rotate(0deg); }
+      50% { filter: blur(120px) hue-rotate(-20deg); }
+      100% { filter: blur(120px) hue-rotate(0deg); }
+    }
+    @keyframes glowShift3 {
+      0% { filter: blur(120px) hue-rotate(0deg); }
+      50% { filter: blur(120px) hue-rotate(30deg); }
+      100% { filter: blur(120px) hue-rotate(0deg); }
+    }
+
     .hero-content { position: relative; z-index: 2; text-align: center; max-width: 820px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -175,6 +365,7 @@
       text-decoration: none; transition: all 0.25s ease; cursor: pointer;
       border: none; font-family: 'Outfit', sans-serif;
     }
+    .btn:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
     .btn-primary {
       background: var(--accent); color: white; box-shadow: 0 4px 20px rgba(124,58,237,0.3);
     }
@@ -183,14 +374,20 @@
     .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: var(--border-hover); transform: translateY(-2px); }
 
     /* Floating Icons */
-    .hero-floaters { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1; }
+    .hero-floaters {
+      position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+      pointer-events: none; z-index: 1;
+      transition: transform 0.1s linear;
+    }
     .floater {
       position: absolute; width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
       background: var(--bg-card); border: 1px solid var(--border);
       box-shadow: 0 8px 32px rgba(0,0,0,0.3); opacity: 0;
       animation: floatIn 1s ease forwards, floatBob 6s ease-in-out infinite;
+      color: var(--accent-light);
     }
+    .floater svg { width: 22px; height: 22px; }
     .floater:nth-child(1) { top: 18%; left: 8%; animation-delay: 1s, 1s; }
     .floater:nth-child(2) { top: 25%; right: 10%; animation-delay: 1.3s, 1.3s; }
     .floater:nth-child(3) { top: 65%; left: 6%; animation-delay: 1.6s, 1.6s; }
@@ -200,10 +397,17 @@
     @keyframes floatIn { from{opacity:0;transform:scale(0.5) translateY(20px);} to{opacity:0.7;transform:scale(1) translateY(0);} }
     @keyframes floatBob { 0%,100%{transform:translateY(0) rotate(0deg);} 33%{transform:translateY(-12px) rotate(2deg);} 66%{transform:translateY(6px) rotate(-1deg);} }
 
-    /* Stats */
+    /* Stats with animated gradient border */
+    .hero-stats-wrapper {
+      position: relative; display: inline-block; padding: 2px; border-radius: 16px;
+      background: conic-gradient(from var(--angle), var(--accent), var(--blue), var(--cyan), var(--accent));
+      animation: rotateGradient 4s linear infinite;
+      opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.8s 1s ease forwards, rotateGradient 4s linear infinite;
+    }
+    @keyframes rotateGradient { to { --angle: 360deg; } }
     .hero-stats {
       display: flex; justify-content: center; gap: 4rem;
-      opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.8s 1s ease forwards;
+      background: var(--bg-primary); border-radius: 14px; padding: 1.5rem 3rem;
     }
     .hero-stat { text-align: center; }
     .hero-stat-number { font-family: 'JetBrains Mono', monospace; font-size: 2.25rem; font-weight: 700; line-height: 1; }
@@ -223,38 +427,122 @@
     .section-header.center .section-desc { margin: 0 auto; }
     .section-divider { width: 100%; max-width: 1200px; margin: 0 auto; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.3), rgba(6,182,212,0.3), transparent); }
 
-    /* Scroll reveal */
+    /* Scroll reveal with stagger */
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-stagger-1 { transition-delay: 0.1s; }
+    .reveal-stagger-2 { transition-delay: 0.2s; }
+    .reveal-stagger-3 { transition-delay: 0.3s; }
+    .reveal-stagger-4 { transition-delay: 0.4s; }
+    .reveal-stagger-5 { transition-delay: 0.5s; }
+    .reveal-stagger-6 { transition-delay: 0.6s; }
+    .reveal-stagger-7 { transition-delay: 0.7s; }
 
-    /* ===== VERTICALS ===== */
-    .verticals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    /* Card shine effect */
+    .card-shine {
+      position: relative; overflow: hidden;
+    }
+    .card-shine::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      transition: none; pointer-events: none; z-index: 1;
+    }
+    .card-shine:hover::before {
+      animation: cardShine 0.6s ease forwards;
+    }
+    @keyframes cardShine {
+      from { left: -100%; }
+      to { left: 150%; }
+    }
+
+    /* ===== WHAT WE BUILD ===== */
+    .verticals-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      position: relative;
+    }
+    .verticals-grid::before {
+      content: ''; position: absolute; top: 50%; left: 0; right: 0;
+      height: 1px; border-top: 2px dotted rgba(124,58,237,0.15);
+      z-index: 0; pointer-events: none;
+    }
     .vertical-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
       padding: 2rem 1.75rem; transition: all 0.35s ease; position: relative; overflow: hidden; cursor: pointer;
+      z-index: 1; text-decoration: none; color: inherit; display: block;
     }
     .vertical-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.35s; }
     .vertical-card:hover { border-color: rgba(124,58,237,0.25); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
     .vertical-card:hover::before { opacity: 1; }
+    .vertical-card:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
     .vertical-card[data-accent="indigo"]::before { background: var(--accent); }
     .vertical-card[data-accent="green"]::before { background: var(--green); }
     .vertical-card[data-accent="amber"]::before { background: var(--amber); }
     .vertical-card[data-accent="cyan"]::before { background: var(--cyan); }
     .vertical-icon {
       width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
     }
-    .vertical-card[data-accent="indigo"] .vertical-icon { background: rgba(124,58,237,0.12); }
-    .vertical-card[data-accent="green"] .vertical-icon { background: rgba(16,185,129,0.12); }
-    .vertical-card[data-accent="amber"] .vertical-icon { background: rgba(245,158,11,0.12); }
-    .vertical-card[data-accent="cyan"] .vertical-icon { background: rgba(6,182,212,0.12); }
+    .vertical-icon svg { width: 24px; height: 24px; }
+    .vertical-card[data-accent="indigo"] .vertical-icon { background: rgba(124,58,237,0.12); color: var(--accent-light); }
+    .vertical-card[data-accent="green"] .vertical-icon { background: rgba(16,185,129,0.12); color: var(--green); }
+    .vertical-card[data-accent="amber"] .vertical-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .vertical-card[data-accent="cyan"] .vertical-icon { background: rgba(6,182,212,0.12); color: var(--cyan); }
     .vertical-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
     .vertical-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
     .vertical-count { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ===== FEATURED PRODUCTS ===== */
+    .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .featured-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2.25rem; position: relative; overflow: hidden; transition: all 0.4s ease;
+    }
+    .featured-card:focus-within { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+    .featured-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 18px; padding: 2px;
+      background: conic-gradient(from var(--angle), var(--accent), var(--blue), var(--cyan), var(--accent));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .featured-card:hover::before { opacity: 1; animation: rotateGradient 3s linear infinite; }
+    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(124,58,237,0.1); }
+
+    .featured-mockup {
+      width: 100%; aspect-ratio: 16/10; border-radius: 12px; margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.1));
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(124,58,237,0.1);
+    }
+    .featured-mockup span {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      color: var(--text-dim); letter-spacing: 1px;
+    }
+    .featured-card-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .featured-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .featured-icon svg { width: 20px; height: 20px; }
+    .featured-icon.icon-green { background: rgba(16,185,129,0.12); color: var(--green); }
+    .featured-icon.icon-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .featured-icon.icon-rose { background: rgba(244,63,94,0.12); color: var(--rose); }
+    .featured-card-head h3 { font-size: 1.15rem; font-weight: 700; }
+    .featured-status {
+      margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+      font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-live { background: rgba(16,185,129,0.12); color: var(--green); }
+    .status-dev { background: rgba(124,58,237,0.12); color: var(--accent-light); }
+    .featured-card .desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem; }
+    .featured-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .ftag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; padding: 0.2rem 0.5rem;
+      border-radius: 4px; background: rgba(255,255,255,0.04); color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .featured-card .btn { width: 100%; justify-content: center; }
 
     /* ===== TRADING ===== */
     .trading-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
@@ -264,23 +552,45 @@
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s;
     }
     .trading-feature:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .trading-feature:focus-within { outline: 2px solid var(--accent-light); outline-offset: 2px; }
     .trading-feature-icon {
       width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .tf-indigo .trading-feature-icon { background: rgba(124,58,237,0.12); }
-    .tf-green .trading-feature-icon { background: rgba(16,185,129,0.12); }
-    .tf-amber .trading-feature-icon { background: rgba(245,158,11,0.12); }
-    .tf-cyan .trading-feature-icon { background: rgba(6,182,212,0.12); }
-    .tf-rose .trading-feature-icon { background: rgba(244,63,94,0.12); }
+    .trading-feature-icon svg { width: 20px; height: 20px; }
+    .tf-indigo .trading-feature-icon { background: rgba(124,58,237,0.12); color: var(--accent-light); }
+    .tf-green .trading-feature-icon { background: rgba(16,185,129,0.12); color: var(--green); }
+    .tf-amber .trading-feature-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .tf-cyan .trading-feature-icon { background: rgba(6,182,212,0.12); color: var(--cyan); }
+    .tf-rose .trading-feature-icon { background: rgba(244,63,94,0.12); color: var(--rose); }
     .trading-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
     .trading-feature p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
 
+    .trading-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;
+      color: var(--accent-light); text-decoration: none; font-size: 0.9rem; font-weight: 600;
+      transition: color 0.2s; position: relative;
+    }
+    .trading-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: var(--accent-light); border-radius: 1px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+    }
+    .trading-link:hover::after { transform: scaleX(1); }
+    .trading-link:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 4px; border-radius: 2px; }
+
     .trading-card-stack { display: flex; flex-direction: column; gap: 1rem; }
-    .t-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.3s; }
+    .t-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.5rem; transition: all 0.3s;
+    }
     .t-card:hover { border-color: var(--border-hover); }
     .t-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-    .t-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .t-card-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .t-card-icon svg { width: 18px; height: 18px; }
     .t-card-title { font-size: 0.9rem; font-weight: 600; }
     .t-card-tag {
       margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
@@ -297,7 +607,13 @@
     }
     .mini-chart .bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 4px; }
 
-    /* ===== PRODUCTS ===== */
+    /* ===== PRODUCTS GRID ===== */
+    .product-category-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-dim);
+      margin-bottom: 1rem; margin-top: 2.5rem; font-weight: 500;
+    }
+    .product-category-label:first-child { margin-top: 0; }
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .product-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
@@ -305,32 +621,31 @@
     }
     .product-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
     .product-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
-    .product-card[data-color="indigo"]::after { background: var(--accent); }
     .product-card[data-color="green"]::after { background: var(--green); }
-    .product-card[data-color="amber"]::after { background: var(--amber); }
     .product-card[data-color="cyan"]::after { background: var(--cyan); }
-    .product-card[data-color="rose"]::after { background: var(--rose); }
+    .product-card[data-color="amber"]::after { background: var(--amber); }
     .product-card[data-color="purple"]::after { background: var(--purple); }
+    .product-card[data-color="rose"]::after { background: var(--rose); }
     .product-card[data-color="orange"]::after { background: var(--orange); }
+    .product-card[data-color="blue"]::after { background: var(--blue); }
     .product-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
     .product-icon-wrap {
       width: 44px; height: 44px; border-radius: 11px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
     }
-    .product-card[data-color="indigo"] .product-icon-wrap { background: rgba(124,58,237,0.12); }
-    .product-card[data-color="green"] .product-icon-wrap { background: rgba(16,185,129,0.12); }
-    .product-card[data-color="amber"] .product-icon-wrap { background: rgba(245,158,11,0.12); }
-    .product-card[data-color="cyan"] .product-icon-wrap { background: rgba(6,182,212,0.12); }
-    .product-card[data-color="rose"] .product-icon-wrap { background: rgba(244,63,94,0.12); }
-    .product-card[data-color="purple"] .product-icon-wrap { background: rgba(168,85,247,0.12); }
-    .product-card[data-color="orange"] .product-icon-wrap { background: rgba(249,115,22,0.12); }
+    .product-icon-wrap svg { width: 22px; height: 22px; }
+    .product-card[data-color="green"] .product-icon-wrap { background: rgba(16,185,129,0.12); color: var(--green); }
+    .product-card[data-color="cyan"] .product-icon-wrap { background: rgba(6,182,212,0.12); color: var(--cyan); }
+    .product-card[data-color="amber"] .product-icon-wrap { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .product-card[data-color="purple"] .product-icon-wrap { background: rgba(168,85,247,0.12); color: var(--purple); }
+    .product-card[data-color="rose"] .product-icon-wrap { background: rgba(244,63,94,0.12); color: var(--rose); }
+    .product-card[data-color="orange"] .product-icon-wrap { background: rgba(249,115,22,0.12); color: var(--orange); }
+    .product-card[data-color="blue"] .product-icon-wrap { background: rgba(59,130,246,0.12); color: var(--blue); }
     .product-status {
       font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 600;
       padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;
     }
-    .status-live { background: rgba(16,185,129,0.12); color: var(--green); }
     .status-beta { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .status-dev { background: rgba(124,58,237,0.12); color: var(--accent-light); }
     .status-soon { background: rgba(168,85,247,0.12); color: var(--purple); }
     .product-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
     .product-card .product-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
@@ -356,8 +671,9 @@
     .app-mini-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
     .app-mini-icon {
       width: 44px; height: 44px; border-radius: 10px; margin: 0 auto 0.6rem;
-      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
     }
+    .app-mini-icon svg { width: 22px; height: 22px; }
     .app-mini-card h4 { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.2rem; }
     .app-mini-card span { font-size: 0.65rem; color: var(--text-dim); }
 
@@ -381,7 +697,16 @@
     .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .value-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: all 0.3s; }
     .value-item:hover { border-color: var(--border-hover); }
-    .value-item .v-icon { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .value-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+    .value-icon svg { width: 18px; height: 18px; }
+    .value-icon.vi-accent { background: rgba(124,58,237,0.12); color: var(--accent-light); }
+    .value-icon.vi-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .value-icon.vi-cyan { background: rgba(6,182,212,0.12); color: var(--cyan); }
+    .value-icon.vi-green { background: rgba(16,185,129,0.12); color: var(--green); }
     .value-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
     .value-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
 
@@ -402,12 +727,14 @@
       border-radius: 12px; background: rgba(124,58,237,0.08); transition: all 0.3s; position: relative;
     }
     .cta-email:hover { background: rgba(124,58,237,0.15); border-color: var(--accent); transform: translateY(-2px); }
+    .cta-email:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
 
     /* ===== FOOTER ===== */
     .footer { border-top: 1px solid var(--border); padding: 3rem 2rem 2rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-brand .nav-logo { margin-bottom: 0; }
     .footer-brand p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; max-width: 280px; }
     .footer-col h4 {
       font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;
@@ -415,8 +742,33 @@
     }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.5rem; }
-    .footer-col ul li a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+      transition: color 0.2s; position: relative;
+    }
+    .footer-col ul li a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--accent-light);
+      transition: width 0.25s ease;
+    }
     .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-col ul li a:hover::after { width: 100%; }
+    .footer-col ul li a:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; border-radius: 2px; }
+
+    .footer-social {
+      display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 8px; display: flex;
+      align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all 0.2s; text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--text-primary); border-color: var(--border-hover); background: rgba(255,255,255,0.06); }
+    .footer-social a:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+    .footer-social a svg { width: 18px; height: 18px; }
+
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
       padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--text-dim);
@@ -424,32 +776,43 @@
     .footer-bottom-links { display: flex; gap: 1.5rem; }
     .footer-bottom-links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
     .footer-bottom-links a:hover { color: var(--text-secondary); }
+    .footer-bottom-links a:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; border-radius: 2px; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+      .verticals-grid::before { display: none; }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid .featured-card:last-child { grid-column: span 2; }
       .trading-content { grid-template-columns: 1fr; }
       .apps-showcase { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-dropdown.dropdown-3col { min-width: 600px; }
     }
     @media (max-width: 768px) {
       .nav { padding: 0 1rem; }
-      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-menu { display: none; }
+      .nav-cta-btn.desktop-only { display: none; }
       .nav-mobile-toggle { display: block; }
       .hero { padding: 7rem 1.5rem 4rem; }
-      .hero-stats { gap: 2rem; }
+      .hero-stats { gap: 2rem; padding: 1.25rem 1.5rem; }
+      .hero-stats-wrapper { padding: 2px; }
       .hero-stat-number { font-size: 1.75rem; }
       .floater { display: none; }
       .section { padding: 4.5rem 1.5rem; }
       .verticals-grid { grid-template-columns: 1fr; }
+      .verticals-grid::before { display: none; }
       .products-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-grid .featured-card:last-child { grid-column: span 1; }
       .apps-scroll-container { grid-template-columns: repeat(2, 1fr); }
       .values-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
       .cta-section { padding: 5rem 1.5rem; }
+      .nav-dropdown { display: none !important; }
     }
     @media (max-width: 480px) {
       .hero h1 { letter-spacing: -1px; }
@@ -460,342 +823,767 @@
 </head>
 <body>
 
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">A</div>
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Avantware home">
+          <img src="Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+
+        <div class="nav-menu" role="menubar">
+          <!-- Products dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Products menu">
+              Products
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-3col" role="menu" aria-label="Products submenu">
+              <div>
+                <div class="dropdown-col-title">SaaS Platforms</div>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Chrome Extensions</div>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Listing compliance</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/><path d="M3.5 12h6l2-3 3 6 2-3h4"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Wellness Extension</span><span class="dropdown-item-desc">All-in-one health</span></div>
+                </a>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+                <a href="#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">GEO Monitor</span><span class="dropdown-item-desc">Search visibility</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Mobile Apps</div>
+                <a href="#apps" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trading dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Trading menu">
+              Trading
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-2col" role="menu" aria-label="Trading submenu">
+              <div>
+                <div class="dropdown-col-title">Tools</div>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span><span class="dropdown-item-desc">TradingView custom indicators</span></div>
+                </a>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span><span class="dropdown-item-desc">Automated trade analysis</span></div>
+                </a>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span><span class="dropdown-item-desc">Challenge tracking</span></div>
+                </a>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing tool</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Education &amp; Signals</div>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span><span class="dropdown-item-desc">Tutorials and analysis</span></div>
+                </a>
+                <a href="#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span><span class="dropdown-item-desc">Data-driven trade signals</span></div>
+                </a>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span><span class="dropdown-item-desc">Courses and guides</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">
+              Company
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Company submenu">
+              <a href="#about" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div>
+              </a>
+              <a href="#contact" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div>
+              </a>
+              <a href="#" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div>
+              </a>
+              <a href="#" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="nav-cta-btn desktop-only" aria-label="Get in touch with Avantware">Get in Touch</a>
+
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+  <!-- Mobile menu -->
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="#" class="nav-logo" aria-label="Avantware home">
+        <img src="Logo.png" alt="Avantware logo" height="32" width="32">
         <div class="nav-logo-text">avant<span>ware</span></div>
       </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#verticals">What We Do</a>
-        <a href="#trading">Trading</a>
-        <a href="#products">Products</a>
-        <a href="#apps">Apps</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Get in Touch</a>
-      </div>
-      <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-    <div class="hero-glow hero-glow-3"></div>
-    <div class="hero-floaters">
-      <div class="floater">📊</div>
-      <div class="floater">🔧</div>
-      <div class="floater">📈</div>
-      <div class="floater">🛡️</div>
-      <div class="floater">⚡</div>
-      <div class="floater">🏠</div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">UK-Based Software Studio</div>
-      <h1>Building tools that<br><span class="accent-word">actually ship</span></h1>
-      <p class="hero-subtitle">Trading indicators, SaaS platforms, Chrome extensions, and mobile apps — built for real markets with real demand.</p>
-      <div class="hero-actions">
-        <a href="#products" class="btn btn-primary">Explore Products →</a>
-        <a href="#contact" class="btn btn-ghost">Contact Us</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-number" data-count="27">0</div>
-          <div class="hero-stat-label">Apps Built</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number" data-count="6">0</div>
-          <div class="hero-stat-label">SaaS Products</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number" data-count="4">0</div>
-          <div class="hero-stat-label">Verticals</div>
-        </div>
+    <!-- Products accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Products menu">
+        Products
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+        </a>
+        <a href="#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+        </a>
+        <a href="#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+        </a>
+        <a href="#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+        </a>
+        <a href="#apps" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+        </a>
       </div>
     </div>
-  </section>
 
-  <div class="section-divider"></div>
-
-  <!-- WHAT WE DO -->
-  <section class="section" id="verticals">
-    <div class="section-header reveal">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Four verticals.<br>One studio.</h2>
-      <p class="section-desc">We identify gaps in underserved markets, then build focused tools to fill them — fast.</p>
+    <!-- Trading accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Trading menu">
+        Trading
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="#trading" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div>
+        </a>
+        <a href="#trading" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div>
+        </a>
+        <a href="#trading" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div>
+        </a>
+        <a href="#" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div>
+        </a>
+      </div>
     </div>
-    <div class="verticals-grid">
-      <a href="#trading" style="text-decoration:none;color:inherit;">
-        <div class="vertical-card reveal reveal-delay-1" data-accent="indigo">
-          <div class="vertical-icon">📈</div>
-          <h3>Trading & Quant</h3>
+
+    <!-- Company accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Company menu">
+        Company
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="#" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="#" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+      </div>
+    </div>
+
+    <a href="#contact" class="nav-cta-btn" aria-label="Get in touch with Avantware">Get in Touch</a>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- 1. HERO -->
+    <section class="hero" id="hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-3" aria-hidden="true"></div>
+      <div class="hero-floaters" id="heroFloaters" aria-hidden="true">
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="floater">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">UK-Based Software Studio</div>
+        <h1>Building tools that<br><span class="accent-word">actually ship</span></h1>
+        <p class="hero-subtitle">Trading indicators, SaaS platforms, Chrome extensions, and mobile apps -- built for real markets with real demand.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary" aria-label="Explore our products">
+            Explore Products
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost" aria-label="Contact us">Contact Us</a>
+        </div>
+        <div class="hero-stats-wrapper">
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="27">0</div>
+              <div class="hero-stat-label">Apps Built</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="6">0</div>
+              <div class="hero-stat-label">SaaS Products</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="4">0</div>
+              <div class="hero-stat-label">Verticals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- 2. WHAT WE BUILD -->
+    <section class="section" id="verticals" aria-labelledby="verticals-title">
+      <div class="section-header reveal">
+        <div class="section-label">What We Build</div>
+        <h2 class="section-title" id="verticals-title">Four verticals.<br>One studio.</h2>
+        <p class="section-desc">We identify gaps in underserved markets, then build focused tools to fill them -- fast.</p>
+      </div>
+      <div class="verticals-grid">
+        <a href="#trading" class="vertical-card card-shine reveal reveal-stagger-1" data-accent="indigo" aria-label="Trading and Quant tools - 5 products">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Trading &amp; Quant</h3>
           <p>PineScript indicators, AI trading journals, prop firm tools, quant strategies, and educational content for futures and forex traders.</p>
           <div class="vertical-count">5 products</div>
-        </div>
-      </a>
-      <a href="#products" style="text-decoration:none;color:inherit;">
-        <div class="vertical-card reveal reveal-delay-2" data-accent="green">
-          <div class="vertical-icon">🌐</div>
+        </a>
+        <a href="#products" class="vertical-card card-shine reveal reveal-stagger-2" data-accent="green" aria-label="SaaS Products - 6 products">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
           <h3>SaaS Products</h3>
           <p>Web-based tools for crypto tax compliance, landlord regulation tracking, TikTok Shop monitoring, and e-commerce operations.</p>
           <div class="vertical-count">6 products</div>
-        </div>
-      </a>
-      <div class="vertical-card reveal reveal-delay-3" data-accent="amber">
-        <div class="vertical-icon">🧩</div>
-        <h3>Chrome Extensions</h3>
-        <p>Browser-based tools for AI assistance, compliance scanning, wellness tracking, and productivity — on the Chrome Web Store.</p>
-        <div class="vertical-count">4 extensions</div>
-      </div>
-      <a href="#apps" style="text-decoration:none;color:inherit;">
-        <div class="vertical-card reveal reveal-delay-4" data-accent="cyan">
-          <div class="vertical-icon">📱</div>
+        </a>
+        <a href="#products" class="vertical-card card-shine reveal reveal-stagger-3" data-accent="amber" aria-label="Chrome Extensions - 5 extensions">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3>Chrome Extensions</h3>
+          <p>Browser-based tools for AI assistance, compliance scanning, wellness tracking, and productivity -- on the Chrome Web Store.</p>
+          <div class="vertical-count">5 extensions</div>
+        </a>
+        <a href="#apps" class="vertical-card card-shine reveal reveal-stagger-4" data-accent="cyan" aria-label="Mobile Apps - 27 published">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
           <h3>Mobile Apps</h3>
           <p>A portfolio of 27+ Flutter-based Android apps on Google Play spanning health, fitness, productivity, finance, and lifestyle.</p>
           <div class="vertical-count">27 published</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- TRADING -->
-  <section class="section" id="trading">
-    <div class="section-header reveal">
-      <div class="section-label">Trading & Quant</div>
-      <h2 class="section-title">Tools for serious traders</h2>
-      <p class="section-desc">Indicators, analytics, journals, and education — built by a trader, for traders.</p>
-    </div>
-    <div class="trading-content">
-      <div class="trading-features reveal">
-        <div class="trading-feature tf-indigo">
-          <div class="trading-feature-icon">📐</div>
-          <div>
-            <h4>PineScript V6 Indicators</h4>
-            <p>Custom TradingView indicators for futures and forex. Precision entries, exits, and risk management overlays built on proven logic.</p>
-          </div>
-        </div>
-        <div class="trading-feature tf-green">
-          <div class="trading-feature-icon">📓</div>
-          <div>
-            <h4>AI Trading Journal</h4>
-            <p>Automated journalling with trade import, pattern recognition, and AI-driven performance insights. Stop guessing, start learning.</p>
-          </div>
-        </div>
-        <div class="trading-feature tf-amber">
-          <div class="trading-feature-icon">🏢</div>
-          <div>
-            <h4>Prop Firm Dashboard</h4>
-            <p>Track challenge progress across multiple prop firms. Real-time drawdown monitoring, rule tracking, and performance analytics.</p>
-          </div>
-        </div>
-        <div class="trading-feature tf-cyan">
-          <div class="trading-feature-icon">🧮</div>
-          <div>
-            <h4>Forex Calculator Extension</h4>
-            <p>Instant position sizing, pip value, and risk calculations right in your browser. Supports all major and exotic pairs.</p>
-          </div>
-        </div>
-        <div class="trading-feature tf-rose">
-          <div class="trading-feature-icon">📡</div>
-          <div>
-            <h4>Quant Signals & Education</h4>
-            <p>Order flow analysis, cross-exchange latency strategies, and educational content. YouTube channel with indicator tutorials and market breakdowns.</p>
-          </div>
-        </div>
+        </a>
       </div>
-      <div class="trading-visual reveal reveal-delay-2">
-        <div class="trading-card-stack">
-          <div class="t-card">
-            <div class="t-card-header">
-              <div class="t-card-icon" style="background:rgba(124,58,237,0.12);">📐</div>
-              <div class="t-card-title">Indicator Suite</div>
-              <span class="t-card-tag tag-soon">Coming Soon</span>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- 3. FEATURED PRODUCTS -->
+    <section class="section" id="featured" aria-labelledby="featured-title">
+      <div class="section-header center reveal">
+        <div class="section-label">Featured</div>
+        <h2 class="section-title" id="featured-title">Flagship products</h2>
+        <p class="section-desc">Our most ambitious builds -- solving real compliance and e-commerce problems at scale.</p>
+      </div>
+      <div class="featured-grid">
+        <article class="featured-card card-shine reveal reveal-stagger-1">
+          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+          <div class="featured-card-head">
+            <div class="featured-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             </div>
-            <div class="t-card-body">Multi-timeframe trend analysis, order blocks, liquidity zones, and momentum filters — all configurable via TradingView settings panel.</div>
-            <div class="mini-chart">
-              <div class="bar" style="height:20%;background:#7c3aed;"></div>
-              <div class="bar" style="height:35%;background:#7c3aed;"></div>
-              <div class="bar" style="height:25%;background:#6d28d9;"></div>
-              <div class="bar" style="height:60%;background:#3b82f6;"></div>
-              <div class="bar" style="height:45%;background:#3b82f6;"></div>
-              <div class="bar" style="height:80%;background:#06b6d4;"></div>
-              <div class="bar" style="height:55%;background:#06b6d4;"></div>
-              <div class="bar" style="height:90%;background:#06b6d4;"></div>
-              <div class="bar" style="height:70%;background:#22d3ee;"></div>
-              <div class="bar" style="height:95%;background:#22d3ee;"></div>
-              <div class="bar" style="height:75%;background:#10b981;"></div>
-              <div class="bar" style="height:100%;background:#10b981;"></div>
-            </div>
+            <h3>BasisGuard</h3>
+            <span class="featured-status status-live">Live</span>
           </div>
-          <div class="t-card">
-            <div class="t-card-header">
-              <div class="t-card-icon" style="background:rgba(245,158,11,0.12);">🏢</div>
-              <div class="t-card-title">Prop Firm Tracker</div>
-              <span class="t-card-tag tag-soon">Coming Soon</span>
-            </div>
-            <div class="t-card-body">Track your evaluation progress across FTMO, TopStep, Apex, and more. See daily P&L, drawdown limits, and days remaining at a glance.</div>
+          <p class="desc">Crypto tax compliance tool for the new IRS 1099-DA reporting requirements. Automated cost basis tracking, tax lot management, and wash sale detection for US-based cryptocurrency traders and institutions.</p>
+          <div class="featured-tags">
+            <span class="ftag">Crypto</span><span class="ftag">Tax</span><span class="ftag">SaaS</span><span class="ftag">Compliance</span>
           </div>
-          <div class="t-card">
-            <div class="t-card-header">
-              <div class="t-card-icon" style="background:rgba(244,63,94,0.12);">🎬</div>
-              <div class="t-card-title">YouTube Channel</div>
-              <span class="t-card-tag tag-dev">Building</span>
+          <a href="#products" class="btn btn-ghost" aria-label="Learn more about BasisGuard">Learn More</a>
+        </article>
+
+        <article class="featured-card card-shine reveal reveal-stagger-2">
+          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+          <div class="featured-card-head">
+            <div class="featured-icon icon-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <div class="t-card-body">Indicator walkthroughs, market analysis, trade recaps, and quant strategy deep dives. Subscribe for weekly content.</div>
+            <h3>LandlordShield</h3>
+            <span class="featured-status status-dev">In Dev</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <p class="desc">UK landlord compliance dashboard unifying Making Tax Digital, Renters' Rights Act, and EPC requirements. Three converging regulatory deadlines, one integrated tracker with automated alerts and document management.</p>
+          <div class="featured-tags">
+            <span class="ftag">Property</span><span class="ftag">UK</span><span class="ftag">Compliance</span><span class="ftag">SaaS</span>
+          </div>
+          <a href="#products" class="btn btn-ghost" aria-label="Learn more about LandlordShield">Learn More</a>
+        </article>
 
-  <div class="section-divider"></div>
+        <article class="featured-card card-shine reveal reveal-stagger-3">
+          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+          <div class="featured-card-head">
+            <div class="featured-icon icon-rose">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <h3>TikTok Shop Guard</h3>
+            <span class="featured-status status-dev">In Dev</span>
+          </div>
+          <p class="desc">Compliance monitor for TikTok Shop sellers. Scans listings for policy violations before publishing, tracks account health metrics, and suggests actionable fixes to prevent takedowns and penalties.</p>
+          <div class="featured-tags">
+            <span class="ftag">E-Commerce</span><span class="ftag">Compliance</span><span class="ftag">Extension</span><span class="ftag">SaaS</span>
+          </div>
+          <a href="#products" class="btn btn-ghost" aria-label="Learn more about TikTok Shop Guard">Learn More</a>
+        </article>
+      </div>
+    </section>
 
-  <!-- PRODUCTS -->
-  <section class="section" id="products">
-    <div class="section-header reveal">
-      <div class="section-label">Products</div>
-      <h2 class="section-title">SaaS & Extensions</h2>
-      <p class="section-desc">Web platforms and browser extensions targeting validated market gaps.</p>
-    </div>
-    <div class="products-grid">
-      <div class="product-card reveal reveal-delay-1" data-color="green">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">📊</div>
-          <span class="product-status status-live">Live</span>
-        </div>
-        <h3>BasisGuard</h3>
-        <p class="product-desc">Crypto tax compliance tool for the new IRS 1099-DA reporting requirements. Automated cost basis tracking and tax lot management for US traders.</p>
-        <div class="product-tags"><span class="ptag">Crypto</span><span class="ptag">Tax</span><span class="ptag">SaaS</span></div>
-      </div>
-      <div class="product-card reveal reveal-delay-2" data-color="cyan">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">🔍</div>
-          <span class="product-status status-live">Live</span>
-        </div>
-        <h3>MegaScan</h3>
-        <p class="product-desc">Token screener and analytics dashboard for the MegaETH ecosystem. Real-time scanning, filtering, and tracking of new token launches.</p>
-        <div class="product-tags"><span class="ptag">Crypto</span><span class="ptag">Analytics</span><span class="ptag">DeFi</span></div>
-      </div>
-      <div class="product-card reveal reveal-delay-3" data-color="purple">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">☁️</div>
-          <span class="product-status status-live">Live</span>
-        </div>
-        <h3>ZeroCloudAI</h3>
-        <p class="product-desc">Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Privacy-first AI assistance for everyday workflows.</p>
-        <div class="product-tags"><span class="ptag">AI</span><span class="ptag">Extension</span><span class="ptag">Privacy</span></div>
-      </div>
-      <div class="product-card reveal reveal-delay-1" data-color="rose">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">🛡️</div>
-          <span class="product-status status-dev">In Dev</span>
-        </div>
-        <h3>TikTok Shop Guard</h3>
-        <p class="product-desc">Compliance monitor for TikTok Shop sellers. Scans listings for policy violations before publishing, tracks account health, and suggests fixes.</p>
-        <div class="product-tags"><span class="ptag">E-Commerce</span><span class="ptag">Compliance</span><span class="ptag">Extension</span></div>
-      </div>
-      <div class="product-card reveal reveal-delay-2" data-color="amber">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">🏠</div>
-          <span class="product-status status-dev">In Dev</span>
-        </div>
-        <h3>LandlordShield</h3>
-        <p class="product-desc">UK landlord compliance dashboard unifying Making Tax Digital, Renters' Rights Act, and EPC requirements. Three converging deadlines, one tracker.</p>
-        <div class="product-tags"><span class="ptag">Property</span><span class="ptag">UK</span><span class="ptag">Compliance</span></div>
-      </div>
-      <div class="product-card reveal reveal-delay-3" data-color="orange">
-        <div class="product-card-top">
-          <div class="product-icon-wrap">🌿</div>
-          <span class="product-status status-soon">Planned</span>
-        </div>
-        <h3>Wellness Suite</h3>
-        <p class="product-desc">All-in-one wellness Chrome extension and menopause/perimenopause tracker — combining health monitoring, habit tracking, and personalised insights.</p>
-        <div class="product-tags"><span class="ptag">Health</span><span class="ptag">Wellness</span><span class="ptag">Extension</span></div>
-      </div>
-    </div>
-  </section>
+    <div class="section-divider" aria-hidden="true"></div>
 
-  <div class="section-divider"></div>
-
-  <!-- MOBILE APPS -->
-  <section class="section" id="apps">
-    <div class="section-header reveal">
-      <div class="section-label">Mobile Apps</div>
-      <h2 class="section-title">27 apps on Google Play</h2>
-      <p class="section-desc">A growing portfolio of Flutter-based mobile applications spanning health, fitness, finance, and productivity.</p>
-    </div>
-    <div class="apps-showcase">
-      <div class="apps-info reveal">
-        <div class="apps-stats-grid">
-          <div class="app-stat-box"><div class="num">27+</div><div class="label">Published Apps</div></div>
-          <div class="app-stat-box"><div class="num">6</div><div class="label">Categories</div></div>
-          <div class="app-stat-box"><div class="num">Flutter</div><div class="label">Framework</div></div>
-          <div class="app-stat-box"><div class="num">2026</div><div class="label">iOS Coming</div></div>
-        </div>
-        <p>Every app is built with Flutter for cross-platform performance and designed with clean, intuitive interfaces. Currently on Android with iOS versions planned.</p>
-        <a href="#" class="btn btn-ghost">View on Google Play →</a>
-      </div>
-      <div class="apps-scroll-container reveal reveal-delay-2">
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(16,185,129,0.12);">🥗</div><h4>FastTrack</h4><span>Nutrition</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(124,58,237,0.12);">🤲</div><h4>Sabr</h4><span>Lifestyle</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(6,182,212,0.12);">💧</div><h4>AquaFlow</h4><span>Hydration</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(244,63,94,0.12);">👟</div><h4>StepUp</h4><span>Fitness</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(168,85,247,0.12);">🌙</div><h4>DreamScape</h4><span>Sleep</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(245,158,11,0.12);">🎤</div><h4>VoiceVault</h4><span>Recorder</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(16,185,129,0.12);">📋</div><h4>TaskFlow</h4><span>Productivity</span></div>
-        <div class="app-mini-card"><div class="app-mini-icon" style="background:rgba(124,58,237,0.12);">💰</div><h4>BudgetWise</h4><span>Finance</span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ABOUT -->
-  <section class="section about-section" id="about">
-    <div class="section" style="padding:0;">
+    <!-- 4. TRADING -->
+    <section class="section" id="trading" aria-labelledby="trading-title">
       <div class="section-header reveal">
-        <div class="section-label">About</div>
-        <h2 class="section-title">Built in Liverpool</h2>
+        <div class="section-label">Trading &amp; Quant</div>
+        <h2 class="section-title" id="trading-title">Tools for serious traders</h2>
+        <p class="section-desc">Indicators, analytics, journals, and education -- built by a trader, for traders.</p>
       </div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>Avantware is an indie software studio based in Liverpool, UK. We research underserved markets with real pain points and regulatory pressure — then build focused, well-designed tools to solve them before anyone else does.</p>
-          <p>Every product targets a validated gap. We don't build where incumbents already dominate. Instead, we find the spaces where timing, regulation, or market shifts create genuine demand — and we move fast to fill them.</p>
-          <p>Our stack spans web applications, Chrome extensions, mobile apps, and trading tools — always with a bias toward problems where data-driven analysis reveals real opportunity.</p>
+      <div class="trading-content">
+        <div class="trading-features reveal">
+          <div class="trading-feature tf-indigo card-shine">
+            <div class="trading-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <h4>PineScript V6 Indicators</h4>
+              <p>Custom TradingView indicators for futures and forex. Precision entries, exits, and risk management overlays built on proven logic.</p>
+            </div>
+          </div>
+          <div class="trading-feature tf-green card-shine">
+            <div class="trading-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <h4>AI Trading Journal</h4>
+              <p>Automated journalling with trade import, pattern recognition, and AI-driven performance insights. Stop guessing, start learning.</p>
+            </div>
+          </div>
+          <div class="trading-feature tf-amber card-shine">
+            <div class="trading-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
+            </div>
+            <div>
+              <h4>Prop Firm Dashboard</h4>
+              <p>Track challenge progress across multiple prop firms. Real-time drawdown monitoring, rule tracking, and performance analytics.</p>
+            </div>
+          </div>
+          <div class="trading-feature tf-cyan card-shine">
+            <div class="trading-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+            </div>
+            <div>
+              <h4>Forex Calculator Extension</h4>
+              <p>Instant position sizing, pip value, and risk calculations right in your browser. Supports all major and exotic pairs.</p>
+            </div>
+          </div>
+          <div class="trading-feature tf-rose card-shine">
+            <div class="trading-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+            </div>
+            <div>
+              <h4>Quant Signals &amp; Education</h4>
+              <p>Order flow analysis, cross-exchange latency strategies, and educational content. YouTube channel with indicator tutorials and market breakdowns.</p>
+            </div>
+          </div>
+          <a href="#trading" class="trading-link" aria-label="View all trading tools">
+            View all trading tools
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
-        <div class="values-grid reveal reveal-delay-2">
-          <div class="value-item"><div class="v-icon">🎯</div><h4>Gap-First</h4><p>Validated market gaps only. No building in crowded spaces.</p></div>
-          <div class="value-item"><div class="v-icon">⚡</div><h4>Ship Fast</h4><p>MVPs in weeks. Real user feedback drives everything.</p></div>
-          <div class="value-item"><div class="v-icon">🎨</div><h4>Design Matters</h4><p>Clean interfaces that respect users' time. No bloat.</p></div>
-          <div class="value-item"><div class="v-icon">🔒</div><h4>Privacy Default</h4><p>Minimal data. We don't sell it. Your data stays yours.</p></div>
+        <div class="trading-visual reveal reveal-stagger-2">
+          <div class="trading-card-stack">
+            <div class="t-card card-shine">
+              <div class="t-card-header">
+                <div class="t-card-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="t-card-title">Indicator Suite</div>
+                <span class="t-card-tag tag-soon">Coming Soon</span>
+              </div>
+              <div class="t-card-body">Multi-timeframe trend analysis, order blocks, liquidity zones, and momentum filters -- all configurable via TradingView settings panel.</div>
+              <div class="mini-chart" aria-hidden="true">
+                <div class="bar" style="height:20%;background:#7c3aed;"></div>
+                <div class="bar" style="height:35%;background:#7c3aed;"></div>
+                <div class="bar" style="height:25%;background:#6d28d9;"></div>
+                <div class="bar" style="height:60%;background:#3b82f6;"></div>
+                <div class="bar" style="height:45%;background:#3b82f6;"></div>
+                <div class="bar" style="height:80%;background:#06b6d4;"></div>
+                <div class="bar" style="height:55%;background:#06b6d4;"></div>
+                <div class="bar" style="height:90%;background:#06b6d4;"></div>
+                <div class="bar" style="height:70%;background:#22d3ee;"></div>
+                <div class="bar" style="height:95%;background:#22d3ee;"></div>
+                <div class="bar" style="height:75%;background:#10b981;"></div>
+                <div class="bar" style="height:100%;background:#10b981;"></div>
+              </div>
+            </div>
+            <div class="t-card card-shine">
+              <div class="t-card-header">
+                <div class="t-card-icon" style="background:rgba(245,158,11,0.12);color:var(--amber);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/></svg>
+                </div>
+                <div class="t-card-title">Prop Firm Tracker</div>
+                <span class="t-card-tag tag-soon">Coming Soon</span>
+              </div>
+              <div class="t-card-body">Track your evaluation progress across FTMO, TopStep, Apex, and more. See daily P&amp;L, drawdown limits, and days remaining at a glance.</div>
+            </div>
+            <div class="t-card card-shine">
+              <div class="t-card-header">
+                <div class="t-card-icon" style="background:rgba(244,63,94,0.12);color:var(--rose);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                </div>
+                <div class="t-card-title">YouTube Channel</div>
+                <span class="t-card-tag tag-dev">Building</span>
+              </div>
+              <div class="t-card-body">Indicator walkthroughs, market analysis, trade recaps, and quant strategy deep dives. Subscribe for weekly content.</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="contact">
-    <h2 class="reveal">Let's build something</h2>
-    <p class="reveal reveal-delay-1">Questions, partnerships, product feedback, or just want to say hello.</p>
-    <a href="mailto:contact@avantware.com" class="cta-email reveal reveal-delay-2">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
-      contact@avantware.com
-    </a>
-  </section>
+    <div class="section-divider" aria-hidden="true"></div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+    <!-- 5. ALL PRODUCTS GRID -->
+    <section class="section" id="products" aria-labelledby="products-title">
+      <div class="section-header reveal">
+        <div class="section-label">Products</div>
+        <h2 class="section-title" id="products-title">SaaS &amp; Extensions</h2>
+        <p class="section-desc">Web platforms and browser extensions targeting validated market gaps.</p>
+      </div>
+
+      <div class="product-category-label reveal">SaaS Platforms</div>
+      <div class="products-grid">
+        <article class="product-card card-shine reveal reveal-stagger-1" data-color="green">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <span class="product-status status-live">Live</span>
+          </div>
+          <h3>BasisGuard</h3>
+          <p class="product-desc">Crypto tax compliance tool for the new IRS 1099-DA reporting requirements. Automated cost basis tracking and tax lot management for US traders.</p>
+          <div class="product-tags"><span class="ptag">Crypto</span><span class="ptag">Tax</span><span class="ptag">SaaS</span></div>
+        </article>
+        <article class="product-card card-shine reveal reveal-stagger-2" data-color="cyan">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <span class="product-status status-live">Live</span>
+          </div>
+          <h3>MegaScan</h3>
+          <p class="product-desc">Token screener and analytics dashboard for the MegaETH ecosystem. Real-time scanning, filtering, and tracking of new token launches.</p>
+          <div class="product-tags"><span class="ptag">Crypto</span><span class="ptag">Analytics</span><span class="ptag">DeFi</span></div>
+        </article>
+        <article class="product-card card-shine reveal reveal-stagger-3" data-color="amber">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span class="product-status status-dev">In Dev</span>
+          </div>
+          <h3>LandlordShield</h3>
+          <p class="product-desc">UK landlord compliance dashboard unifying Making Tax Digital, Renters' Rights Act, and EPC requirements. Three converging deadlines, one tracker.</p>
+          <div class="product-tags"><span class="ptag">Property</span><span class="ptag">UK</span><span class="ptag">Compliance</span></div>
+        </article>
+      </div>
+
+      <div class="product-category-label reveal">Chrome Extensions</div>
+      <div class="products-grid">
+        <article class="product-card card-shine reveal reveal-stagger-1" data-color="purple">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            </div>
+            <span class="product-status status-live">Live</span>
+          </div>
+          <h3>ZeroCloudAI</h3>
+          <p class="product-desc">Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Privacy-first AI assistance for everyday workflows.</p>
+          <div class="product-tags"><span class="ptag">AI</span><span class="ptag">Extension</span><span class="ptag">Privacy</span></div>
+        </article>
+        <article class="product-card card-shine reveal reveal-stagger-2" data-color="rose">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <span class="product-status status-dev">In Dev</span>
+          </div>
+          <h3>TikTok Shop Guard</h3>
+          <p class="product-desc">Compliance monitor for TikTok Shop sellers. Scans listings for policy violations before publishing, tracks account health, and suggests fixes.</p>
+          <div class="product-tags"><span class="ptag">E-Commerce</span><span class="ptag">Compliance</span><span class="ptag">Extension</span></div>
+        </article>
+        <article class="product-card card-shine reveal reveal-stagger-3" data-color="orange">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/><path d="M3.5 12h6l2-3 3 6 2-3h4"/></svg>
+            </div>
+            <span class="product-status status-soon">Planned</span>
+          </div>
+          <h3>Wellness Suite</h3>
+          <p class="product-desc">All-in-one wellness Chrome extension and menopause/perimenopause tracker -- combining health monitoring, habit tracking, and personalised insights.</p>
+          <div class="product-tags"><span class="ptag">Health</span><span class="ptag">Wellness</span><span class="ptag">Extension</span></div>
+        </article>
+        <article class="product-card card-shine reveal reveal-stagger-4" data-color="blue">
+          <div class="product-card-top">
+            <div class="product-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="product-status status-soon">Planned</span>
+          </div>
+          <h3>GEO Monitor</h3>
+          <p class="product-desc">Search engine visibility monitor. Track rankings, featured snippets, and AI overview presence across Google and Bing.</p>
+          <div class="product-tags"><span class="ptag">SEO</span><span class="ptag">Analytics</span><span class="ptag">Extension</span></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- 6. MOBILE APPS -->
+    <section class="section" id="apps" aria-labelledby="apps-title">
+      <div class="section-header reveal">
+        <div class="section-label">Mobile Apps</div>
+        <h2 class="section-title" id="apps-title">27 apps on Google Play</h2>
+        <p class="section-desc">A growing portfolio of Flutter-based mobile applications spanning health, fitness, finance, and productivity.</p>
+      </div>
+      <div class="apps-showcase">
+        <div class="apps-info reveal">
+          <div class="apps-stats-grid">
+            <div class="app-stat-box"><div class="num">27+</div><div class="label">Published Apps</div></div>
+            <div class="app-stat-box"><div class="num">6</div><div class="label">Categories</div></div>
+            <div class="app-stat-box"><div class="num">Flutter</div><div class="label">Framework</div></div>
+            <div class="app-stat-box"><div class="num">2026</div><div class="label">iOS Coming</div></div>
+          </div>
+          <p>Every app is built with Flutter for cross-platform performance and designed with clean, intuitive interfaces. Currently on Android with iOS versions planned.</p>
+          <a href="#" class="btn btn-ghost" aria-label="View apps on Google Play">
+            View on Google Play
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="apps-scroll-container reveal reveal-stagger-2">
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(16,185,129,0.12);color:var(--green);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4>FastTrack</h4>
+            <span>Nutrition</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h4>Sabr</h4>
+            <span>Lifestyle</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(6,182,212,0.12);color:var(--cyan);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <h4>AquaFlow</h4>
+            <span>Hydration</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(244,63,94,0.12);color:var(--rose);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4>StepUp</h4>
+            <span>Fitness</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(168,85,247,0.12);color:var(--purple);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </div>
+            <h4>DreamScape</h4>
+            <span>Sleep</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(245,158,11,0.12);color:var(--amber);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h4>VoiceVault</h4>
+            <span>Recorder</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(16,185,129,0.12);color:var(--green);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h4>TaskFlow</h4>
+            <span>Productivity</span>
+          </div>
+          <div class="app-mini-card card-shine">
+            <div class="app-mini-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4>BudgetWise</h4>
+            <span>Finance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- 7. ABOUT -->
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="section" style="padding-top:7rem;padding-bottom:7rem;">
+        <div class="section-header reveal">
+          <div class="section-label">About</div>
+          <h2 class="section-title" id="about-title">Built in Liverpool</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>Avantware is an indie software studio based in Liverpool, UK. We research underserved markets with real pain points and regulatory pressure -- then build focused, well-designed tools to solve them before anyone else does.</p>
+            <p>Every product targets a validated gap. We don't build where incumbents already dominate. Instead, we find the spaces where timing, regulation, or market shifts create genuine demand -- and we move fast to fill them.</p>
+            <p>Our stack spans web applications, Chrome extensions, mobile apps, and trading tools -- always with a bias toward problems where data-driven analysis reveals real opportunity.</p>
+          </div>
+          <div class="values-grid reveal reveal-stagger-2">
+            <div class="value-item">
+              <div class="value-icon vi-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <h4>Gap-First</h4>
+              <p>Validated market gaps only. No building in crowded spaces.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon vi-amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <h4>Ship Fast</h4>
+              <p>MVPs in weeks. Real user feedback drives everything.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon vi-cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <h4>Design Matters</h4>
+              <p>Clean interfaces that respect users' time. No bloat.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon vi-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <h4>Privacy Default</h4>
+              <p>Minimal data. We don't sell it. Your data stays yours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CTA / CONTACT -->
+    <section class="cta-section" id="contact" aria-labelledby="cta-title">
+      <h2 class="reveal" id="cta-title">Let's build something</h2>
+      <p class="reveal reveal-stagger-1">Questions, partnerships, product feedback, or just want to say hello.</p>
+      <a href="mailto:contact@avantware.com" class="cta-email reveal reveal-stagger-2" aria-label="Send email to contact@avantware.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+        contact@avantware.com
+      </a>
+    </section>
+
+  </main>
+
+  <!-- 9. FOOTER -->
+  <footer class="footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="nav-logo"><div class="nav-logo-icon">A</div><div class="nav-logo-text">avant<span>ware</span></div></a>
+          <a href="#" class="nav-logo" aria-label="Avantware home">
+            <img src="Logo.png" alt="Avantware logo" height="32" width="32">
+            <div class="nav-logo-text">avant<span>ware</span></div>
+          </a>
           <p>UK-based software studio building tools for traders, sellers, landlords, and professionals.</p>
         </div>
         <div class="footer-col">
@@ -806,6 +1594,7 @@
             <li><a href="#products">ZeroCloudAI</a></li>
             <li><a href="#products">TikTok Shop Guard</a></li>
             <li><a href="#products">LandlordShield</a></li>
+            <li><a href="#products">GEO Monitor</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -814,6 +1603,7 @@
             <li><a href="#trading">PineScript Indicators</a></li>
             <li><a href="#trading">AI Trading Journal</a></li>
             <li><a href="#trading">Prop Firm Dashboard</a></li>
+            <li><a href="#trading">Forex Calculator</a></li>
             <li><a href="#">YouTube Channel</a></li>
           </ul>
         </div>
@@ -827,6 +1617,20 @@
           </ul>
         </div>
       </div>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" aria-label="Follow us on Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768"/><path d="M20 4l-6.768 6.768"/></svg>
+        </a>
+        <a href="#" aria-label="Subscribe on YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+        </a>
+        <a href="#" aria-label="View our GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Join our Discord">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13a6 6 0 0 1-6 6 6 6 0 0 1-6-6"/><path d="M9.09 9a3 3 0 0 1 5.83 0"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M20.27 5.39A18.32 18.32 0 0 0 15.64 4 13 13 0 0 0 15 5.47a17.23 17.23 0 0 0-6 0A12.76 12.76 0 0 0 8.36 4a18.28 18.28 0 0 0-4.63 1.39C.65 11.19-.4 16.83.13 22.39A18.47 18.47 0 0 0 5.72 24a13.58 13.58 0 0 0 1.2-1.92 12 12 0 0 1-1.88-.9l.45-.37a13.22 13.22 0 0 0 11 0l.46.37a12.08 12.08 0 0 1-1.89.9 13.42 13.42 0 0 0 1.2 1.92A18.38 18.38 0 0 0 21.87 22.39c.62-6.46-.86-12.07-4.6-17z"/></svg>
+        </a>
+      </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
         <div class="footer-bottom-links">
@@ -838,100 +1642,238 @@
   </footer>
 
   <script>
-    // Nav scroll
+    // ===== NAV SCROLL =====
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
 
-    // Mobile menu
-    function toggleMobileMenu() {
-      const l = document.getElementById('navLinks');
-      if (l.style.display === 'flex') {
-        l.style.display = 'none';
-      } else {
-        l.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(6,6,11,0.95);backdrop-filter:blur(24px);padding:1rem;border-bottom:1px solid var(--border);';
-        l.querySelectorAll('a').forEach(a => a.style.display = 'block');
+    // ===== MOBILE MENU =====
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('active');
+      mobileOverlay.classList.add('active');
+      mobileToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    mobileToggle.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+
+    // Mobile accordion
+    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var isActive = this.classList.contains('active');
+        // Close all
+        document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.mobile-accordion-content').forEach(function(c) {
+          c.classList.remove('active');
+        });
+        // Toggle current
+        if (!isActive) {
+          this.classList.add('active');
+          this.setAttribute('aria-expanded', 'true');
+          this.nextElementSibling.classList.add('active');
+        }
+      });
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // ===== DROPDOWN ARIA =====
+    document.querySelectorAll('.nav-item').forEach(function(item) {
+      var trigger = item.querySelector('.nav-trigger');
+      item.addEventListener('mouseenter', function() {
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      });
+      item.addEventListener('mouseleave', function() {
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+      if (trigger) {
+        trigger.addEventListener('focus', function() {
+          trigger.setAttribute('aria-expanded', 'true');
+        });
       }
+      item.addEventListener('focusout', function(e) {
+        if (!item.contains(e.relatedTarget)) {
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // ===== SCROLL REVEAL WITH STAGGER =====
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    // ===== COUNTER ANIMATION (easeOutExpo) =====
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
     }
 
-    // Scroll reveal
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    var counterObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.count);
+          var duration = 2000;
+          var startTime = null;
 
-    // Counter animation
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target, target = parseInt(el.dataset.count);
-          let cur = 0;
-          const inc = Math.max(1, Math.floor(target / 40));
-          const timer = setInterval(() => {
-            cur += inc;
-            if (cur >= target) { el.textContent = target + '+'; clearInterval(timer); }
-            else el.textContent = cur;
-          }, 35);
+          function animate(currentTime) {
+            if (!startTime) startTime = currentTime;
+            var elapsed = currentTime - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var easedProgress = easeOutExpo(progress);
+            var current = Math.floor(easedProgress * target);
+
+            if (progress < 1) {
+              el.textContent = current;
+              requestAnimationFrame(animate);
+            } else {
+              el.textContent = target + '+';
+            }
+          }
+
+          requestAnimationFrame(animate);
           counterObs.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
-    document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+    document.querySelectorAll('[data-count]').forEach(function(el) { counterObs.observe(el); });
 
-    // Particle canvas
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [], animId;
+    // ===== PARTICLE CANVAS =====
+    var canvas = document.getElementById('hero-canvas');
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var animId = null;
 
-    function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
     function createParticles() {
       particles = [];
-      const colors = ['124,58,237', '59,130,246', '6,182,212', '168,85,247'];
-      const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
-      for (let i = 0; i < count; i++) {
+      var colors = ['124,58,237', '59,130,246', '6,182,212', '168,85,247'];
+      var count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+      for (var i = 0; i < count; i++) {
         particles.push({
-          x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
-          size: Math.random() * 1.5 + 0.5, opacity: Math.random() * 0.4 + 0.1,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.4 + 0.1,
           color: colors[Math.floor(Math.random() * colors.length)]
         });
       }
     }
+
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color},${p.opacity})`; ctx.fill();
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[j].x - p.x, dy = particles[j].y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      particles.forEach(function(p, i) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
+        ctx.fill();
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[j].x - p.x;
+          var dy = particles[j].y - p.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
-            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(124,58,237,${0.08 * (1 - dist / 120)})`; ctx.lineWidth = 0.5; ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(124,58,237,' + (0.08 * (1 - dist / 120)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           }
         }
       });
       animId = requestAnimationFrame(drawParticles);
     }
-    resizeCanvas(); createParticles(); drawParticles();
-    window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
 
-    // Pause when not visible
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { if (!animId) drawParticles(); }
-        else { cancelAnimationFrame(animId); animId = null; }
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+    window.addEventListener('resize', function() { resizeCanvas(); createParticles(); });
+
+    // Pause particles when hero not visible
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          if (!animId) drawParticles();
+        } else {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
       });
     }, { threshold: 0.01 }).observe(document.getElementById('hero'));
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    // ===== HERO FLOATERS PARALLAX =====
+    var heroFloaters = document.getElementById('heroFloaters');
+    var lastScrollY = 0;
+    var ticking = false;
+
+    function updateParallax() {
+      if (heroFloaters) {
+        heroFloaters.style.transform = 'translateY(' + (lastScrollY * 0.3) + 'px)';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var href = a.getAttribute('href');
+        if (href === '#') return;
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
+    });
+
+    // ===== KEYBOARD: Escape closes mobile menu =====
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+        mobileToggle.focus();
+      }
     });
   </script>
 </body>
