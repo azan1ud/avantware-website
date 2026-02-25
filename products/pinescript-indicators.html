@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PineScript Indicators — Custom TradingView Indicators for Futures & Forex | Avantware</title>
+  <meta name="description" content="Custom TradingView PineScript V6 indicators for futures and forex trading. Precision entries, exits, and risk management overlays built on proven logic.">
+  <meta property="og:title" content="PineScript Indicators — Custom TradingView Indicators | Avantware">
+  <meta property="og:description" content="Custom TradingView PineScript V6 indicators for futures and forex. Precision entries, exits, and risk management overlays built on proven logic.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../Logo.png">
+  <meta property="og:url" content="https://avantware.com/products/pinescript-indicators.html">
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/product.css">
+</head>
+<body class="accent-purple">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Products menu">
+              Products
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-3col" role="menu" aria-label="Products submenu">
+              <div>
+                <div class="dropdown-col-title">SaaS Platforms</div>
+                <a href="basisguard.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+                </a>
+                <a href="megascan.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Chrome Extensions</div>
+                <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Mobile Apps</div>
+                <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Cross-platform mobile</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Trading menu">
+              Trading
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-2col" role="menu" aria-label="Trading submenu">
+              <div>
+                <div class="dropdown-col-title">Tools</div>
+                <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span><span class="dropdown-item-desc">TradingView custom indicators</span></div>
+                </a>
+                <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span><span class="dropdown-item-desc">Automated trade analysis</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span><span class="dropdown-item-desc">Track funded accounts</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Education & Signals</div>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span><span class="dropdown-item-desc">Trading tutorials</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span><span class="dropdown-item-desc">Algorithmic trade signals</span></div>
+                </a>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span><span class="dropdown-item-desc">Learn to trade</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">
+              Company
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Company submenu">
+              <a href="../index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+              <a href="../index.html#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+              <a href="../privacy-policy.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+              <a href="../terms-of-service.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="nav-cta-btn desktop-only">Get in Touch</a>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+        <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+        <div class="nav-logo-text">avant<span>ware</span></div>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="basisguard.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span></div></a>
+        <a href="megascan.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span></div></a>
+        <a href="../index.html#products" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span></div></a>
+        <a href="zerocloudai.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span></div></a>
+        <a href="../index.html#products" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span></div></a>
+        <a href="forex-calculator.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div></a>
+        <a href="../index.html#apps" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span></div></a>
+      </div>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Trading <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="pinescript-indicators.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div></a>
+        <a href="ai-trading-journal.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div></a>
+        <a href="../index.html#trading" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div></a>
+        <a href="forex-calculator.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div></a>
+        <a href="#" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div></a>
+        <a href="../index.html#trading" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span></div></a>
+        <a href="#" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span></div></a>
+      </div>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="../index.html#about" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="../index.html#contact" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="../privacy-policy.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="../terms-of-service.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+      </div>
+    </div>
+    <a href="../index.html#contact" class="nav-cta-btn">Get in Touch</a>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- PRODUCT HERO -->
+    <section class="product-hero">
+      <div class="product-hero-glow product-hero-glow-1" aria-hidden="true"></div>
+      <div class="product-hero-glow product-hero-glow-2" aria-hidden="true"></div>
+      <div class="product-hero-content">
+        <div class="product-status-badge badge-coming">Coming Soon</div>
+        <h1>PineScript Indicators</h1>
+        <p class="tagline">Custom TradingView Indicators for Futures & Forex. Precision entries, exits, and risk management overlays built on proven logic using PineScript V6.</p>
+        <div class="product-hero-actions">
+          <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+          <a href="../index.html#products" class="btn btn-ghost">Back to Products</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+      <div class="section-header center reveal">
+        <div class="section-label">Key Features</div>
+        <h2 class="section-title">Everything you need for precision trading</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card card-shine reveal reveal-stagger-1">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Multi-Timeframe Analysis</h3>
+          <p>Trend confirmation across timeframes to ensure you are trading in alignment with the dominant market direction.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-2">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <h3>Order Block Detection</h3>
+          <p>Identify institutional supply and demand zones where smart money has left its footprint on the chart.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-3">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Liquidity Zones</h3>
+          <p>Highlight areas of high liquidity where price is likely to gravitate, helping you anticipate key market moves.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-4">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Momentum Filters</h3>
+          <p>Avoid choppy markets with momentum confirmation filters that keep you trading only in strong, directional moves.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-5">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Risk Overlays</h3>
+          <p>Built-in stop loss and take profit levels displayed directly on the chart for disciplined risk management on every trade.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-6">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Alert System</h3>
+          <p>Configurable alerts for entries and exits so you never miss a setup, even when you are away from the screen.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+      <div class="section">
+        <div class="section-header center reveal">
+          <div class="section-label">How It Works</div>
+          <h2 class="section-title">Four steps to better trading</h2>
+        </div>
+        <div class="how-steps">
+          <div class="how-step reveal reveal-stagger-1">
+            <h3>Add to TradingView</h3>
+            <p>Load the indicator on any chart in TradingView. Compatible with futures, forex, and other supported instruments.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-2">
+            <h3>Configure Settings</h3>
+            <p>Adjust parameters via the settings panel to match your trading style, preferred timeframes, and risk tolerance.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-3">
+            <h3>Identify Setups</h3>
+            <p>The indicator highlights high-probability zones on your chart, including order blocks, liquidity areas, and momentum signals.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-4">
+            <h3>Execute Trades</h3>
+            <p>Use built-in alerts for timely entries and exits. Risk overlays provide stop loss and take profit levels for every setup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- TECH DETAILS -->
+    <section class="tech-section reveal">
+      <div class="section-header">
+        <div class="section-label">Tech Stack</div>
+        <h2 class="section-title">Built with precision</h2>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">PineScript V6</span>
+        <span class="tech-tag">TradingView</span>
+        <span class="tech-tag">Futures</span>
+        <span class="tech-tag">Forex</span>
+        <span class="tech-tag">Technical Analysis</span>
+        <span class="tech-tag">Indicators</span>
+        <span class="tech-tag">Quant</span>
+        <span class="tech-tag">Algorithmic</span>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <section class="product-cta reveal">
+      <h2>Ready to level up your chart analysis?</h2>
+      <p>Get access when we launch.</p>
+      <div class="product-cta-actions">
+        <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="../index.html" class="btn btn-ghost">Back to Home</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+            <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+            <div class="nav-logo-text">avant<span>ware</span></div>
+          </a>
+          <p>UK-based software studio building tools for traders, sellers, landlords, and professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="basisguard.html">BasisGuard</a></li>
+            <li><a href="megascan.html">MegaScan</a></li>
+            <li><a href="zerocloudai.html">ZeroCloudAI</a></li>
+            <li><a href="../index.html#products">TikTok Shop Guard</a></li>
+            <li><a href="../index.html#products">LandlordShield</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="pinescript-indicators.html">PineScript Indicators</a></li>
+            <li><a href="ai-trading-journal.html">AI Trading Journal</a></li>
+            <li><a href="forex-calculator.html">Forex Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 50); });
+    // Mobile menu
+    var mobileToggle = document.getElementById('mobileToggle');
+    var mobileOverlay = document.getElementById('mobileOverlay');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var mobileClose = document.getElementById('mobileClose');
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); mobileToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); mobileToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    mobileToggle.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t){t.addEventListener('click',function(){var a=this.classList.contains('active');document.querySelectorAll('.mobile-accordion-trigger').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-expanded','false');});document.querySelectorAll('.mobile-accordion-content').forEach(function(c){c.classList.remove('active');});if(!a){this.classList.add('active');this.setAttribute('aria-expanded','true');this.nextElementSibling.classList.add('active');}});});
+    mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click', closeMobileMenu);});
+    // Dropdown ARIA
+    document.querySelectorAll('.nav-item').forEach(function(item){var trigger=item.querySelector('.nav-trigger');item.addEventListener('mouseenter',function(){if(trigger)trigger.setAttribute('aria-expanded','true');});item.addEventListener('mouseleave',function(){if(trigger)trigger.setAttribute('aria-expanded','false');});if(trigger){trigger.addEventListener('focus',function(){trigger.setAttribute('aria-expanded','true');});}item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget)&&trigger)trigger.setAttribute('aria-expanded','false');});});
+    // Scroll reveal
+    var revealObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+    // Escape closes mobile
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobileMenu.classList.contains('active')){closeMobileMenu();mobileToggle.focus();}});
+  </script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BasisGuard — Don't Overpay on Your Crypto Taxes | Avantware</title>
+  <meta name="description" content="Your 1099-DA is wrong. BasisGuard detects missing cost basis on your crypto tax forms and shows you exactly how much you'd overpay. Fix your Form 8949 in minutes.">
+  <meta name="keywords" content="1099-DA, crypto taxes, cost basis, Form 8949, crypto tax calculator, IRS crypto, tax overpayment">
+  <meta property="og:title" content="BasisGuard — Don't Overpay on Your Crypto Taxes | Avantware">
+  <meta property="og:description" content="Your 1099-DA is missing your cost basis. The IRS thinks you owe taxes on 100% of your proceeds. BasisGuard fixes that in minutes.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../Logo.png">
+  <meta property="og:url" content="https://avantware.com/products/basisguard.html">
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <style>
+    /* BasisGuard-specific styles */
+    .trust-badges { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .trust-badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-dim); }
+    .trust-badge svg { width: 16px; height: 16px; color: var(--green); }
+
+    .problem-section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .problem-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+    .problem-card.wrong { border-color: rgba(239,68,68,0.3); }
+    .problem-card.correct { border-color: rgba(16,185,129,0.3); }
+    .problem-card-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.25rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.75rem; border-radius: 6px;
+    }
+    .problem-card.wrong .problem-card-label { background: rgba(239,68,68,0.1); color: #ef4444; }
+    .problem-card.correct .problem-card-label { background: rgba(16,185,129,0.1); color: var(--green); }
+    .problem-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .problem-row:last-child { border-bottom: none; }
+    .problem-row span:first-child { color: var(--text-secondary); }
+    .problem-row span:last-child { font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .problem-row.highlight span:last-child { font-size: 1.1rem; }
+    .problem-card.wrong .problem-row.highlight span:last-child { color: #ef4444; }
+    .problem-card.correct .problem-row.highlight span:last-child { color: var(--green); }
+    .problem-scenario { text-align: center; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.5rem; }
+    .problem-stat {
+      text-align: center; margin-top: 3rem; padding: 2rem; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(6,182,212,0.06));
+      border: 1px solid rgba(16,185,129,0.15);
+    }
+    .problem-stat-number { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--green); letter-spacing: -1px; }
+    .problem-stat-text { font-size: 0.95rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+    .compare-section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .compare-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+    .compare-card.highlight { border-color: rgba(16,185,129,0.3); position: relative; }
+    .compare-card.highlight::after {
+      content: 'BasisGuard'; position: absolute; top: -10px; right: 1.5rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 0.25rem 0.65rem; border-radius: 4px;
+      background: var(--green); color: var(--bg);
+    }
+    .compare-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-secondary); }
+    .compare-card.highlight h3 { color: var(--text-primary); }
+    .compare-item { margin-bottom: 1.5rem; }
+    .compare-item:last-child { margin-bottom: 0; }
+    .compare-item-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 0.35rem; }
+    .compare-item-value { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    .compare-card.highlight .compare-item-value { color: var(--text-primary); }
+
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .problem-section { padding: 4.5rem 1.5rem; }
+      .compare-section { padding: 4.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body class="accent-green">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <!-- Products dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Products menu">
+              Products
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-3col" role="menu" aria-label="Products submenu">
+              <div>
+                <div class="dropdown-col-title">SaaS Platforms</div>
+                <a href="basisguard.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+                </a>
+                <a href="megascan.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Chrome Extensions</div>
+                <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Mobile Apps</div>
+                <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trading dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Trading menu">
+              Trading
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-2col" role="menu" aria-label="Trading submenu">
+              <div>
+                <div class="dropdown-col-title">Tools</div>
+                <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span><span class="dropdown-item-desc">TradingView custom indicators</span></div>
+                </a>
+                <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span><span class="dropdown-item-desc">Automated trade analysis</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span><span class="dropdown-item-desc">Challenge tracking</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing tool</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Education &amp; Signals</div>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span><span class="dropdown-item-desc">Tutorials and analysis</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span><span class="dropdown-item-desc">Data-driven trade signals</span></div>
+                </a>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span><span class="dropdown-item-desc">Courses and guides</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">
+              Company
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Company submenu">
+              <a href="../index.html#about" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div>
+              </a>
+              <a href="../index.html#contact" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div>
+              </a>
+              <a href="../privacy-policy.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div>
+              </a>
+              <a href="../terms-of-service.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="https://basisguard.vercel.app/" class="nav-cta-btn desktop-only" target="_blank" rel="noopener">Check Your 1099-DA</a>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+        <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+        <div class="nav-logo-text">avant<span>ware</span></div>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Products accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Products menu">
+        Products
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="basisguard.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+        </a>
+        <a href="megascan.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+        </a>
+        <a href="../index.html#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+        </a>
+        <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+        </a>
+        <a href="../index.html#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+        </a>
+        <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+        </a>
+        <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Trading accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Trading menu">
+        Trading
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div>
+        </a>
+        <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div>
+        </a>
+        <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div>
+        </a>
+        <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div>
+        </a>
+        <a href="#" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Company accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Company menu">
+        Company
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="../index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="../index.html#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="../privacy-policy.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="../terms-of-service.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+      </div>
+    </div>
+    <a href="https://basisguard.vercel.app/" class="nav-cta-btn" target="_blank" rel="noopener">Check Your 1099-DA</a>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- PRODUCT HERO -->
+    <section class="product-hero">
+      <div class="product-hero-glow product-hero-glow-1" aria-hidden="true"></div>
+      <div class="product-hero-glow product-hero-glow-2" aria-hidden="true"></div>
+      <div class="product-hero-content">
+        <div class="product-status-badge badge-live">Live</div>
+        <h1>Your 1099-DA is wrong.<br>Don't overpay your crypto taxes.</h1>
+        <p class="tagline">For the first time ever, your crypto exchange sent the IRS a tax form &mdash; but it's missing your cost basis. That means the IRS thinks you owe taxes on 100% of your proceeds, not just your gains.</p>
+        <div class="product-hero-actions">
+          <a href="https://basisguard.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Check Your 1099-DA Free</a>
+          <a href="#problem" class="btn btn-ghost">See the Problem</a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            256-bit encryption
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Read-only access
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            We never touch your funds
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- THE PROBLEM -->
+    <section class="problem-section" id="problem">
+      <div class="section-header center reveal">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Your exchange reported $0 cost basis to the IRS</h2>
+      </div>
+      <p class="problem-scenario reveal">Example: You bought 2 ETH at $2,500 each, then sold at $3,500 each.</p>
+      <div class="problem-grid">
+        <div class="problem-card wrong reveal reveal-stagger-1">
+          <div class="problem-card-label">What the IRS sees</div>
+          <div class="problem-row"><span>Proceeds</span><span>$7,000</span></div>
+          <div class="problem-row"><span>Cost Basis</span><span>$0</span></div>
+          <div class="problem-row"><span>Taxable Amount</span><span>$7,000</span></div>
+          <div class="problem-row highlight"><span>Estimated Tax (24%)</span><span>$1,680</span></div>
+        </div>
+        <div class="problem-card correct reveal reveal-stagger-2">
+          <div class="problem-card-label">What you actually owe</div>
+          <div class="problem-row"><span>Proceeds</span><span>$7,000</span></div>
+          <div class="problem-row"><span>Cost Basis</span><span>$5,000</span></div>
+          <div class="problem-row"><span>Taxable Gain</span><span>$2,000</span></div>
+          <div class="problem-row highlight"><span>Estimated Tax (24%)</span><span>$480</span></div>
+        </div>
+      </div>
+      <div class="problem-stat reveal">
+        <div class="problem-stat-number">$3,200</div>
+        <div class="problem-stat-text">The average crypto trader is overpaying by this much this tax season.</div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+      <div class="section">
+        <div class="section-header center reveal">
+          <div class="section-label">How It Works</div>
+          <h2 class="section-title">See your savings in 2 minutes</h2>
+        </div>
+        <div class="how-steps">
+          <div class="how-step reveal reveal-stagger-1">
+            <h3>Upload your 1099-DA PDF</h3>
+            <p>Drag and drop the 1099-DA you received from your exchange. We parse it instantly and never store your file.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-2">
+            <h3>Connect your exchange (or upload CSV)</h3>
+            <p>Link your Coinbase, Kraken, or Binance account via read-only API, or upload a transaction history CSV.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-3">
+            <h3>See your savings &amp; download corrected forms</h3>
+            <p>We show you exactly how much you'd overpay and generate a corrected Form 8949, ready to file or send to your CPA.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+      <div class="section-header center reveal">
+        <div class="section-label">Key Features</div>
+        <h2 class="section-title">Built for one thing: fixing your 1099-DA</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card card-shine reveal reveal-stagger-1">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>1099-DA PDF Parsing</h3>
+          <p>Upload your 1099-DA and we instantly extract every transaction. No manual data entry, no spreadsheets.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-2">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Missing Cost Basis Detection</h3>
+          <p>Automatically identifies every transaction where your exchange reported $0 cost basis to the IRS.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-3">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3>Exchange Import</h3>
+          <p>Connect Coinbase, Kraken, or Binance via read-only API, or upload a CSV of your transaction history.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-4">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          </div>
+          <h3>Corrected Form 8949</h3>
+          <p>Download an IRS-ready Form 8949 with your actual cost basis filled in. Send it to your CPA or file it yourself.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-5">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>One-Time Pricing</h3>
+          <p>No annual subscriptions. Pay only when you file. One-time fee, no recurring charges, ever.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-6">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Privacy &amp; Security First</h3>
+          <p>256-bit encryption. Read-only API access. We never store your files and we never touch your funds.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- COMPARISON -->
+    <section class="compare-section">
+      <div class="section-header center reveal">
+        <div class="section-label">Compare</div>
+        <h2 class="section-title">BasisGuard vs the alternatives</h2>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card reveal reveal-stagger-1">
+          <h3>CoinTracker / Koinly</h3>
+          <div class="compare-item">
+            <div class="compare-item-label">Pricing</div>
+            <div class="compare-item-value">Annual subscriptions starting at $49&ndash;$199/year, whether or not you need it.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-item-label">Focus</div>
+            <div class="compare-item-value">Bloated portfolio trackers that try to do everything: DeFi, NFTs, staking, real-time prices.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-item-label">Speed</div>
+            <div class="compare-item-value">Requires syncing your entire transaction history, resolving errors, and manual categorization.</div>
+          </div>
+        </div>
+        <div class="compare-card highlight reveal reveal-stagger-2">
+          <h3>The BasisGuard Way</h3>
+          <div class="compare-item">
+            <div class="compare-item-label">Pricing</div>
+            <div class="compare-item-value">One-time fee. Pay only when you file. No recurring charges.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-item-label">Focus</div>
+            <div class="compare-item-value">Built for one thing: detecting missing cost basis on your 1099-DA and fixing your Form 8949.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-item-label">Speed</div>
+            <div class="compare-item-value">Upload your 1099-DA, connect your exchange, and get your corrected forms in under 2 minutes.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- TECH DETAILS -->
+    <section class="tech-section reveal">
+      <div class="section-header">
+        <div class="section-label">Keywords</div>
+        <h2 class="section-title">What BasisGuard covers</h2>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">1099-DA</span>
+        <span class="tech-tag">Form 8949</span>
+        <span class="tech-tag">Cost Basis</span>
+        <span class="tech-tag">Crypto Taxes</span>
+        <span class="tech-tag">IRS Compliance</span>
+        <span class="tech-tag">Coinbase</span>
+        <span class="tech-tag">Kraken</span>
+        <span class="tech-tag">Binance</span>
+        <span class="tech-tag">PDF Parsing</span>
+        <span class="tech-tag">CSV Import</span>
+        <span class="tech-tag">Read-Only API</span>
+        <span class="tech-tag">Schedule D</span>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <section class="product-cta reveal">
+      <h2>See how much you'd save</h2>
+      <p>No sign-up required. Upload your 1099-DA and see your savings in 2 minutes.</p>
+      <div class="product-cta-actions">
+        <a href="https://basisguard.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Check Your 1099-DA Free</a>
+        <a href="../index.html" class="btn btn-ghost">Back to Home</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+            <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+            <div class="nav-logo-text">avant<span>ware</span></div>
+          </a>
+          <p>UK-based software studio building tools for traders, sellers, landlords, and professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="basisguard.html">BasisGuard</a></li>
+            <li><a href="megascan.html">MegaScan</a></li>
+            <li><a href="zerocloudai.html">ZeroCloudAI</a></li>
+            <li><a href="../index.html#products">TikTok Shop Guard</a></li>
+            <li><a href="../index.html#products">LandlordShield</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="pinescript-indicators.html">PineScript Indicators</a></li>
+            <li><a href="ai-trading-journal.html">AI Trading Journal</a></li>
+            <li><a href="forex-calculator.html">Forex Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 50); });
+    // Mobile menu
+    var mobileToggle = document.getElementById('mobileToggle');
+    var mobileOverlay = document.getElementById('mobileOverlay');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var mobileClose = document.getElementById('mobileClose');
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); mobileToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); mobileToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    mobileToggle.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t){t.addEventListener('click',function(){var a=this.classList.contains('active');document.querySelectorAll('.mobile-accordion-trigger').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-expanded','false');});document.querySelectorAll('.mobile-accordion-content').forEach(function(c){c.classList.remove('active');});if(!a){this.classList.add('active');this.setAttribute('aria-expanded','true');this.nextElementSibling.classList.add('active');}});});
+    mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click', closeMobileMenu);});
+    // Dropdown ARIA
+    document.querySelectorAll('.nav-item').forEach(function(item){var trigger=item.querySelector('.nav-trigger');item.addEventListener('mouseenter',function(){if(trigger)trigger.setAttribute('aria-expanded','true');});item.addEventListener('mouseleave',function(){if(trigger)trigger.setAttribute('aria-expanded','false');});if(trigger){trigger.addEventListener('focus',function(){trigger.setAttribute('aria-expanded','true');});}item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget)&&trigger)trigger.setAttribute('aria-expanded','false');});});
+    // Scroll reveal
+    var revealObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+    // Escape closes mobile
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobileMenu.classList.contains('active')){closeMobileMenu();mobileToggle.focus();}});
+  </script>
+</body>
+</html>

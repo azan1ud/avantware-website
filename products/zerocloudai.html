@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroCloudAI — Privacy-First AI in Your Browser | Avantware</title>
+  <meta name="description" content="ZeroCloudAI is a privacy-first AI Chrome extension that runs entirely in your browser with zero cloud dependency. Summarize, rewrite, translate, and analyze content without your data ever leaving your machine.">
+  <meta property="og:title" content="ZeroCloudAI — Privacy-First AI in Your Browser | Avantware">
+  <meta property="og:description" content="Privacy-first AI Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Your data never leaves your machine.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../Logo.png">
+  <meta property="og:url" content="https://avantware.com/products/zerocloudai.html">
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/product.css">
+</head>
+<body class="accent-purple">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <!-- Products dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Products menu">
+              Products
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-3col" role="menu" aria-label="Products submenu">
+              <div>
+                <div class="dropdown-col-title">SaaS Platforms</div>
+                <a href="basisguard.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+                </a>
+                <a href="megascan.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Chrome Extensions</div>
+                <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+                </a>
+                <a href="../index.html#products" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Mobile Apps</div>
+                <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trading dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Trading menu">
+              Trading
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-2col" role="menu" aria-label="Trading submenu">
+              <div>
+                <div class="dropdown-col-title">Tools</div>
+                <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span><span class="dropdown-item-desc">TradingView custom indicators</span></div>
+                </a>
+                <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span><span class="dropdown-item-desc">Automated trade analysis</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span><span class="dropdown-item-desc">Challenge tracking</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing tool</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Education &amp; Signals</div>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span><span class="dropdown-item-desc">Tutorials and analysis</span></div>
+                </a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span><span class="dropdown-item-desc">Data-driven trade signals</span></div>
+                </a>
+                <a href="#" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span><span class="dropdown-item-desc">Courses and guides</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">
+              Company
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Company submenu">
+              <a href="../index.html#about" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div>
+              </a>
+              <a href="../index.html#contact" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div>
+              </a>
+              <a href="../privacy-policy.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div>
+              </a>
+              <a href="../terms-of-service.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="nav-cta-btn desktop-only">Get in Touch</a>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+        <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+        <div class="nav-logo-text">avant<span>ware</span></div>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Products accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Products menu">
+        Products
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="basisguard.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+        </a>
+        <a href="megascan.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+        </a>
+        <a href="../index.html#products" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+        </a>
+        <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+        </a>
+        <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Trading accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Trading menu">
+        Trading
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div>
+        </a>
+        <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div>
+        </a>
+        <a href="../index.html#trading" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div>
+        </a>
+        <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div>
+        </a>
+        <a href="#" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Company accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Company menu">
+        Company
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="../index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="../index.html#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="../privacy-policy.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="../terms-of-service.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+      </div>
+    </div>
+    <a href="../index.html#contact" class="nav-cta-btn">Get in Touch</a>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- PRODUCT HERO -->
+    <section class="product-hero">
+      <div class="product-hero-glow product-hero-glow-1" aria-hidden="true"></div>
+      <div class="product-hero-glow product-hero-glow-2" aria-hidden="true"></div>
+      <div class="product-hero-content">
+        <div class="product-status-badge badge-live">Live</div>
+        <h1>ZeroCloudAI</h1>
+        <p class="tagline">Privacy-First AI in Your Browser. Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Your data never leaves your machine.</p>
+        <div class="product-hero-actions">
+          <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+          <a href="../index.html#products" class="btn btn-ghost">Back to Products</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+      <div class="section-header center reveal">
+        <div class="section-label">Key Features</div>
+        <h2 class="section-title">Everything you need for private, local AI</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card card-shine reveal reveal-stagger-1">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <h3>Local Processing</h3>
+          <p>All AI runs entirely in-browser using your device's resources. No cloud servers, no remote APIs, no data transmission.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-2">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Zero Data Collection</h3>
+          <p>No telemetry, no data harvesting, no analytics tracking. Your browsing habits and content stay completely private.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-3">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3>Text Analysis</h3>
+          <p>Summarize lengthy articles, rewrite content for clarity, and translate text between languages — all processed locally.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-4">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Code Assistant</h3>
+          <p>Get inline code suggestions and explanations while browsing documentation, GitHub, or Stack Overflow — without sending code to the cloud.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-5">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+          </div>
+          <h3>Writing Tools</h3>
+          <p>Improve grammar, adjust tone, and enhance clarity in emails, documents, and social posts — all without leaving your browser.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-6">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Context-Aware</h3>
+          <p>Understands the page you're viewing to deliver relevant suggestions and actions based on the content you're interacting with.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+      <div class="section">
+        <div class="section-header center reveal">
+          <div class="section-label">How It Works</div>
+          <h2 class="section-title">Four steps to private AI</h2>
+        </div>
+        <div class="how-steps">
+          <div class="how-step reveal reveal-stagger-1">
+            <h3>Install Extension</h3>
+            <p>Add ZeroCloudAI from the Chrome Web Store. One click to install, no account or sign-up required.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-2">
+            <h3>Browse Normally</h3>
+            <p>ZeroCloudAI activates on any page you visit, running silently in the background until you need it.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-3">
+            <h3>Select &amp; Process</h3>
+            <p>Highlight any text and choose an action — summarize, rewrite, translate, or analyze — from the context menu.</p>
+          </div>
+          <div class="how-step reveal reveal-stagger-4">
+            <h3>Stay Private</h3>
+            <p>Everything runs locally in your browser. No data is sent to any server, ever. Your privacy is guaranteed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- TECH DETAILS -->
+    <section class="tech-section reveal">
+      <div class="section-header">
+        <div class="section-label">Tech Stack</div>
+        <h2 class="section-title">Built with privacy at the core</h2>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">AI</span>
+        <span class="tech-tag">Chrome Extension</span>
+        <span class="tech-tag">Privacy</span>
+        <span class="tech-tag">Local LLM</span>
+        <span class="tech-tag">Browser</span>
+        <span class="tech-tag">No Cloud</span>
+        <span class="tech-tag">WebAssembly</span>
+        <span class="tech-tag">NLP</span>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <section class="product-cta reveal">
+      <h2>Ready for AI that respects your privacy?</h2>
+      <p>Install ZeroCloudAI and keep your data yours.</p>
+      <div class="product-cta-actions">
+        <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="../index.html" class="btn btn-ghost">Back to Home</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+            <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+            <div class="nav-logo-text">avant<span>ware</span></div>
+          </a>
+          <p>UK-based software studio building tools for traders, sellers, landlords, and professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="basisguard.html">BasisGuard</a></li>
+            <li><a href="megascan.html">MegaScan</a></li>
+            <li><a href="zerocloudai.html">ZeroCloudAI</a></li>
+            <li><a href="../index.html#products">TikTok Shop Guard</a></li>
+            <li><a href="../index.html#products">LandlordShield</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="pinescript-indicators.html">PineScript Indicators</a></li>
+            <li><a href="ai-trading-journal.html">AI Trading Journal</a></li>
+            <li><a href="forex-calculator.html">Forex Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 50); });
+    // Mobile menu
+    var mobileToggle = document.getElementById('mobileToggle');
+    var mobileOverlay = document.getElementById('mobileOverlay');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var mobileClose = document.getElementById('mobileClose');
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); mobileToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); mobileToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    mobileToggle.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t){t.addEventListener('click',function(){var a=this.classList.contains('active');document.querySelectorAll('.mobile-accordion-trigger').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-expanded','false');});document.querySelectorAll('.mobile-accordion-content').forEach(function(c){c.classList.remove('active');});if(!a){this.classList.add('active');this.setAttribute('aria-expanded','true');this.nextElementSibling.classList.add('active');}});});
+    mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click', closeMobileMenu);});
+    // Dropdown ARIA
+    document.querySelectorAll('.nav-item').forEach(function(item){var trigger=item.querySelector('.nav-trigger');item.addEventListener('mouseenter',function(){if(trigger)trigger.setAttribute('aria-expanded','true');});item.addEventListener('mouseleave',function(){if(trigger)trigger.setAttribute('aria-expanded','false');});if(trigger){trigger.addEventListener('focus',function(){trigger.setAttribute('aria-expanded','true');});}item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget)&&trigger)trigger.setAttribute('aria-expanded','false');});});
+    // Scroll reveal
+    var revealObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+    // Escape closes mobile
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobileMenu.classList.contains('active')){closeMobileMenu();mobileToggle.focus();}});
+  </script>
+</body>
+</html>
