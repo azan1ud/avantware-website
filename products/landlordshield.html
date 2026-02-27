@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LandlordShield — UK Landlord Compliance Dashboard | Avantware</title>
+  <meta name="description" content="MTD, Renters' Rights Act, EPC C — UK landlords face the biggest regulatory shake-up in 35 years. Track your compliance across all three in one dashboard.">
+  <meta name="keywords" content="UK landlord, Making Tax Digital, Renters Rights Act, EPC C, landlord compliance, property management, Section 21, MTD April 2026">
+  <meta property="og:title" content="LandlordShield — UK Landlord Compliance | Avantware">
+  <meta property="og:description" content="Three deadlines. One dashboard. Track MTD, Renters' Rights Act, and EPC compliance in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../Logo.png">
+  <meta property="og:url" content="https://avantware.com/products/landlordshield.html">
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <style>
+    .alert-badge {
+      display: inline-block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px;
+      padding: 0.4rem 0.8rem; border-radius: 6px; margin-bottom: 1.5rem;
+      background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2);
+    }
+
+    .regs-section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .regs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .reg-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; position: relative;
+    }
+    .reg-card-date {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem;
+      display: inline-block; padding: 0.25rem 0.6rem; border-radius: 4px;
+    }
+    .reg-card.mtd .reg-card-date { background: rgba(59,130,246,0.1); color: #3b82f6; }
+    .reg-card.rra .reg-card-date { background: rgba(168,85,247,0.1); color: #a855f7; }
+    .reg-card.epc .reg-card-date { background: rgba(16,185,129,0.1); color: var(--green); }
+    .reg-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .reg-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+    .reg-stat { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; }
+    .reg-stat strong { color: var(--text-secondary); }
+
+    .pricing-section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .pricing-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; position: relative; display: flex; flex-direction: column;
+    }
+    .pricing-card.featured { border-color: rgba(245,158,11,0.4); }
+    .pricing-card.featured::after {
+      content: 'Most Popular'; position: absolute; top: -10px; right: 1.5rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 0.25rem 0.65rem; border-radius: 4px;
+      background: #f59e0b; color: var(--bg);
+    }
+    .pricing-plan-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .pricing-price { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 0.25rem; }
+    .pricing-period { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .pricing-features { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
+    .pricing-features li {
+      font-size: 0.85rem; color: var(--text-secondary); padding: 0.4rem 0;
+      padding-left: 1.5rem; position: relative; line-height: 1.5;
+    }
+    .pricing-features li::before {
+      content: ''; position: absolute; left: 0; top: 0.65rem;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #f59e0b; opacity: 0.6;
+    }
+
+    .trust-section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .trust-card { text-align: center; padding: 1.5rem; }
+    .trust-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .trust-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .faq-section { padding: 7rem 2rem; max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 1rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; padding: 1.25rem 1.5rem; background: none; border: none;
+      font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600;
+      color: var(--text-primary); cursor: pointer; text-align: left;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question svg {
+      width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.3s ease; color: var(--text-dim);
+    }
+    .faq-question.active svg { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-answer-inner { padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .faq-answer.active { max-height: 200px; }
+
+    .disclaimer-text {
+      text-align: center; font-size: 0.75rem; color: var(--text-dim);
+      max-width: 600px; margin: 2rem auto 0; line-height: 1.6;
+    }
+
+    /* Override accent color to amber for LandlordShield */
+    body.accent-amber .product-hero-glow-1 { background: radial-gradient(circle, rgba(245,158,11,0.2), transparent 70%); }
+    body.accent-amber .product-hero-glow-2 { background: radial-gradient(circle, rgba(234,88,12,0.12), transparent 70%); }
+    body.accent-amber .product-status-badge.badge-live { background: rgba(245,158,11,0.12); color: #f59e0b; border-color: rgba(245,158,11,0.2); }
+    body.accent-amber .btn-primary { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+    body.accent-amber .btn-primary:hover { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    body.accent-amber .feature-card-icon { background: rgba(245,158,11,0.08); color: #f59e0b; }
+    body.accent-amber .how-step::before { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+    body.accent-amber .tech-tag { border-color: rgba(245,158,11,0.2); color: #f59e0b; }
+    body.accent-amber .section-label { color: #f59e0b; }
+
+    @media (max-width: 768px) {
+      .regs-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .regs-section { padding: 4.5rem 1.5rem; }
+      .pricing-section { padding: 4.5rem 1.5rem; }
+      .faq-section { padding: 4.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body class="accent-amber">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Products menu">
+              Products
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-3col" role="menu" aria-label="Products submenu">
+              <div>
+                <div class="dropdown-col-title">SaaS Platforms</div>
+                <a href="basisguard.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
+                </a>
+                <a href="megascan.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
+                </a>
+                <a href="landlordshield.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Chrome Extensions</div>
+                <a href="zerocloudai.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
+                </a>
+                <a href="tiktokshopguard.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div>
+                </a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing</span></div>
+                </a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Mobile Apps</div>
+                <a href="../index.html#apps" class="dropdown-item" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Trading menu">Trading<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="nav-dropdown dropdown-2col" role="menu" aria-label="Trading submenu">
+              <div>
+                <div class="dropdown-col-title">Tools</div>
+                <a href="pinescript-indicators.html" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span><span class="dropdown-item-desc">TradingView custom indicators</span></div></a>
+                <a href="ai-trading-journal.html" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span><span class="dropdown-item-desc">Automated trade analysis</span></div></a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span><span class="dropdown-item-desc">Challenge tracking</span></div></a>
+                <a href="forex-calculator.html" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span><span class="dropdown-item-desc">Position sizing tool</span></div></a>
+              </div>
+              <div>
+                <div class="dropdown-col-title">Education &amp; Signals</div>
+                <a href="#" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span><span class="dropdown-item-desc">Tutorials and analysis</span></div></a>
+                <a href="../index.html#trading" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">Quant Signals</span><span class="dropdown-item-desc">Data-driven trade signals</span></div></a>
+                <a href="#" class="dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg><div class="dropdown-item-text"><span class="dropdown-item-name">Trading Education</span><span class="dropdown-item-desc">Courses and guides</span></div></a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">Company<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Company submenu">
+              <a href="../index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+              <a href="../index.html#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+              <a href="../privacy-policy.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+              <a href="../terms-of-service.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="https://landlordshield.vercel.app/" class="nav-cta-btn desktop-only" target="_blank" rel="noopener">Start Free</a>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="../index.html" class="nav-logo" aria-label="Avantware home"><img src="../Logo.png" alt="Avantware logo" height="32" width="32"><div class="nav-logo-text">avant<span>ware</span></div></a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="basisguard.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span></div></a>
+        <a href="megascan.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span></div></a>
+        <a href="landlordshield.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span></div></a>
+        <a href="zerocloudai.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span></div></a>
+        <a href="tiktokshopguard.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span></div></a>
+        <a href="forex-calculator.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div></a>
+        <a href="../index.html#apps" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span></div></a>
+      </div>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Trading <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="pinescript-indicators.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div></a>
+        <a href="ai-trading-journal.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div></a>
+        <a href="forex-calculator.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div></a>
+      </div>
+    </div>
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false">Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="mobile-accordion-content">
+        <a href="../index.html#about" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="../index.html#contact" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="../privacy-policy.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="../terms-of-service.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+      </div>
+    </div>
+    <a href="https://landlordshield.vercel.app/" class="nav-cta-btn" target="_blank" rel="noopener">Start Free</a>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="product-hero">
+      <div class="product-hero-glow product-hero-glow-1" aria-hidden="true"></div>
+      <div class="product-hero-glow product-hero-glow-2" aria-hidden="true"></div>
+      <div class="product-hero-content">
+        <div class="alert-badge">MTD starts 6 April 2026 &mdash; Renters' Rights Act 1 May 2026</div>
+        <div class="product-status-badge badge-live">Live</div>
+        <h1>Three Deadlines.<br>One Dashboard.</h1>
+        <p class="tagline">MTD, Renters' Rights Act, EPC C &mdash; UK landlords face the biggest regulatory shake-up in 35 years. Track your compliance across all three in one place.</p>
+        <div class="product-hero-actions">
+          <a href="https://landlordshield.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Start Free &mdash; 1 Property</a>
+          <a href="#how-it-works" class="btn btn-ghost">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- REGULATORY CHANGES -->
+    <section class="regs-section">
+      <div class="section-header center reveal">
+        <div class="section-label">What's Coming</div>
+        <h2 class="section-title">Three major changes every landlord must prepare for</h2>
+      </div>
+      <div class="regs-grid">
+        <div class="reg-card mtd reveal reveal-stagger-1">
+          <div class="reg-card-date">April 2026</div>
+          <h3>Making Tax Digital</h3>
+          <p>Quarterly digital tax returns become mandatory. Penalties for non-compliance.</p>
+          <div class="reg-stat"><strong>864,000</strong> landlords affected<br><strong>Only 30%</strong> are aware of the changes</div>
+        </div>
+        <div class="reg-card rra reveal reveal-stagger-2">
+          <div class="reg-card-date">May 2026</div>
+          <h3>Renters' Rights Act</h3>
+          <p>Section 21 abolished. New tenancy rules. Fines up to &pound;7,000.</p>
+          <div class="reg-stat"><strong>11 million</strong> renters gain new protections<br><strong>Are you ready?</strong></div>
+        </div>
+        <div class="reg-card epc reveal reveal-stagger-3">
+          <div class="reg-card-date">October 2030</div>
+          <h3>EPC C Requirement</h3>
+          <p>All rentals must achieve EPC C. Fines up to &pound;30,000 per property.</p>
+          <div class="reg-stat"><strong>2.5 million</strong> homes need upgrades<br><strong>&pound;10,000</strong> spending cap per property</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- FEATURES -->
+    <section class="features-section" id="how-it-works">
+      <div class="section-header center reveal">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything you need in one place</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card card-shine reveal reveal-stagger-1">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+          <h3>Unified Compliance Dashboard</h3>
+          <p>See your MTD, Renters' Rights, and EPC compliance status at a glance.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-2">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3>Property Portfolio Management</h3>
+          <p>Track all your properties, tenancies, and compliance certificates in one place.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-3">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3>MTD Readiness Checker</h3>
+          <p>Find out if you're affected and what you need to do before April 2026.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-4">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h3>Renters' Rights Action Plan</h3>
+          <p>Step-by-step checklist for every change coming on 1 May 2026.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-5">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3>EPC Upgrade Planner</h3>
+          <p>Prioritise improvements by cost-effectiveness and track spending against the &pound;10,000 cap.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-6">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Certificate Expiry Reminders</h3>
+          <p>Never miss a gas safety, EICR, or insurance renewal date again.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-1">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <h3>Document Templates</h3>
+          <p>Section 13 rent increase notices, Section 8 notices, pet consent forms, and more.</p>
+        </div>
+        <div class="feature-card card-shine reveal reveal-stagger-2">
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>Compliance Calendar</h3>
+          <p>All your regulatory and certificate deadlines in one colour-coded calendar.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- PRICING -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-header center reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Plans for every landlord</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal reveal-stagger-1">
+          <div class="pricing-plan-name">Free</div>
+          <div class="pricing-price">&pound;0</div>
+          <div class="pricing-period">1 property, forever free</div>
+          <ul class="pricing-features">
+            <li>Basic compliance checklists</li>
+            <li>MTD threshold calculator</li>
+            <li>EPC overview</li>
+            <li>Knowledge base access</li>
+          </ul>
+          <a href="https://landlordshield.vercel.app/" class="btn btn-ghost" target="_blank" rel="noopener">Get Started</a>
+        </div>
+        <div class="pricing-card featured reveal reveal-stagger-2">
+          <div class="pricing-plan-name">Pro</div>
+          <div class="pricing-price">&pound;9.99</div>
+          <div class="pricing-period">per month &middot; up to 10 properties</div>
+          <ul class="pricing-features">
+            <li>Full compliance dashboard</li>
+            <li>All checklists and trackers</li>
+            <li>Document storage</li>
+            <li>Certificate expiry reminders</li>
+            <li>Compliance calendar</li>
+            <li>Rent increase calculator</li>
+            <li>EPC upgrade planner</li>
+            <li>PDF compliance reports</li>
+            <li>Priority email support</li>
+          </ul>
+          <a href="https://landlordshield.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Start 14-Day Free Trial</a>
+        </div>
+        <div class="pricing-card reveal reveal-stagger-3">
+          <div class="pricing-plan-name">Portfolio</div>
+          <div class="pricing-price">&pound;24.99</div>
+          <div class="pricing-period">per month &middot; unlimited properties</div>
+          <ul class="pricing-features">
+            <li>Everything in Pro</li>
+            <li>Document generator</li>
+            <li>Multi-user access</li>
+            <li>Portfolio-wide analytics</li>
+            <li>Annual compliance reports</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="https://landlordshield.vercel.app/" class="btn btn-ghost" target="_blank" rel="noopener">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- TRUST -->
+    <section class="trust-section">
+      <div class="trust-grid">
+        <div class="trust-card reveal reveal-stagger-1">
+          <h3>Built by landlords, for landlords</h3>
+          <p>Designed around real compliance challenges faced by UK private landlords.</p>
+        </div>
+        <div class="trust-card reveal reveal-stagger-2">
+          <h3>Based on official guidance</h3>
+          <p>All information sourced from HMRC, MHCLG, and DESNZ official publications.</p>
+        </div>
+        <div class="trust-card reveal reveal-stagger-3">
+          <h3>Updated with every change</h3>
+          <p>Regulatory information is monitored and updated as soon as changes are announced.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="section-header center reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common questions</h2>
+      </div>
+      <div class="faq-item reveal reveal-stagger-1">
+        <button class="faq-question">Does LandlordShield submit my tax returns to HMRC?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. LandlordShield is not MTD software. We help you understand if you're affected, prepare your records, track deadlines, and point you to HMRC-recognised software for actual submissions.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-stagger-2">
+        <button class="faq-question">Is this suitable for landlords in Scotland or Northern Ireland?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">LandlordShield currently covers England and Wales only. Scotland and Northern Ireland have different tenancy legislation. MTD applies UK-wide, but the Renters' Rights Act and some EPC rules differ.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-stagger-3">
+        <button class="faq-question">How many properties can I manage?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">The Free plan includes 1 property. Pro supports up to 10 properties, and Portfolio is unlimited.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-stagger-4">
+        <button class="faq-question">Is there a free trial?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes &mdash; the Pro plan includes a 14-day free trial. No credit card required for the Free plan.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-stagger-5">
+        <button class="faq-question">Can my accountant access my dashboard?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">The Portfolio plan includes multi-user access, so you can invite your accountant to view your compliance data and financial records.</div></div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- TECH TAGS -->
+    <section class="tech-section reveal">
+      <div class="section-header">
+        <div class="section-label">Keywords</div>
+        <h2 class="section-title">What LandlordShield covers</h2>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">Making Tax Digital</span>
+        <span class="tech-tag">Renters' Rights Act</span>
+        <span class="tech-tag">EPC C</span>
+        <span class="tech-tag">UK Landlord</span>
+        <span class="tech-tag">Section 21</span>
+        <span class="tech-tag">HMRC</span>
+        <span class="tech-tag">Gas Safety</span>
+        <span class="tech-tag">EICR</span>
+        <span class="tech-tag">Property Compliance</span>
+        <span class="tech-tag">England &amp; Wales</span>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <section class="product-cta reveal">
+      <h2>Don't wait for the deadlines to hit</h2>
+      <p>April 2026 is weeks away. Get your compliance on track today with a free account.</p>
+      <div class="product-cta-actions">
+        <a href="https://landlordshield.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Start Free &mdash; 1 Property</a>
+        <a href="../index.html" class="btn btn-ghost">Back to Home</a>
+      </div>
+      <p class="disclaimer-text">This tool provides guidance based on publicly available information. It is not legal, tax, or financial advice. Always consult a qualified professional for advice specific to your situation. England &amp; Wales only.</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" aria-label="Avantware home"><img src="../Logo.png" alt="Avantware logo" height="32" width="32"><div class="nav-logo-text">avant<span>ware</span></div></a>
+          <p>UK-based software studio building tools for traders, sellers, landlords, and professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="basisguard.html">BasisGuard</a></li>
+            <li><a href="megascan.html">MegaScan</a></li>
+            <li><a href="zerocloudai.html">ZeroCloudAI</a></li>
+            <li><a href="tiktokshopguard.html">TikTok Shop Guard</a></li>
+            <li><a href="landlordshield.html">LandlordShield</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="pinescript-indicators.html">PineScript Indicators</a></li>
+            <li><a href="ai-trading-journal.html">AI Trading Journal</a></li>
+            <li><a href="forex-calculator.html">Forex Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50);});
+    var mobileToggle=document.getElementById('mobileToggle'),mobileOverlay=document.getElementById('mobileOverlay'),mobileMenu=document.getElementById('mobileMenu'),mobileClose=document.getElementById('mobileClose');
+    function openMobileMenu(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');mobileToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+    function closeMobileMenu(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');mobileToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    mobileToggle.addEventListener('click',openMobileMenu);mobileClose.addEventListener('click',closeMobileMenu);mobileOverlay.addEventListener('click',closeMobileMenu);
+    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t){t.addEventListener('click',function(){var a=this.classList.contains('active');document.querySelectorAll('.mobile-accordion-trigger').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-expanded','false');});document.querySelectorAll('.mobile-accordion-content').forEach(function(c){c.classList.remove('active');});if(!a){this.classList.add('active');this.setAttribute('aria-expanded','true');this.nextElementSibling.classList.add('active');}});});
+    mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
+    document.querySelectorAll('.nav-item').forEach(function(item){var trigger=item.querySelector('.nav-trigger');item.addEventListener('mouseenter',function(){if(trigger)trigger.setAttribute('aria-expanded','true');});item.addEventListener('mouseleave',function(){if(trigger)trigger.setAttribute('aria-expanded','false');});if(trigger){trigger.addEventListener('focus',function(){trigger.setAttribute('aria-expanded','true');});}item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget)&&trigger)trigger.setAttribute('aria-expanded','false');});});
+    var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobileMenu.classList.contains('active')){closeMobileMenu();mobileToggle.focus();}});
+    document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var w=this.classList.contains('active');document.querySelectorAll('.faq-question').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.faq-answer').forEach(function(a){a.classList.remove('active');});if(!w){this.classList.add('active');this.nextElementSibling.classList.add('active');}});});
+  </script>
+</body>
+</html>
