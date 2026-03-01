@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Avantware</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to Avantware's homepage.">
+  <meta property="og:title" content="Page Not Found — Avantware">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://avantware.uk/404.html">
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="canonical" href="https://avantware.uk/404.html">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <style>
+    .error-page {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .error-page::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 600px; height: 600px; border-radius: 50%; filter: blur(120px);
+      background: linear-gradient(135deg, #7c3aed, #3b82f6); opacity: 0.1; pointer-events: none;
+    }
+    .error-content { position: relative; z-index: 1; max-width: 480px; }
+    .error-code {
+      font-family: 'JetBrains Mono', monospace; font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 800; letter-spacing: -4px; line-height: 1;
+      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 40%, #06b6d4 70%, #22d3ee 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .error-content h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .error-content p {
+      color: var(--text-secondary); font-size: 1rem; line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .error-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+  <script>var t=localStorage.getItem('avantware-theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+  </div>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="index.html#products" role="menuitem">Products</a>
+          </div>
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="index.html#trading" role="menuitem">Trading</a>
+          </div>
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="index.html#about" role="menuitem">About</a>
+          </div>
+        </div>
+        <a href="index.html#contact" class="nav-cta-btn desktop-only" aria-label="Get in touch">Get in Touch</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+  <!-- Mobile menu -->
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo" aria-label="Avantware home">
+        <img src="Logo.png" alt="Avantware logo" height="32" width="32">
+        <div class="nav-logo-text">avant<span>ware</span></div>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <a href="index.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Home</span></div></a>
+    <a href="index.html#products" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Products</span></div></a>
+    <a href="index.html#trading" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Trading</span></div></a>
+    <a href="index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+    <a href="index.html#contact" class="nav-cta-btn" aria-label="Get in touch">Get in Touch</a>
+  </aside>
+
+  <main id="main-content">
+    <section class="error-page">
+      <div class="error-content">
+        <div class="error-code" aria-hidden="true">404</div>
+        <h1>Page not found</h1>
+        <p>The page you're looking for doesn't exist or has been moved. Head back to the homepage to explore our products and tools.</p>
+        <div class="error-actions">
+          <a href="index.html" class="btn btn-primary">
+            Back to Home
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="mailto:contact@avantware.uk" class="btn btn-ghost">Contact Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="js/shared.js" defer></script>
+</body>
+</html>

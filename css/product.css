@@ -140,6 +140,111 @@
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
 }
 
+/* ===== ACCENT COLOR VARIANTS ===== */
+.accent-amber .product-hero-glow-1 { background: linear-gradient(135deg, #f59e0b, #f97316); }
+.accent-amber .product-hero-glow-2 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.accent-amber .feature-card-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
+.accent-amber .how-step::before { background: rgba(245,158,11,0.15); color: var(--amber); }
+
+.accent-blue .product-hero-glow-1 { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+.accent-blue .product-hero-glow-2 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.accent-blue .feature-card-icon { background: rgba(59,130,246,0.12); color: var(--blue); }
+.accent-blue .how-step::before { background: rgba(59,130,246,0.15); color: var(--blue); }
+
+.accent-rose .product-hero-glow-1 { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+.accent-rose .product-hero-glow-2 { background: linear-gradient(135deg, #f43f5e, #be123c); }
+.accent-rose .feature-card-icon { background: rgba(244,63,94,0.12); color: var(--rose); }
+.accent-rose .how-step::before { background: rgba(244,63,94,0.15); color: var(--rose); }
+
+/* ===== FAQ SECTION (common to all product pages) ===== */
+.faq-section { padding: 7rem 2rem; max-width: 800px; margin: 0 auto; }
+.faq-item {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  margin-bottom: 1rem; overflow: hidden;
+}
+.faq-question {
+  width: 100%; padding: 1.25rem 1.5rem; background: none; border: none;
+  font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); cursor: pointer; text-align: left;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.faq-question:focus-visible { outline: 2px solid var(--accent-light); outline-offset: -2px; }
+.faq-question svg {
+  width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.3s ease;
+  color: var(--text-dim);
+}
+.faq-question.active svg { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+}
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+}
+.faq-answer.active { max-height: 200px; }
+
+/* ===== PRICING TABLE (common to product pages) ===== */
+.pricing-section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.pricing-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem; position: relative; display: flex; flex-direction: column;
+}
+.pricing-card.featured { border-color: rgba(16,185,129,0.4); }
+.pricing-card.featured::after {
+  content: 'Most Popular'; position: absolute; top: -10px; right: 1.5rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 0.25rem 0.65rem; border-radius: 4px;
+  background: var(--green); color: var(--bg-primary);
+}
+.pricing-plan-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.pricing-price { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 0.25rem; }
+.pricing-period { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+.pricing-features { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
+.pricing-features li {
+  font-size: 0.85rem; color: var(--text-secondary); padding: 0.4rem 0;
+  padding-left: 1.5rem; position: relative; line-height: 1.5;
+}
+.pricing-features li::before {
+  content: ''; position: absolute; left: 0; top: 0.65rem;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); opacity: 0.6;
+}
+
+/* ===== STATS SECTION (common to product pages) ===== */
+.stats-section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.75rem; text-align: center;
+}
+.stat-number {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--green), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.35rem; line-height: 1.4; }
+
+/* ===== SCREENSHOT SHOWCASE ===== */
+.showcase-section { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 2rem; }
+.showcase-hero-img {
+  width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 2.5rem;
+  border: 1px solid var(--border);
+}
+.showcase-hero-img img { width: 100%; height: auto; display: block; }
+.showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.showcase-item {
+  border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.showcase-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+.showcase-item img { width: 100%; height: auto; display: block; }
+.showcase-caption { padding: 1rem 1.25rem; background: var(--bg-card); }
+.showcase-caption h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+.showcase-caption p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -151,4 +256,11 @@
   .how-steps { grid-template-columns: 1fr; }
   .tech-section { padding: 3rem 1.5rem; }
   .product-cta { padding: 4rem 1.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .stats-section { padding: 3rem 1.5rem; }
+  .pricing-section { padding: 4.5rem 1.5rem; }
+  .faq-section { padding: 4.5rem 1.5rem; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .showcase-section { padding: 3rem 1rem 1rem; }
 }

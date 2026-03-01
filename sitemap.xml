@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://avantware.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://avantware.com/products/basisguard.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/megascan.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/zerocloudai.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/pinescript-indicators.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/ai-trading-journal.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/forex-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/tiktokshopguard.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/products/landlordshield.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://avantware.com/#products</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://avantware.com/#trading</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://avantware.com/#apps</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://avantware.com/#about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://avantware.com/#contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://avantware.com/privacy-policy.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://avantware.com/terms-of-service.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://avantware.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://avantware.uk/products/basisguard.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/megascan.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/zerocloudai.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/pinescript-indicators.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/ai-trading-journal.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/forex-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/tiktokshopguard.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/products/landlordshield.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://avantware.uk/#products</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://avantware.uk/#trading</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://avantware.uk/#apps</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://avantware.uk/#about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://avantware.uk/#contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://avantware.uk/privacy-policy.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://avantware.uk/terms-of-service.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://avantware.uk/404.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>

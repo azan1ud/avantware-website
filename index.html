@@ -9,8 +9,8 @@
   <meta property="og:title" content="Avantware — Software, Trading &amp; Digital Products">
   <meta property="og:description" content="UK-based software studio building tools for traders, sellers, landlords, and professionals.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="Logo.png">
-  <meta property="og:url" content="https://avantware.com">
+  <meta property="og:image" content="https://avantware.uk/Logo.png">
+  <meta property="og:url" content="https://avantware.uk">
   <meta property="og:site_name" content="Avantware">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Avantware — Software, Trading &amp; Digital Products">
@@ -21,13 +21,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="canonical" href="https://avantware.uk/">
+  <noscript><style>.reveal{opacity:1;transform:none}.section-divider{width:100%}</style></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Avantware",
-    "url": "https://avantware.com",
-    "logo": "https://avantware.com/Logo.png",
+    "url": "https://avantware.uk",
+    "logo": "https://avantware.uk/Logo.png",
     "description": "UK-based software studio building trading tools, SaaS products, Chrome extensions, and mobile applications.",
     "address": {
       "@type": "PostalAddress",
@@ -41,429 +44,12 @@
     }
   }
   </script>
-  <style>
-    /* ===== HOMEPAGE-ONLY STYLES ===== */
-
-    /* ===== HERO ===== */
-    .hero {
-      position: relative; min-height: 100vh; display: flex; align-items: center;
-      justify-content: center; overflow: hidden; padding: 6rem 2rem;
-    }
-    #hero-canvas {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
-    }
-    .hero-glow {
-      position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; opacity: 0.4;
-    }
-    .hero-glow-1 {
-      width: 700px; height: 700px; top: -250px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      animation: glowPulse1 8s ease-in-out infinite, glowShift1 20s linear infinite;
-    }
-    .hero-glow-2 {
-      width: 550px; height: 550px; bottom: -300px; right: -200px;
-      background: linear-gradient(135deg, #06b6d4, #a855f7);
-      animation: glowPulse2 10s ease-in-out infinite, glowShift2 20s linear infinite;
-    }
-    .hero-glow-3 {
-      width: 400px; height: 400px; top: 30%; left: -150px;
-      background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      animation: glowPulse3 12s ease-in-out infinite, glowShift3 20s linear infinite;
-    }
-    @keyframes glowPulse1 {
-      0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.55; transform: translateX(-50%) scale(1.15); }
-    }
-    @keyframes glowPulse2 {
-      0%, 100% { opacity: 0.25; transform: scale(1) translate(0, 0); }
-      50% { opacity: 0.5; transform: scale(1.2) translate(-30px, -20px); }
-    }
-    @keyframes glowPulse3 {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.1) translate(20px, 10px); }
-    }
-    @keyframes glowShift1 {
-      0% { filter: blur(120px) hue-rotate(0deg); }
-      50% { filter: blur(120px) hue-rotate(25deg); }
-      100% { filter: blur(120px) hue-rotate(0deg); }
-    }
-    @keyframes glowShift2 {
-      0% { filter: blur(120px) hue-rotate(0deg); }
-      50% { filter: blur(120px) hue-rotate(-20deg); }
-      100% { filter: blur(120px) hue-rotate(0deg); }
-    }
-    @keyframes glowShift3 {
-      0% { filter: blur(120px) hue-rotate(0deg); }
-      50% { filter: blur(120px) hue-rotate(30deg); }
-      100% { filter: blur(120px) hue-rotate(0deg); }
-    }
-
-    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 820px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-light);
-      padding: 0.5rem 1.25rem; border: 1px solid rgba(124,58,237,0.3);
-      border-radius: 100px; background: rgba(124,58,237,0.08);
-      margin-bottom: 2.5rem; opacity: 0; transform: translateY(20px);
-      animation: fadeSlideUp 0.8s 0.2s ease forwards;
-    }
-    .hero-badge::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green); box-shadow: 0 0 8px var(--green);
-      animation: blink 2s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6.5vw, 5rem); font-weight: 800; line-height: 1.05;
-      letter-spacing: -2px; margin-bottom: 1.5rem; opacity: 0; transform: translateY(30px);
-      animation: fadeSlideUp 0.8s 0.4s ease forwards;
-    }
-    .hero h1 .accent-word {
-      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 40%, #06b6d4 70%, #22d3ee 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-secondary);
-      max-width: 560px; margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.7;
-      opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.8s 0.6s ease forwards;
-    }
-    .hero-actions {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      margin-bottom: 5rem; opacity: 0; transform: translateY(20px);
-      animation: fadeSlideUp 0.8s 0.8s ease forwards;
-    }
-
-    /* Floating Icons */
-    .hero-floaters {
-      position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-      pointer-events: none; z-index: 1;
-      transition: transform 0.1s linear;
-    }
-    .floater {
-      position: absolute; width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--bg-card); border: 1px solid var(--border);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3); opacity: 0;
-      animation: floatIn 1s ease forwards, floatBob 6s ease-in-out infinite;
-      color: var(--accent-light);
-    }
-    .floater svg { width: 22px; height: 22px; }
-    .floater:nth-child(1) { top: 18%; left: 8%; animation-delay: 1s, 1s; }
-    .floater:nth-child(2) { top: 25%; right: 10%; animation-delay: 1.3s, 1.3s; }
-    .floater:nth-child(3) { top: 65%; left: 6%; animation-delay: 1.6s, 1.6s; }
-    .floater:nth-child(4) { top: 70%; right: 8%; animation-delay: 1.9s, 1.9s; }
-    .floater:nth-child(5) { top: 42%; left: 3%; animation-delay: 2.1s, 2.1s; }
-    .floater:nth-child(6) { top: 48%; right: 4%; animation-delay: 2.4s, 2.4s; }
-    @keyframes floatIn { from{opacity:0;transform:scale(0.5) translateY(20px);} to{opacity:0.7;transform:scale(1) translateY(0);} }
-    @keyframes floatBob { 0%,100%{transform:translateY(0) rotate(0deg);} 33%{transform:translateY(-12px) rotate(2deg);} 66%{transform:translateY(6px) rotate(-1deg);} }
-
-    /* Stats with animated gradient border */
-    .hero-stats-wrapper {
-      position: relative; display: inline-block; padding: 2px; border-radius: 16px;
-      background: conic-gradient(from var(--angle), var(--accent), var(--blue), var(--cyan), var(--accent));
-      animation: rotateGradient 4s linear infinite;
-      opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.8s 1s ease forwards, rotateGradient 4s linear infinite;
-    }
-    @keyframes rotateGradient { to { --angle: 360deg; } }
-    .hero-stats {
-      display: flex; justify-content: center; gap: 4rem;
-      background: var(--bg-primary); border-radius: 14px; padding: 1.5rem 3rem;
-    }
-    .hero-stat { text-align: center; }
-    .hero-stat-number { font-family: 'JetBrains Mono', monospace; font-size: 2.25rem; font-weight: 700; line-height: 1; }
-    .hero-stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.4rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-    @keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-
-    /* ===== WHAT WE BUILD ===== */
-    .verticals-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
-      position: relative;
-    }
-    .verticals-grid::before {
-      content: ''; position: absolute; top: 50%; left: 0; right: 0;
-      height: 1px; border-top: 2px dotted rgba(124,58,237,0.15);
-      z-index: 0; pointer-events: none;
-    }
-    .vertical-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 2rem 1.75rem; transition: all 0.35s ease; position: relative; overflow: hidden; cursor: pointer;
-      z-index: 1; text-decoration: none; color: inherit; display: block;
-    }
-    .vertical-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.35s; }
-    .vertical-card:hover { border-color: rgba(124,58,237,0.25); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
-    .vertical-card:hover::before { opacity: 1; }
-    .vertical-card:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
-    .vertical-card[data-accent="indigo"]::before { background: var(--accent); }
-    .vertical-card[data-accent="green"]::before { background: var(--green); }
-    .vertical-card[data-accent="amber"]::before { background: var(--amber); }
-    .vertical-card[data-accent="cyan"]::before { background: var(--cyan); }
-    .vertical-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
-    }
-    .vertical-icon svg { width: 24px; height: 24px; }
-    .vertical-card[data-accent="indigo"] .vertical-icon { background: rgba(124,58,237,0.12); color: var(--accent-light); }
-    .vertical-card[data-accent="green"] .vertical-icon { background: rgba(16,185,129,0.12); color: var(--green); }
-    .vertical-card[data-accent="amber"] .vertical-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .vertical-card[data-accent="cyan"] .vertical-icon { background: rgba(6,182,212,0.12); color: var(--cyan); }
-    .vertical-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
-    .vertical-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
-    .vertical-count { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-
-    /* ===== FEATURED PRODUCTS ===== */
-    .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .featured-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px;
-      padding: 2.25rem; position: relative; overflow: hidden; transition: all 0.4s ease;
-    }
-    .featured-card:focus-within { outline: none; }
-    .featured-card::before {
-      content: ''; position: absolute; inset: 0; border-radius: 18px; padding: 2px;
-      background: conic-gradient(from var(--angle), var(--accent), var(--blue), var(--cyan), var(--accent));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      opacity: 0; transition: opacity 0.3s ease;
-    }
-    .featured-card:hover::before { opacity: 1; animation: rotateGradient 3s linear infinite; }
-    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(124,58,237,0.1); }
-
-    .featured-mockup {
-      width: 100%; aspect-ratio: 16/10; border-radius: 12px; margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.1));
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(124,58,237,0.1);
-    }
-    .featured-mockup span {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
-      color: var(--text-dim); letter-spacing: 1px;
-    }
-    .featured-card-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-    .featured-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .featured-icon svg { width: 20px; height: 20px; }
-    .featured-icon.icon-green { background: rgba(16,185,129,0.12); color: var(--green); }
-    .featured-icon.icon-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .featured-icon.icon-rose { background: rgba(244,63,94,0.12); color: var(--rose); }
-    .featured-card-head h3 { font-size: 1.15rem; font-weight: 700; }
-    .featured-status {
-      margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
-      font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .status-live { background: rgba(16,185,129,0.12); color: var(--green); }
-    .status-dev { background: rgba(124,58,237,0.12); color: var(--accent-light); }
-    .featured-card .desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem; }
-    .featured-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .ftag {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; padding: 0.2rem 0.5rem;
-      border-radius: 4px; background: rgba(255,255,255,0.04); color: var(--text-dim);
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .featured-card .btn { width: 100%; justify-content: center; }
-
-    /* ===== TRADING ===== */
-    .trading-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .trading-features { display: flex; flex-direction: column; gap: 1rem; }
-    .trading-feature {
-      display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem;
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s;
-    }
-    .trading-feature:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
-    .trading-feature:focus-within { outline: 2px solid var(--accent-light); outline-offset: 2px; }
-    .trading-feature-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .trading-feature-icon svg { width: 20px; height: 20px; }
-    .tf-indigo .trading-feature-icon { background: rgba(124,58,237,0.12); color: var(--accent-light); }
-    .tf-green .trading-feature-icon { background: rgba(16,185,129,0.12); color: var(--green); }
-    .tf-amber .trading-feature-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .tf-cyan .trading-feature-icon { background: rgba(6,182,212,0.12); color: var(--cyan); }
-    .tf-rose .trading-feature-icon { background: rgba(244,63,94,0.12); color: var(--rose); }
-    .trading-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .trading-feature p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
-
-    .trading-link {
-      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;
-      color: var(--accent-light); text-decoration: none; font-size: 0.9rem; font-weight: 600;
-      transition: color 0.2s; position: relative;
-    }
-    .trading-link::after {
-      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-      height: 2px; background: var(--accent-light); border-radius: 1px;
-      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
-    }
-    .trading-link:hover::after { transform: scaleX(1); }
-    .trading-link:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 4px; border-radius: 2px; }
-
-    .trading-card-stack { display: flex; flex-direction: column; gap: 1rem; }
-    .t-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.5rem; transition: all 0.3s;
-    }
-    .t-card:hover { border-color: var(--border-hover); }
-    .t-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-    .t-card-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .t-card-icon svg { width: 18px; height: 18px; }
-    .t-card-title { font-size: 0.9rem; font-weight: 600; }
-    .t-card-tag {
-      margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
-      padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;
-    }
-    .tag-live { background: rgba(16,185,129,0.12); color: var(--green); }
-    .tag-soon { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .tag-dev { background: rgba(124,58,237,0.12); color: var(--accent-light); }
-    .t-card-body { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
-
-    .mini-chart {
-      height: 60px; display: flex; align-items: flex-end; gap: 3px;
-      margin-top: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border);
-    }
-    .mini-chart .bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 4px; }
-
-    /* ===== PRODUCTS GRID ===== */
-    .product-category-label {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
-      text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-dim);
-      margin-bottom: 1rem; margin-top: 2.5rem; font-weight: 500;
-    }
-    .product-category-label:first-child { margin-top: 0; }
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .product-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.75rem; transition: all 0.35s ease; position: relative; overflow: hidden;
-    }
-    .product-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
-    .product-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
-    .product-card[data-color="green"]::after { background: var(--green); }
-    .product-card[data-color="cyan"]::after { background: var(--cyan); }
-    .product-card[data-color="amber"]::after { background: var(--amber); }
-    .product-card[data-color="purple"]::after { background: var(--purple); }
-    .product-card[data-color="rose"]::after { background: var(--rose); }
-    .product-card[data-color="orange"]::after { background: var(--orange); }
-    .product-card[data-color="blue"]::after { background: var(--blue); }
-    .product-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
-    .product-icon-wrap {
-      width: 44px; height: 44px; border-radius: 11px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .product-icon-wrap svg { width: 22px; height: 22px; }
-    .product-card[data-color="green"] .product-icon-wrap { background: rgba(16,185,129,0.12); color: var(--green); }
-    .product-card[data-color="cyan"] .product-icon-wrap { background: rgba(6,182,212,0.12); color: var(--cyan); }
-    .product-card[data-color="amber"] .product-icon-wrap { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .product-card[data-color="purple"] .product-icon-wrap { background: rgba(168,85,247,0.12); color: var(--purple); }
-    .product-card[data-color="rose"] .product-icon-wrap { background: rgba(244,63,94,0.12); color: var(--rose); }
-    .product-card[data-color="orange"] .product-icon-wrap { background: rgba(249,115,22,0.12); color: var(--orange); }
-    .product-card[data-color="blue"] .product-icon-wrap { background: rgba(59,130,246,0.12); color: var(--blue); }
-    .product-status {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 600;
-      padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .status-beta { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .status-soon { background: rgba(168,85,247,0.12); color: var(--purple); }
-    .product-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .product-card .product-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
-    .product-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .ptag {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; padding: 0.2rem 0.5rem;
-      border-radius: 4px; background: rgba(255,255,255,0.04); color: var(--text-dim);
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-
-    /* ===== MOBILE APPS ===== */
-    .apps-showcase { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: center; }
-    .apps-info p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .apps-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
-    .app-stat-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
-    .app-stat-box .num { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; }
-    .app-stat-box .label { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.2rem; }
-    .apps-scroll-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-    .app-mini-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 1rem; text-align: center; transition: all 0.3s;
-    }
-    .app-mini-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-    .app-mini-icon {
-      width: 44px; height: 44px; border-radius: 10px; margin: 0 auto 0.6rem;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .app-mini-icon svg { width: 22px; height: 22px; }
-    .app-mini-card h4 { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.2rem; }
-    .app-mini-card span { font-size: 0.65rem; color: var(--text-dim); }
-
-    /* ===== ABOUT ===== */
-    .about-section {
-      background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-    .about-section::before {
-      content: ''; position: absolute; top: -200px; right: -200px; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%);
-      pointer-events: none; animation: glowPulse3 12s ease-in-out infinite;
-    }
-    .about-section::after {
-      content: ''; position: absolute; bottom: -200px; left: -200px; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-      pointer-events: none; animation: glowPulse2 10s ease-in-out infinite;
-    }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .about-text p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.25rem; }
-    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .value-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: all 0.3s; }
-    .value-item:hover { border-color: var(--border-hover); }
-    .value-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.75rem;
-    }
-    .value-icon svg { width: 18px; height: 18px; }
-    .value-icon.vi-accent { background: rgba(124,58,237,0.12); color: var(--accent-light); }
-    .value-icon.vi-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
-    .value-icon.vi-cyan { background: rgba(6,182,212,0.12); color: var(--cyan); }
-    .value-icon.vi-green { background: rgba(16,185,129,0.12); color: var(--green); }
-    .value-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
-    .value-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
-
-    /* ===== RESPONSIVE (homepage-only) ===== */
-    @media (max-width: 1024px) {
-      .verticals-grid { grid-template-columns: repeat(2, 1fr); }
-      .verticals-grid::before { display: none; }
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .featured-grid { grid-template-columns: repeat(2, 1fr); }
-      .featured-grid .featured-card:last-child { grid-column: span 2; }
-      .trading-content { grid-template-columns: 1fr; }
-      .apps-showcase { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .hero { padding: 7rem 1.5rem 4rem; }
-      .hero-stats { gap: 2rem; padding: 1.25rem 1.5rem; }
-      .hero-stats-wrapper { padding: 2px; }
-      .hero-stat-number { font-size: 1.75rem; }
-      .floater { display: none; }
-      .verticals-grid { grid-template-columns: 1fr; }
-      .verticals-grid::before { display: none; }
-      .products-grid { grid-template-columns: 1fr; }
-      .featured-grid { grid-template-columns: 1fr; }
-      .featured-grid .featured-card:last-child { grid-column: span 1; }
-      .apps-scroll-container { grid-template-columns: repeat(2, 1fr); }
-      .values-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { letter-spacing: -1px; }
-      .hero-stats { flex-direction: column; gap: 1.5rem; }
-      .apps-stats-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+  </div>
 
   <!-- Skip to content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -495,7 +81,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                   <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
                 </a>
-                <a href="#products" class="dropdown-item" role="menuitem">
+                <a href="products/landlordshield.html" class="dropdown-item" role="menuitem">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                   <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
                 </a>
@@ -569,6 +155,28 @@
             </div>
           </div>
 
+          <!-- Services dropdown -->
+          <div class="nav-item" role="none">
+            <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Services menu">
+              Services
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Services submenu">
+              <a href="#web-services" class="dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO & Google Ads</span></div>
+              </a>
+              <a href="#hire" class="dropdown-item" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Build Your App</span><span class="dropdown-item-desc">Hire us for custom apps</span></div>
+              </a>
+              <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Hire on Upwork</span><span class="dropdown-item-desc">View freelancer profile</span></div>
+              </a>
+            </div>
+          </div>
+
           <!-- Company dropdown -->
           <div class="nav-item" role="none">
             <button class="nav-trigger" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-label="Company menu">
@@ -593,7 +201,10 @@
         </div>
 
         <a href="#contact" class="nav-cta-btn desktop-only" aria-label="Get in touch with Avantware">Get in Touch</a>
-
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
         <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -631,7 +242,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
         </a>
-        <a href="#products" class="dropdown-item" role="menuitem">
+        <a href="products/landlordshield.html" class="dropdown-item" role="menuitem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
         </a>
@@ -672,6 +283,28 @@
         <a href="#" class="dropdown-item" role="menuitem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Services accordion -->
+    <div class="mobile-accordion">
+      <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Services menu">
+        Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-accordion-content">
+        <a href="#web-services" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO & Google Ads</span></div>
+        </a>
+        <a href="#hire" class="dropdown-item" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Build Your App</span><span class="dropdown-item-desc">Hire us for custom apps</span></div>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          <div class="dropdown-item-text"><span class="dropdown-item-name">Hire on Upwork</span><span class="dropdown-item-desc">View freelancer profile</span></div>
         </a>
       </div>
     </div>
@@ -751,6 +384,28 @@
       </div>
     </section>
 
+    <!-- TRUST STATS -->
+    <section class="trust-stats">
+      <div class="trust-stats-grid">
+        <div class="trust-stat reveal reveal-stagger-1">
+          <span class="trust-stat-number">3</span>
+          <span class="trust-stat-label">Live Products</span>
+        </div>
+        <div class="trust-stat reveal reveal-stagger-2">
+          <span class="trust-stat-number">1,000+</span>
+          <span class="trust-stat-label">Users Served</span>
+        </div>
+        <div class="trust-stat reveal reveal-stagger-3">
+          <span class="trust-stat-number">100+</span>
+          <span class="trust-stat-label">Policy Rules</span>
+        </div>
+        <div class="trust-stat reveal reveal-stagger-4">
+          <span class="trust-stat-number">27+</span>
+          <span class="trust-stat-label">Mobile Apps</span>
+        </div>
+      </div>
+    </section>
+
     <div class="section-divider" aria-hidden="true"></div>
 
     <!-- 2. WHAT WE BUILD -->
@@ -806,8 +461,8 @@
         <p class="section-desc">Our most ambitious builds -- solving real compliance and e-commerce problems at scale.</p>
       </div>
       <div class="featured-grid">
-        <article class="featured-card card-shine reveal reveal-stagger-1">
-          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+        <article class="featured-card reveal reveal-stagger-1">
+          <div class="featured-mockup"><img src="images/basisguard/promo.png" alt="BasisGuard — Stop Overpaying on Crypto Taxes. Detect missing cost basis on your 1099-DA and save thousands in taxes." loading="lazy"></div>
           <div class="featured-card-head">
             <div class="featured-icon icon-green">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -822,8 +477,8 @@
           <a href="products/basisguard.html" class="btn btn-ghost" aria-label="Learn more about BasisGuard">Learn More</a>
         </article>
 
-        <article class="featured-card card-shine reveal reveal-stagger-2">
-          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+        <article class="featured-card reveal reveal-stagger-2">
+          <div class="featured-mockup"><img src="images/landlordshield/promo.png" alt="LandlordShield — UK Landlord Compliance Dashboard for certificates, MTD tax, and EPC ratings" loading="lazy"></div>
           <div class="featured-card-head">
             <div class="featured-icon icon-amber">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -838,8 +493,8 @@
           <a href="products/landlordshield.html" class="btn btn-ghost" aria-label="Learn more about LandlordShield">Learn More</a>
         </article>
 
-        <article class="featured-card card-shine reveal reveal-stagger-3">
-          <div class="featured-mockup" aria-hidden="true"><span>Screenshot coming soon</span></div>
+        <article class="featured-card reveal reveal-stagger-3">
+          <div class="featured-mockup"><img src="images/tiktokshopguard/promo.png" alt="TikTok Shop Guard — Scan listings for policy violations before you hit publish" loading="lazy"></div>
           <div class="featured-card-head">
             <div class="featured-icon icon-rose">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
@@ -1128,6 +783,191 @@
 
     <div class="section-divider" aria-hidden="true"></div>
 
+    <!-- HIRE / BUILD YOUR APP -->
+    <section class="hire-section" id="hire" aria-labelledby="hire-title">
+      <div class="section-header center reveal">
+        <div class="section-label">Build Your App</div>
+        <h2 class="section-title" id="hire-title">Need a custom app built?</h2>
+        <p class="section-desc">27+ apps shipped to Google Play. From concept to store listing &mdash; get a free quote or hire directly on Upwork.</p>
+      </div>
+      <div class="hire-grid">
+        <!-- FORM -->
+        <div class="hire-form-card reveal reveal-stagger-1">
+          <h3>Get a Free Quote</h3>
+          <p class="form-subtitle">Tell me about your project and I'll get back to you within 24 hours.</p>
+          <form class="hire-form" id="hireForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New App Quote Request — Avantware">
+            <input type="hidden" name="from_name" value="Avantware Website">
+            <input type="checkbox" name="botcheck" style="display:none;">
+            <div class="form-row">
+              <div>
+                <label for="hire-name">Name</label>
+                <input type="text" id="hire-name" name="name" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="hire-email">Email</label>
+                <input type="email" id="hire-email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="hire-type">App Type</label>
+                <select id="hire-type" name="app_type" required>
+                  <option value="" disabled selected>Select type</option>
+                  <option value="Mobile App (Android)">Mobile App (Android)</option>
+                  <option value="Mobile App (iOS + Android)">Mobile App (iOS + Android)</option>
+                  <option value="Web Application">Web Application</option>
+                  <option value="Chrome Extension">Chrome Extension</option>
+                  <option value="SaaS Platform">SaaS Platform</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="hire-budget">Budget Range</label>
+                <select id="hire-budget" name="budget" required>
+                  <option value="" disabled selected>Select range</option>
+                  <option value="Under £500">Under &pound;500</option>
+                  <option value="£500 - £1,000">&pound;500 &ndash; &pound;1,000</option>
+                  <option value="£1,000 - £3,000">&pound;1,000 &ndash; &pound;3,000</option>
+                  <option value="£3,000 - £5,000">&pound;3,000 &ndash; &pound;5,000</option>
+                  <option value="£5,000+">&pound;5,000+</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div>
+                <label for="hire-desc">Project Description</label>
+                <textarea id="hire-desc" name="description" placeholder="Describe your app idea, key features, and timeline..." required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Quote Request</button>
+            <p class="form-note">Free, no obligation. I'll respond within 24 hours.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-bottom:1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <p>Quote request sent! I'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- UPWORK -->
+        <div class="hire-upwork-card reveal reveal-stagger-2">
+          <h3>Hire on Upwork</h3>
+          <p class="upwork-subtitle">Prefer Upwork's escrow and payment protection? Hire me directly.</p>
+          <div class="upwork-profile">
+            <div class="upwork-avatar">AU</div>
+            <div>
+              <div class="upwork-name">Azan U.</div>
+              <div class="upwork-title">Flutter Mobile App Developer</div>
+            </div>
+          </div>
+          <div class="upwork-stats">
+            <div class="upwork-stat"><div class="val">27+</div><div class="lbl">Apps Published</div></div>
+            <div class="upwork-stat"><div class="val">$25</div><div class="lbl">Per Hour</div></div>
+          </div>
+          <ul class="upwork-features">
+            <li>Full product lifecycle — concept to launch</li>
+            <li>Flutter cross-platform (Android + iOS)</li>
+            <li>Firebase backend integration</li>
+            <li>UI/UX design included</li>
+            <li>AdMob monetisation setup</li>
+            <li>ASO-optimised store listings</li>
+            <li>Upwork payment protection</li>
+          </ul>
+          <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="btn-upwork" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+            View Profile on Upwork
+          </a>
+          <div class="hire-or">or</div>
+          <a href="mailto:contact@avantware.uk?subject=App Development Enquiry" class="btn btn-ghost" style="width:100%;justify-content:center;">Email Directly</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- WEB SERVICES -->
+    <section class="web-services-section" id="web-services" aria-labelledby="ws-title">
+      <div class="section-header center reveal">
+        <div class="section-label" style="color:#3b82f6;">Web Services</div>
+        <h2 class="section-title" id="ws-title">Grow your business online</h2>
+        <p class="section-desc">From building your website to getting it ranking on Google &mdash; we handle the full digital presence so you can focus on your business.</p>
+      </div>
+
+      <div class="ws-grid">
+        <div class="ws-card card-shine reveal reveal-stagger-1">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Website Design &amp; Build</h3>
+          <p>Custom, responsive websites built from scratch. Fast, modern, and designed to convert visitors into customers.</p>
+          <span class="ws-tag">From &pound;500</span>
+        </div>
+        <div class="ws-card card-shine reveal reveal-stagger-2">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <h3>SEO Optimisation</h3>
+          <p>On-page SEO, technical audits, keyword research, and content strategy to get your site ranking higher on Google.</p>
+          <span class="ws-tag">Monthly Retainer</span>
+        </div>
+        <div class="ws-card card-shine reveal reveal-stagger-3">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Google Ads Management</h3>
+          <p>PPC campaigns that drive real leads. Keyword targeting, ad copy, bid management, and ongoing optimisation.</p>
+          <span class="ws-tag">Monthly Retainer</span>
+        </div>
+        <div class="ws-card card-shine reveal reveal-stagger-4">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Page Speed &amp; Core Web Vitals</h3>
+          <p>Performance audits and fixes. Faster load times, better mobile scores, and improved user experience.</p>
+          <span class="ws-tag">One-Off</span>
+        </div>
+        <div class="ws-card card-shine reveal reveal-stagger-5">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Content &amp; Copywriting</h3>
+          <p>SEO-optimised landing pages, blog content, and product descriptions that rank and convert.</p>
+          <span class="ws-tag">Per Project</span>
+        </div>
+        <div class="ws-card card-shine reveal reveal-stagger-6">
+          <div class="ws-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          </div>
+          <h3>Analytics &amp; Reporting</h3>
+          <p>Google Analytics, Search Console, and Cloudflare setup. Monthly reports showing what's working and what to improve.</p>
+          <span class="ws-tag">Monthly Retainer</span>
+        </div>
+      </div>
+
+      <div class="ws-cta-row">
+        <div class="ws-cta-card reveal reveal-stagger-1">
+          <h3>Get a Free Web Consultation</h3>
+          <p>Tell me about your business and I'll put together a plan to improve your online presence. No obligation.</p>
+          <a href="mailto:contact@avantware.uk?subject=Web Services Enquiry" class="btn-blue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email for Free Consultation
+          </a>
+        </div>
+        <div class="ws-cta-card reveal reveal-stagger-2">
+          <h3>Hire on Upwork</h3>
+          <p>Prefer the security of Upwork's platform? View my profile and send a project invite directly.</p>
+          <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="btn-upwork" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+            View Profile on Upwork
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- 7. ABOUT -->
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="section" style="padding-top:7rem;padding-bottom:7rem;">
@@ -1252,91 +1092,16 @@
     </div>
   </footer>
 
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="js/shared.js" defer></script>
   <script>
-    // ===== NAV SCROLL =====
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    // ===== HOMEPAGE-SPECIFIC JS =====
 
-    // ===== MOBILE MENU =====
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileOverlay = document.getElementById('mobileOverlay');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileClose = document.getElementById('mobileClose');
-
-    function openMobileMenu() {
-      mobileMenu.classList.add('active');
-      mobileOverlay.classList.add('active');
-      mobileToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('active');
-      mobileOverlay.classList.remove('active');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-    mobileToggle.addEventListener('click', openMobileMenu);
-    mobileClose.addEventListener('click', closeMobileMenu);
-    mobileOverlay.addEventListener('click', closeMobileMenu);
-
-    // Mobile accordion
-    document.querySelectorAll('.mobile-accordion-trigger').forEach(function(trigger) {
-      trigger.addEventListener('click', function() {
-        var isActive = this.classList.contains('active');
-        // Close all
-        document.querySelectorAll('.mobile-accordion-trigger').forEach(function(t) {
-          t.classList.remove('active');
-          t.setAttribute('aria-expanded', 'false');
-        });
-        document.querySelectorAll('.mobile-accordion-content').forEach(function(c) {
-          c.classList.remove('active');
-        });
-        // Toggle current
-        if (!isActive) {
-          this.classList.add('active');
-          this.setAttribute('aria-expanded', 'true');
-          this.nextElementSibling.classList.add('active');
-        }
-      });
-    });
-
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', closeMobileMenu);
-    });
-
-    // ===== DROPDOWN ARIA =====
-    document.querySelectorAll('.nav-item').forEach(function(item) {
-      var trigger = item.querySelector('.nav-trigger');
-      item.addEventListener('mouseenter', function() {
-        if (trigger) trigger.setAttribute('aria-expanded', 'true');
-      });
-      item.addEventListener('mouseleave', function() {
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
-      });
-      if (trigger) {
-        trigger.addEventListener('focus', function() {
-          trigger.setAttribute('aria-expanded', 'true');
-        });
-      }
-      item.addEventListener('focusout', function(e) {
-        if (!item.contains(e.relatedTarget)) {
-          if (trigger) trigger.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    // ===== SCROLL REVEAL WITH STAGGER =====
-    var revealObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
-
-    // ===== COUNTER ANIMATION (easeOutExpo) =====
+    // Counter animation (easeOutExpo)
     function easeOutExpo(t) {
       return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
     }
@@ -1371,121 +1136,131 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-count]').forEach(function(el) { counterObs.observe(el); });
 
-    // ===== PARTICLE CANVAS =====
+    // Particle Canvas
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var canvas = document.getElementById('hero-canvas');
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    var animId = null;
+    if (canvas && !prefersReducedMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var animId = null;
 
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
-    function createParticles() {
-      particles = [];
-      var colors = ['124,58,237', '59,130,246', '6,182,212', '168,85,247'];
-      var count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
-      for (var i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          size: Math.random() * 1.5 + 0.5,
-          opacity: Math.random() * 0.4 + 0.1,
-          color: colors[Math.floor(Math.random() * colors.length)]
-        });
+      function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
       }
-    }
 
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function(p, i) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
-        ctx.fill();
-        for (var j = i + 1; j < particles.length; j++) {
-          var dx = particles[j].x - p.x;
-          var dy = particles[j].y - p.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(124,58,237,' + (0.08 * (1 - dist / 120)) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+      function createParticles() {
+        particles = [];
+        var colors = ['124,58,237', '59,130,246', '6,182,212', '168,85,247'];
+        var count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            size: Math.random() * 1.5 + 0.5,
+            opacity: Math.random() * 0.4 + 0.1,
+            color: colors[Math.floor(Math.random() * colors.length)]
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(function(p, i) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
+          ctx.fill();
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[j].x - p.x;
+            var dy = particles[j].y - p.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(124,58,237,' + (0.08 * (1 - dist / 120)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
-        }
-      });
-      animId = requestAnimationFrame(drawParticles);
+        });
+        animId = requestAnimationFrame(drawParticles);
+      }
+
+      resizeCanvas();
+      createParticles();
+      drawParticles();
+      window.addEventListener('resize', function() { resizeCanvas(); createParticles(); });
+
+      // Pause particles when hero not visible
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            if (!animId) drawParticles();
+          } else {
+            cancelAnimationFrame(animId);
+            animId = null;
+          }
+        });
+      }, { threshold: 0.01 }).observe(document.getElementById('hero'));
     }
 
-    resizeCanvas();
-    createParticles();
-    drawParticles();
-    window.addEventListener('resize', function() { resizeCanvas(); createParticles(); });
-
-    // Pause particles when hero not visible
-    new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          if (!animId) drawParticles();
-        } else {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      });
-    }, { threshold: 0.01 }).observe(document.getElementById('hero'));
-
-    // ===== HERO FLOATERS PARALLAX =====
+    // Hero Floaters Parallax
     var heroFloaters = document.getElementById('heroFloaters');
-    var lastScrollY = 0;
-    var ticking = false;
+    if (heroFloaters && !prefersReducedMotion) {
+      var lastScrollY = 0;
+      var ticking = false;
 
-    function updateParallax() {
-      if (heroFloaters) {
+      function updateParallax() {
         heroFloaters.style.transform = 'translateY(' + (lastScrollY * 0.3) + 'px)';
+        ticking = false;
       }
-      ticking = false;
-    }
 
-    window.addEventListener('scroll', function() {
-      lastScrollY = window.scrollY;
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    });
-
-    // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var href = a.getAttribute('href');
-        if (href === '#') return;
-        var target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.addEventListener('scroll', function() {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+          requestAnimationFrame(updateParallax);
+          ticking = true;
         }
       });
-    });
+    }
 
-    // ===== KEYBOARD: Escape closes mobile menu =====
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-        closeMobileMenu();
-        mobileToggle.focus();
-      }
-    });
+    // Hire Form: Web3Forms submission
+    var hireForm = document.getElementById('hireForm');
+    var formSuccess = document.getElementById('formSuccess');
+    if (hireForm) {
+      hireForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var submitBtn = hireForm.querySelector('button[type="submit"]');
+        var btnText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31" stroke-dashoffset="10"/></svg> Sending...';
+        var formData = new FormData(hireForm);
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        }).then(function(res) { return res.json(); }).then(function(data) {
+          if (data.success) {
+            hireForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+          }
+        }).catch(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = btnText;
+          alert('Something went wrong. Please email contact@avantware.uk directly.');
+        });
+      });
+    }
   </script>
+  <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 </body>
 </html>
