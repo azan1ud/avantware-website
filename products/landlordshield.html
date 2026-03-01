@@ -410,7 +410,7 @@
     <!-- ANIMATED COMPLIANCE DASHBOARD -->
     <section class="cd-section">
       <style>
-        /* === Compliance Dashboard Animation === */
+        /* === Compliance Dashboard — Transition-based Animation === */
         .cd-section {
           padding: 6rem 2rem;
           max-width: 1000px;
@@ -425,7 +425,6 @@
           padding: 2.5rem;
           position: relative;
           overflow: hidden;
-          transition: opacity 0.4s ease;
         }
         .cd-dashboard::before {
           content: '';
@@ -441,9 +440,9 @@
           text-align: center;
           margin-bottom: 2.5rem;
           opacity: 0;
-          animation: cdFadeIn 0.6s ease 0.3s forwards;
-          animation-play-state: paused;
+          transition: opacity 0.6s ease;
         }
+        .cd-score-wrap.show { opacity: 1; }
         .cd-score-label {
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.65rem;
@@ -478,8 +477,7 @@
           width: 0%;
           background: linear-gradient(90deg, var(--amber), var(--green));
           border-radius: 4px;
-          animation: cdScoreBar 1.5s ease 0.8s forwards;
-          animation-play-state: paused;
+          transition: width 1.5s ease;
         }
 
         /* Cards Grid */
@@ -498,22 +496,12 @@
           position: relative;
           opacity: 0;
           transform: translateX(-30px);
+          transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .cd-card--mtd {
-          border-left: 3px solid var(--amber);
-          animation: cdSlideIn 0.5s ease 0.5s forwards;
-          animation-play-state: paused;
-        }
-        .cd-card--rra {
-          border-left: 3px solid var(--rose);
-          animation: cdSlideIn 0.5s ease 0.8s forwards;
-          animation-play-state: paused;
-        }
-        .cd-card--epc {
-          border-left: 3px solid var(--green);
-          animation: cdSlideIn 0.5s ease 1.1s forwards;
-          animation-play-state: paused;
-        }
+        .cd-card.show { opacity: 1; transform: translateX(0); }
+        .cd-card--mtd { border-left: 3px solid var(--amber); }
+        .cd-card--rra { border-left: 3px solid var(--rose); }
+        .cd-card--epc { border-left: 3px solid var(--green); }
 
         .cd-card-header {
           display: flex;
@@ -588,22 +576,11 @@
           height: 100%;
           width: 0%;
           border-radius: 5px;
+          transition: width 1.2s ease;
         }
-        .cd-card--mtd .cd-progress-fill {
-          background: var(--amber);
-          animation: cdFill75 1.2s ease 1.8s forwards;
-          animation-play-state: paused;
-        }
-        .cd-card--rra .cd-progress-fill {
-          background: var(--rose);
-          animation: cdFill40 1.2s ease 2.1s forwards;
-          animation-play-state: paused;
-        }
-        .cd-card--epc .cd-progress-fill {
-          background: var(--green);
-          animation: cdFill90 1.2s ease 2.4s forwards;
-          animation-play-state: paused;
-        }
+        .cd-card--mtd .cd-progress-fill { background: var(--amber); }
+        .cd-card--rra .cd-progress-fill { background: var(--rose); }
+        .cd-card--epc .cd-progress-fill { background: var(--green); }
 
         /* Task Checklist */
         .cd-tasks {
@@ -618,7 +595,10 @@
           font-size: 0.7rem;
           color: var(--text-secondary);
           opacity: 0;
+          transform: translateY(6px);
+          transition: opacity 0.4s ease, transform 0.4s ease;
         }
+        .cd-task.show { opacity: 1; transform: translateY(0); }
         .cd-task-check {
           width: 16px;
           height: 16px;
@@ -635,67 +615,20 @@
           height: 10px;
           opacity: 0;
           transform: scale(0);
+          transition: all 0.3s ease;
         }
         .cd-task.checked .cd-task-check {
           border-color: transparent;
         }
-        .cd-task.checked .cd-task-check svg {
+        .cd-task.checked.show .cd-task-check svg {
           opacity: 1;
           transform: scale(1);
-          transition: all 0.3s ease;
         }
         .cd-card--mtd .cd-task.checked .cd-task-check { background: rgba(245,158,11,0.15); color: var(--amber); }
         .cd-card--rra .cd-task.checked .cd-task-check { background: rgba(244,63,94,0.15); color: var(--rose); }
         .cd-card--epc .cd-task.checked .cd-task-check { background: rgba(16,185,129,0.15); color: var(--green); }
 
-        .cd-card--mtd .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease 3.2s forwards; animation-play-state: paused; }
-        .cd-card--mtd .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease 3.5s forwards; animation-play-state: paused; }
-        .cd-card--mtd .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease 3.8s forwards; animation-play-state: paused; }
-        .cd-card--rra .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease 3.4s forwards; animation-play-state: paused; }
-        .cd-card--rra .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease 3.7s forwards; animation-play-state: paused; }
-        .cd-card--rra .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease 4.0s forwards; animation-play-state: paused; }
-        .cd-card--epc .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease 3.6s forwards; animation-play-state: paused; }
-        .cd-card--epc .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease 3.9s forwards; animation-play-state: paused; }
-        .cd-card--epc .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease 4.2s forwards; animation-play-state: paused; }
-
-        /* Keyframes */
-        @keyframes cdFadeIn {
-          to { opacity: 1; }
-        }
-        @keyframes cdSlideIn {
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes cdScoreBar {
-          to { width: 68%; }
-        }
-        @keyframes cdFill75 {
-          to { width: 75%; }
-        }
-        @keyframes cdFill40 {
-          to { width: 40%; }
-        }
-        @keyframes cdFill90 {
-          to { width: 90%; }
-        }
-        @keyframes cdTaskIn {
-          0% { opacity: 0; transform: translateY(6px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        /* Score counter animation via CSS @property */
-        .cd-counter {
-          display: inline-block;
-          animation: cdCountUp 1.5s steps(68, end) 0.8s forwards;
-          animation-play-state: paused;
-        }
-        @keyframes cdCountUp {
-          from { --cd-num: 0; }
-          to { --cd-num: 68; }
-        }
-        @property --cd-num {
-          syntax: '<integer>';
-          inherits: false;
-          initial-value: 0;
-        }
+        .cd-counter { display: inline-block; font-variant-numeric: tabular-nums; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -705,23 +638,14 @@
           .cd-score-value { font-size: 2.25rem; }
         }
 
-        /* Reduced motion */
+        /* Reduced motion — show everything immediately */
         @media (prefers-reduced-motion: reduce) {
-          .cd-card,
-          .cd-score-wrap,
-          .cd-progress-fill,
-          .cd-score-bar-fill,
-          .cd-task {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-          .cd-progress-fill { transition: none; }
+          .cd-score-wrap, .cd-card, .cd-task { opacity: 1 !important; transform: none !important; transition: none !important; }
+          .cd-progress-fill, .cd-score-bar-fill { transition: none !important; }
           .cd-card--mtd .cd-progress-fill { width: 75%; }
           .cd-card--rra .cd-progress-fill { width: 40%; }
           .cd-card--epc .cd-progress-fill { width: 90%; }
           .cd-score-bar-fill { width: 68%; }
-          .cd-task { opacity: 1; transform: none; }
           .cd-task.checked .cd-task-check svg { opacity: 1; transform: scale(1); }
         }
       </style>
@@ -736,7 +660,7 @@
         <div class="cd-score-wrap">
           <div class="cd-score-label">Overall Compliance Score</div>
           <div class="cd-score-value">
-            <span class="cd-counter" style="counter-reset: cd var(--cd-num); font-variant-numeric: tabular-nums;" aria-label="68 percent">68</span><span class="cd-pct">%</span>
+            <span class="cd-counter" aria-label="68 percent">0</span><span class="cd-pct">%</span>
           </div>
           <div class="cd-score-bar-track">
             <div class="cd-score-bar-fill"></div>
@@ -861,36 +785,94 @@
           var dash = document.querySelector('.cd-dashboard');
           if (!dash || !section) return;
 
-          var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          if (prefersReduced) return;
-
-          function startAnimations() {
-            var els = dash.querySelectorAll('.cd-score-wrap, .cd-score-bar-fill, .cd-card, .cd-progress-fill, .cd-task, .cd-counter');
-            els.forEach(function(el) {
-              el.style.animationPlayState = 'running';
-            });
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            dash.querySelector('.cd-score-wrap').classList.add('show');
+            dash.querySelector('.cd-counter').textContent = '68';
+            dash.querySelector('.cd-score-bar-fill').style.width = '68%';
+            dash.querySelectorAll('.cd-card').forEach(function(c) { c.classList.add('show'); });
+            dash.querySelectorAll('.cd-task').forEach(function(t) { t.classList.add('show'); });
+            var fills = dash.querySelectorAll('.cd-progress-fill');
+            fills[0].style.width = '75%'; fills[1].style.width = '40%'; fills[2].style.width = '90%';
+            return;
           }
 
-          function resetAndReplay() {
-            var clone = dash.cloneNode(true);
-            dash.style.opacity = '0';
-            setTimeout(function() {
-              dash.parentNode.replaceChild(clone, dash);
-              dash = clone;
-              dash.style.opacity = '';
-              startAnimations();
-              setTimeout(resetAndReplay, 10000);
-            }, 400);
+          var timers = [];
+
+          function countUp(el, target, duration) {
+            var start = performance.now();
+            function step(now) {
+              var progress = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(eased * target);
+              if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
           }
 
+          function resetAll() {
+            timers.forEach(clearTimeout);
+            timers = [];
+            var counter = dash.querySelector('.cd-counter');
+            counter.textContent = '0';
+            dash.querySelector('.cd-score-wrap').classList.remove('show');
+            dash.querySelector('.cd-score-bar-fill').style.width = '0%';
+            dash.querySelectorAll('.cd-card').forEach(function(c) { c.classList.remove('show'); });
+            dash.querySelectorAll('.cd-progress-fill').forEach(function(f) { f.style.width = '0%'; });
+            dash.querySelectorAll('.cd-task').forEach(function(t) { t.classList.remove('show'); });
+          }
+
+          function play() {
+            var scoreWrap = dash.querySelector('.cd-score-wrap');
+            var barFill = dash.querySelector('.cd-score-bar-fill');
+            var counter = dash.querySelector('.cd-counter');
+            var cards = dash.querySelectorAll('.cd-card');
+            var fills = dash.querySelectorAll('.cd-progress-fill');
+            var tasks = dash.querySelectorAll('.cd-task');
+
+            /* Score fades in */
+            timers.push(setTimeout(function() {
+              scoreWrap.classList.add('show');
+            }, 300));
+
+            /* Counter counts 0→68 */
+            timers.push(setTimeout(function() {
+              countUp(counter, 68, 1200);
+              barFill.style.width = '68%';
+            }, 800));
+
+            /* Cards slide in */
+            timers.push(setTimeout(function() { cards[0].classList.add('show'); }, 500));
+            timers.push(setTimeout(function() { cards[1].classList.add('show'); }, 800));
+            timers.push(setTimeout(function() { cards[2].classList.add('show'); }, 1100));
+
+            /* Progress bars fill */
+            timers.push(setTimeout(function() { fills[0].style.width = '75%'; }, 1800));
+            timers.push(setTimeout(function() { fills[1].style.width = '40%'; }, 2100));
+            timers.push(setTimeout(function() { fills[2].style.width = '90%'; }, 2400));
+
+            /* Tasks appear */
+            var taskDelays = [3200, 3500, 3800, 3400, 3700, 4000, 3600, 3900, 4200];
+            for (var i = 0; i < tasks.length; i++) {
+              (function(task, delay) {
+                timers.push(setTimeout(function() { task.classList.add('show'); }, delay));
+              })(tasks[i], taskDelays[i]);
+            }
+
+            /* Loop: reset after 10s, replay after brief pause */
+            timers.push(setTimeout(function() {
+              resetAll();
+              setTimeout(play, 500);
+            }, 10000));
+          }
+
+          /* Start when section scrolls into view */
           var started = false;
           var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
               if (entry.isIntersecting && !started) {
                 started = true;
                 obs.disconnect();
-                startAnimations();
-                setTimeout(resetAndReplay, 10000);
+                play();
               }
             });
           }, { threshold: 0.3 });
