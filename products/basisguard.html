@@ -524,6 +524,9 @@
           align-items: center;
           margin-top: 3rem;
         }
+        .demo-container:not(.demo-playing) * {
+          animation-play-state: paused !important;
+        }
 
         /* --- Form Mockups --- */
         .demo-form {
@@ -1128,9 +1131,11 @@
           }
 
           // Start when the element is visible
+          var container = document.querySelector('.demo-container');
           var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
               if (entry.isIntersecting) {
+                if (container) container.classList.add('demo-playing');
                 startTime = null;
                 requestAnimationFrame(tick);
                 observer.unobserve(entry.target);
@@ -1138,7 +1143,7 @@
             });
           }, { threshold: 0.3 });
 
-          observer.observe(el);
+          observer.observe(container || el);
         })();
       </script>
     </section>

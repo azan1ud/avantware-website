@@ -427,6 +427,9 @@
           overflow: hidden;
           transition: opacity 0.4s ease;
         }
+        .cd-dashboard:not(.cd-playing) * {
+          animation-play-state: paused !important;
+        }
         .cd-dashboard::before {
           content: '';
           position: absolute;
@@ -858,17 +861,28 @@
 
       <script>
         (function() {
+          var section = document.querySelector('.cd-section');
           var dash = document.querySelector('.cd-dashboard');
-          if (!dash || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (!dash || !section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
           var original = dash.innerHTML;
-          function restart() {
-            dash.style.opacity = '0';
-            setTimeout(function() {
-              dash.innerHTML = original;
-              dash.style.opacity = '';
-            }, 400);
-          }
-          setInterval(restart, 10000);
+          var started = false;
+          var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting && !started) {
+                started = true;
+                dash.classList.add('cd-playing');
+                setInterval(function() {
+                  dash.style.opacity = '0';
+                  setTimeout(function() {
+                    dash.innerHTML = original;
+                    dash.classList.add('cd-playing');
+                    dash.style.opacity = '';
+                  }, 400);
+                }, 10000);
+              }
+            });
+          }, { threshold: 0.3 });
+          obs.observe(section);
         })();
       </script>
     </section>

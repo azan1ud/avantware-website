@@ -469,6 +469,9 @@
           max-width: 420px;
           margin: 0 auto;
         }
+        .fc-popup:not(.fc-playing) * {
+          animation-play-state: paused !important;
+        }
 
         /* title bar */
         .fc-popup-bar {
@@ -902,6 +905,17 @@
           </div>
         </div>
       </div>
+      <script>
+        (function() {
+          var popup = document.querySelector('.fc-popup');
+          if (!popup || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) popup.classList.add('fc-playing');
+            });
+          }, { threshold: 0.3 }).observe(popup);
+        })();
+      </script>
     </section>
 
     <div class="section-divider" aria-hidden="true"></div>
