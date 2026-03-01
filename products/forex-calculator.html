@@ -469,8 +469,10 @@
           max-width: 420px;
           margin: 0 auto;
         }
-        .fc-popup:not(.fc-playing) * {
-          animation-play-state: paused !important;
+        .fc-active *,
+        .fc-active *::before,
+        .fc-active *::after {
+          animation-play-state: running !important;
         }
 
         /* title bar */
@@ -547,19 +549,20 @@
           vertical-align: middle;
           opacity: 0;
           animation: fc-blink 0.6s step-end infinite;
+          animation-play-state: paused;
         }
 
         /* typing animation per row */
-        .fc-input-row:nth-child(1) .fc-typed { animation: fc-type-balance 9s infinite; }
-        .fc-input-row:nth-child(2) .fc-typed { animation: fc-type-risk 9s infinite; }
-        .fc-input-row:nth-child(3) .fc-typed { animation: fc-type-sl 9s infinite; }
-        .fc-input-row:nth-child(4) .fc-typed { animation: fc-type-pair 9s infinite; }
+        .fc-input-row:nth-child(1) .fc-typed { animation: fc-type-balance 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(2) .fc-typed { animation: fc-type-risk 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(3) .fc-typed { animation: fc-type-sl 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(4) .fc-typed { animation: fc-type-pair 9s infinite; animation-play-state: paused; }
 
         /* cursor visible only while typing */
-        .fc-input-row:nth-child(1) .fc-input-field::after { animation: fc-cursor-1 9s infinite; }
-        .fc-input-row:nth-child(2) .fc-input-field::after { animation: fc-cursor-2 9s infinite; }
-        .fc-input-row:nth-child(3) .fc-input-field::after { animation: fc-cursor-3 9s infinite; }
-        .fc-input-row:nth-child(4) .fc-input-field::after { animation: fc-cursor-4 9s infinite; }
+        .fc-input-row:nth-child(1) .fc-input-field::after { animation: fc-cursor-1 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(2) .fc-input-field::after { animation: fc-cursor-2 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(3) .fc-input-field::after { animation: fc-cursor-3 9s infinite; animation-play-state: paused; }
+        .fc-input-row:nth-child(4) .fc-input-field::after { animation: fc-cursor-4 9s infinite; animation-play-state: paused; }
 
         /* typed text span */
         .fc-typed {
@@ -664,6 +667,7 @@
           padding: 10px 0 6px;
           opacity: 0;
           animation: fc-pulse-show 9s infinite;
+          animation-play-state: paused;
         }
         .fc-processing-dot {
           display: inline-block;
@@ -672,6 +676,7 @@
           background: var(--accent);
           margin: 0 4px;
           animation: fc-dot-bounce 0.6s ease-in-out infinite alternate;
+          animation-play-state: paused;
         }
         .fc-processing-dot:nth-child(2) { animation-delay: 0.15s; }
         .fc-processing-dot:nth-child(3) { animation-delay: 0.3s; }
@@ -695,6 +700,7 @@
           margin: 16px 0;
           opacity: 0;
           animation: fc-divider-show 9s infinite;
+          animation-play-state: paused;
         }
         @keyframes fc-divider-show {
           0%     { opacity: 0; }
@@ -732,9 +738,9 @@
         }
 
         /* staggered result appearance */
-        .fc-result-row:nth-child(1) { animation: fc-result-in 9s infinite; animation-delay: 0s; }
-        .fc-result-row:nth-child(2) { animation: fc-result-in 9s infinite; animation-delay: 0.2s; }
-        .fc-result-row:nth-child(3) { animation: fc-result-in 9s infinite; animation-delay: 0.4s; }
+        .fc-result-row:nth-child(1) { animation: fc-result-in 9s infinite; animation-delay: 0s; animation-play-state: paused; }
+        .fc-result-row:nth-child(2) { animation: fc-result-in 9s infinite; animation-delay: 0.2s; animation-play-state: paused; }
+        .fc-result-row:nth-child(3) { animation: fc-result-in 9s infinite; animation-delay: 0.4s; animation-play-state: paused; }
 
         @keyframes fc-result-in {
           0%     { opacity: 0; transform: translateX(20px); }
@@ -750,6 +756,7 @@
           margin-top: 16px;
           opacity: 0;
           animation: fc-riskbar-show 9s infinite;
+          animation-play-state: paused;
         }
         .fc-risk-bar-header {
           display: flex;
@@ -785,6 +792,7 @@
           background: linear-gradient(90deg, var(--accent), var(--green));
           width: 0%;
           animation: fc-bar-fill 9s infinite;
+          animation-play-state: paused;
         }
 
         @keyframes fc-riskbar-show {
@@ -909,9 +917,13 @@
         (function() {
           var popup = document.querySelector('.fc-popup');
           if (!popup || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var started = false;
           new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-              if (entry.isIntersecting) popup.classList.add('fc-playing');
+              if (entry.isIntersecting && !started) {
+                started = true;
+                popup.classList.add('fc-active');
+              }
             });
           }, { threshold: 0.3 }).observe(popup);
         })();

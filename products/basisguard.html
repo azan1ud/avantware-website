@@ -524,8 +524,11 @@
           align-items: center;
           margin-top: 3rem;
         }
-        /* Animations only run when .demo-playing is added by JS */
-
+        .demo-section.demo-active *,
+        .demo-section.demo-active *::before,
+        .demo-section.demo-active *::after {
+          animation-play-state: running !important;
+        }
         /* --- Form Mockups --- */
         .demo-form {
           background: var(--bg-card);
@@ -659,6 +662,7 @@
           height: 3px;
           background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.6), transparent);
           animation: demoScanLine 8s ease-in-out infinite;
+          animation-play-state: paused;
           opacity: 0;
         }
 
@@ -682,6 +686,7 @@
           justify-content: center;
           position: relative;
           animation: demoPulse 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-processor-icon svg {
@@ -689,6 +694,7 @@
           height: 24px;
           color: var(--accent-light);
           animation: demoIconSpin 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-processor-ring {
@@ -698,6 +704,7 @@
           border: 2px solid transparent;
           border-top-color: var(--accent-light);
           animation: demoRingSpin 8s linear infinite;
+          animation-play-state: paused;
           opacity: 0;
         }
 
@@ -716,6 +723,7 @@
           color: var(--text-dim);
           text-align: center;
           animation: demoStatusText 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-processor-label::after {
@@ -730,6 +738,7 @@
           background: var(--border);
           position: relative;
           animation: demoArrowFlow 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-arrow::after {
@@ -742,6 +751,7 @@
           background: linear-gradient(90deg, var(--accent-light), var(--green));
           border-radius: 1px;
           animation: demoArrowFill 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         /* --- Savings Counter --- */
@@ -753,6 +763,7 @@
           background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(6, 182, 212, 0.06));
           border: 1px solid rgba(16, 185, 129, 0.15);
           animation: demoSavingsFade 8s ease-in-out infinite;
+          animation-play-state: paused;
           opacity: 0;
         }
 
@@ -858,6 +869,7 @@
           border-radius: 4px;
           opacity: 0;
           animation: demoRowReveal 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-form.after .demo-row:nth-child(1)::before { animation-delay: 0s; }
@@ -881,6 +893,7 @@
           border-radius: 4px;
           opacity: 0;
           animation: demoRowWarn 8s ease-in-out infinite;
+          animation-play-state: paused;
         }
 
         .demo-form.before .demo-row {
@@ -903,6 +916,7 @@
         .demo-savings-amount {
           --counter: 0;
           animation: demoCountUp 8s ease-in-out infinite;
+          animation-play-state: paused;
           counter-reset: savings var(--counter);
         }
 
@@ -982,7 +996,7 @@
         <h2 class="section-title">From wrong to right in seconds</h2>
       </div>
 
-      <div class="demo-container reveal">
+      <div class="demo-container">
         <!-- Before: Broken 1099-DA -->
         <div class="demo-form before">
           <div class="demo-form-header">
@@ -1071,7 +1085,7 @@
       </div>
 
       <!-- Savings Counter -->
-      <div class="demo-savings reveal">
+      <div class="demo-savings">
         <div class="demo-savings-label">You would have overpaid by</div>
         <div class="demo-savings-amount" id="demoSavingsCounter">$0</div>
         <div class="demo-savings-sub">BasisGuard catches what your exchange missed</div>
@@ -1109,14 +1123,11 @@
             var value = 0;
 
             if (phase >= 0.42 && phase < 0.50) {
-              // Count up phase (42%-50% of cycle)
               var countProgress = (phase - 0.42) / 0.08;
               value = Math.round(easeOutQuart(countProgress) * target);
             } else if (phase >= 0.50 && phase < 0.80) {
-              // Hold phase
               value = target;
             } else {
-              // Reset / idle phase
               value = 0;
             }
 
@@ -1128,20 +1139,24 @@
             requestAnimationFrame(tick);
           }
 
-          // Start when the element is visible
-          var container = document.querySelector('.demo-container');
-          var observer = new IntersectionObserver(function(entries) {
+          // Start when the section is visible
+          var section = document.querySelector('.demo-section');
+          if (!section) return;
+          var started = false;
+          var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                if (container) container.classList.add('demo-playing');
+              if (entry.isIntersecting && !started) {
+                started = true;
+                obs.disconnect();
+                // Unpause all CSS animations (including pseudo-elements)
+                section.classList.add('demo-active');
+                // Start JS counter
                 startTime = null;
                 requestAnimationFrame(tick);
-                observer.unobserve(entry.target);
               }
             });
           }, { threshold: 0.3 });
-
-          observer.observe(container || el);
+          obs.observe(section);
         })();
       </script>
     </section>
