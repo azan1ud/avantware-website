@@ -507,6 +507,642 @@
       </div>
     </section>
 
+    <!-- ANIMATED DEMO -->
+    <section class="demo-section">
+      <style>
+        /* === Animated Demo Section === */
+        .demo-section {
+          padding: 7rem 2rem 5rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+
+        .demo-container {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          gap: 2rem;
+          align-items: center;
+          margin-top: 3rem;
+        }
+
+        /* --- Form Mockups --- */
+        .demo-form {
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 1.75rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .demo-form-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.25rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .demo-form-title {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.7rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.3rem 0.75rem;
+          border-radius: 6px;
+        }
+
+        .demo-form.before .demo-form-title {
+          background: rgba(239, 68, 68, 0.1);
+          color: #ef4444;
+        }
+
+        .demo-form.after .demo-form-title {
+          background: rgba(16, 185, 129, 0.1);
+          color: var(--green);
+        }
+
+        .demo-form-badge {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.6rem;
+          font-weight: 600;
+          color: var(--text-dim);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+
+        .demo-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.65rem 0;
+          border-bottom: 1px solid var(--border);
+          font-size: 0.85rem;
+        }
+
+        .demo-row:last-child {
+          border-bottom: none;
+        }
+
+        .demo-row-asset {
+          color: var(--text-secondary);
+          font-size: 0.8rem;
+          min-width: 70px;
+        }
+
+        .demo-row-proceeds {
+          color: var(--text-secondary);
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
+        }
+
+        .demo-row-basis {
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 600;
+          font-size: 0.85rem;
+          min-width: 80px;
+          text-align: right;
+        }
+
+        .demo-form.before .demo-row-basis {
+          color: #ef4444;
+        }
+
+        .demo-form.after .demo-row-basis {
+          color: var(--green);
+        }
+
+        .demo-row-total {
+          margin-top: 0.75rem;
+          padding-top: 0.75rem;
+          border-top: 1px dashed var(--border);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .demo-row-total-label {
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: var(--text-dim);
+        }
+
+        .demo-row-total-value {
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 700;
+          font-size: 1rem;
+        }
+
+        .demo-form.before .demo-row-total-value {
+          color: #ef4444;
+        }
+
+        .demo-form.after .demo-row-total-value {
+          color: var(--green);
+        }
+
+        /* --- Scan line overlay on the "before" form --- */
+        .demo-form.before::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.6), transparent);
+          animation: demoScanLine 8s ease-in-out infinite;
+          opacity: 0;
+        }
+
+        /* --- Middle connector/processor --- */
+        .demo-processor {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          padding: 1.5rem 0.5rem;
+        }
+
+        .demo-processor-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: var(--bg-card);
+          border: 2px solid var(--border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          animation: demoPulse 8s ease-in-out infinite;
+        }
+
+        .demo-processor-icon svg {
+          width: 24px;
+          height: 24px;
+          color: var(--accent-light);
+          animation: demoIconSpin 8s ease-in-out infinite;
+        }
+
+        .demo-processor-ring {
+          position: absolute;
+          inset: -6px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          border-top-color: var(--accent-light);
+          animation: demoRingSpin 8s linear infinite;
+          opacity: 0;
+        }
+
+        .demo-processor-ring:nth-child(2) {
+          inset: -12px;
+          border-top-color: var(--green);
+          animation-delay: 0.3s;
+        }
+
+        .demo-processor-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.6rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: var(--text-dim);
+          text-align: center;
+          animation: demoStatusText 8s ease-in-out infinite;
+        }
+
+        .demo-processor-label::after {
+          content: 'Scanning';
+          display: block;
+        }
+
+        /* --- Connector arrows --- */
+        .demo-arrow {
+          width: 40px;
+          height: 2px;
+          background: var(--border);
+          position: relative;
+          animation: demoArrowFlow 8s ease-in-out infinite;
+        }
+
+        .demo-arrow::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(90deg, var(--accent-light), var(--green));
+          border-radius: 1px;
+          animation: demoArrowFill 8s ease-in-out infinite;
+        }
+
+        /* --- Savings Counter --- */
+        .demo-savings {
+          margin-top: 2.5rem;
+          text-align: center;
+          padding: 2rem;
+          border-radius: 16px;
+          background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(6, 182, 212, 0.06));
+          border: 1px solid rgba(16, 185, 129, 0.15);
+          animation: demoSavingsFade 8s ease-in-out infinite;
+          opacity: 0;
+        }
+
+        .demo-savings-label {
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: var(--text-dim);
+          margin-bottom: 0.5rem;
+        }
+
+        .demo-savings-amount {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 800;
+          color: var(--green);
+          letter-spacing: -1px;
+        }
+
+        .demo-savings-sub {
+          font-size: 0.85rem;
+          color: var(--text-secondary);
+          margin-top: 0.35rem;
+        }
+
+        /* --- Keyframes --- */
+
+        /* Scan line sweeps down the "before" form during analysis phase */
+        @keyframes demoScanLine {
+          0%, 5% { top: 0; opacity: 0; }
+          10% { top: 0; opacity: 1; }
+          35% { top: 100%; opacity: 1; }
+          40%, 100% { top: 100%; opacity: 0; }
+        }
+
+        /* Processor icon pulses during active phase */
+        @keyframes demoPulse {
+          0%, 5% { transform: scale(1); border-color: var(--border); }
+          10% { transform: scale(1.08); border-color: var(--accent-light); }
+          15% { transform: scale(1); border-color: var(--accent-light); }
+          20% { transform: scale(1.08); border-color: var(--accent-light); }
+          25% { transform: scale(1); border-color: var(--accent-light); }
+          45% { transform: scale(1.12); border-color: var(--green); }
+          55%, 100% { transform: scale(1); border-color: var(--border); }
+        }
+
+        /* Inner icon rotates during processing */
+        @keyframes demoIconSpin {
+          0%, 8% { transform: rotate(0deg); color: var(--accent-light); }
+          10%, 40% { color: var(--accent-light); }
+          12% { transform: rotate(90deg); }
+          20% { transform: rotate(180deg); }
+          28% { transform: rotate(270deg); }
+          35% { transform: rotate(360deg); }
+          45% { transform: rotate(360deg); color: var(--green); }
+          55%, 100% { transform: rotate(360deg); color: var(--accent-light); }
+        }
+
+        /* Outer rings spin during processing */
+        @keyframes demoRingSpin {
+          0%, 8% { opacity: 0; transform: rotate(0deg); }
+          10% { opacity: 0.7; }
+          40% { opacity: 0.7; transform: rotate(720deg); }
+          50% { opacity: 0; transform: rotate(900deg); }
+          100% { opacity: 0; }
+        }
+
+        /* Status label changes text */
+        @keyframes demoStatusText {
+          0%, 8% { color: var(--text-dim); }
+          10%, 35% { color: var(--accent-light); }
+          45%, 55% { color: var(--green); }
+          65%, 100% { color: var(--text-dim); }
+        }
+
+        /* Arrows light up in sequence */
+        @keyframes demoArrowFill {
+          0%, 8% { width: 0%; }
+          15%, 40% { width: 100%; }
+          55% { width: 100%; }
+          65%, 100% { width: 0%; }
+        }
+
+        /* Savings counter fades in with result */
+        @keyframes demoSavingsFade {
+          0%, 40% { opacity: 0; transform: translateY(10px); }
+          50% { opacity: 1; transform: translateY(0); }
+          75% { opacity: 1; transform: translateY(0); }
+          85%, 100% { opacity: 0; transform: translateY(10px); }
+        }
+
+        /* Row highlight sweep for the "after" form */
+        .demo-form.after .demo-row {
+          position: relative;
+        }
+
+        .demo-form.after .demo-row::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(16, 185, 129, 0.06);
+          border-radius: 4px;
+          opacity: 0;
+          animation: demoRowReveal 8s ease-in-out infinite;
+        }
+
+        .demo-form.after .demo-row:nth-child(1)::before { animation-delay: 0s; }
+        .demo-form.after .demo-row:nth-child(2)::before { animation-delay: 0.1s; }
+        .demo-form.after .demo-row:nth-child(3)::before { animation-delay: 0.2s; }
+        .demo-form.after .demo-row:nth-child(4)::before { animation-delay: 0.3s; }
+
+        @keyframes demoRowReveal {
+          0%, 38% { opacity: 0; }
+          45% { opacity: 1; }
+          75% { opacity: 1; }
+          85%, 100% { opacity: 0; }
+        }
+
+        /* "Before" form rows flash red during scan */
+        .demo-form.before .demo-row::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(239, 68, 68, 0.06);
+          border-radius: 4px;
+          opacity: 0;
+          animation: demoRowWarn 8s ease-in-out infinite;
+        }
+
+        .demo-form.before .demo-row {
+          position: relative;
+        }
+
+        .demo-form.before .demo-row:nth-child(1)::before { animation-delay: 0s; }
+        .demo-form.before .demo-row:nth-child(2)::before { animation-delay: 0.15s; }
+        .demo-form.before .demo-row:nth-child(3)::before { animation-delay: 0.3s; }
+        .demo-form.before .demo-row:nth-child(4)::before { animation-delay: 0.45s; }
+
+        @keyframes demoRowWarn {
+          0%, 10% { opacity: 0; }
+          18% { opacity: 1; }
+          30% { opacity: 1; }
+          38%, 100% { opacity: 0; }
+        }
+
+        /* Savings counter number animation */
+        .demo-savings-amount {
+          --counter: 0;
+          animation: demoCountUp 8s ease-in-out infinite;
+          counter-reset: savings var(--counter);
+        }
+
+        @keyframes demoCountUp {
+          0%, 40% { --counter: 0; }
+          42% { --counter: 200; }
+          44% { --counter: 480; }
+          46% { --counter: 720; }
+          48% { --counter: 960; }
+          50%, 75% { --counter: 1200; }
+          85%, 100% { --counter: 0; }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+          .demo-section {
+            padding: 4.5rem 1.5rem 3rem;
+          }
+
+          .demo-container {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+
+          .demo-processor {
+            flex-direction: row;
+            padding: 0.5rem 0;
+          }
+
+          .demo-arrow {
+            width: 2px;
+            height: 30px;
+          }
+
+          .demo-arrow,
+          .demo-processor .demo-arrow {
+            display: none;
+          }
+
+          .demo-processor-label {
+            display: none;
+          }
+        }
+
+        /* --- Accessibility --- */
+        @media (prefers-reduced-motion: reduce) {
+          .demo-form.before::after,
+          .demo-processor-icon,
+          .demo-processor-icon svg,
+          .demo-processor-ring,
+          .demo-processor-label,
+          .demo-arrow::after,
+          .demo-savings,
+          .demo-savings-amount,
+          .demo-form.after .demo-row::before,
+          .demo-form.before .demo-row::before {
+            animation: none !important;
+          }
+
+          .demo-savings {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+
+          .demo-processor-ring {
+            opacity: 0 !important;
+          }
+
+          .demo-processor-label::after {
+            content: 'BasisGuard';
+          }
+        }
+      </style>
+
+      <div class="section-header center reveal">
+        <div class="section-label">See It In Action</div>
+        <h2 class="section-title">From wrong to right in seconds</h2>
+      </div>
+
+      <div class="demo-container reveal">
+        <!-- Before: Broken 1099-DA -->
+        <div class="demo-form before">
+          <div class="demo-form-header">
+            <span class="demo-form-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              Your 1099-DA
+            </span>
+            <span class="demo-form-badge">As received</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">BTC</span>
+            <span class="demo-row-proceeds">$4,200</span>
+            <span class="demo-row-basis">$0.00</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">ETH</span>
+            <span class="demo-row-proceeds">$2,850</span>
+            <span class="demo-row-basis">$0.00</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">SOL</span>
+            <span class="demo-row-proceeds">$1,930</span>
+            <span class="demo-row-basis">$0.00</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">ADA</span>
+            <span class="demo-row-proceeds">$620</span>
+            <span class="demo-row-basis">$0.00</span>
+          </div>
+          <div class="demo-row-total">
+            <span class="demo-row-total-label">Total Basis</span>
+            <span class="demo-row-total-value">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Middle: Processor -->
+        <div class="demo-processor">
+          <div class="demo-arrow"></div>
+          <div class="demo-processor-icon">
+            <div class="demo-processor-ring"></div>
+            <div class="demo-processor-ring"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+              <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+              <line x1="4" y1="4" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <div class="demo-processor-label"></div>
+          <div class="demo-arrow"></div>
+        </div>
+
+        <!-- After: Corrected Form 8949 -->
+        <div class="demo-form after">
+          <div class="demo-form-header">
+            <span class="demo-form-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Corrected 8949
+            </span>
+            <span class="demo-form-badge">BasisGuard</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">BTC</span>
+            <span class="demo-row-proceeds">$4,200</span>
+            <span class="demo-row-basis">$3,800</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">ETH</span>
+            <span class="demo-row-proceeds">$2,850</span>
+            <span class="demo-row-basis">$2,410</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">SOL</span>
+            <span class="demo-row-proceeds">$1,930</span>
+            <span class="demo-row-basis">$1,580</span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-row-asset">ADA</span>
+            <span class="demo-row-proceeds">$620</span>
+            <span class="demo-row-basis">$610</span>
+          </div>
+          <div class="demo-row-total">
+            <span class="demo-row-total-label">Total Basis</span>
+            <span class="demo-row-total-value">$8,400</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Savings Counter -->
+      <div class="demo-savings reveal">
+        <div class="demo-savings-label">You would have overpaid by</div>
+        <div class="demo-savings-amount" id="demoSavingsCounter">$0</div>
+        <div class="demo-savings-sub">BasisGuard catches what your exchange missed</div>
+      </div>
+
+      <!-- JS counter animation tied to the CSS 8s cycle -->
+      <script>
+        (function() {
+          var target = 1200;
+          var el = document.getElementById('demoSavingsCounter');
+          if (!el) return;
+
+          var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReduced) {
+            el.textContent = '$1,200';
+            return;
+          }
+
+          var cycleDuration = 8000;
+          var startTime = null;
+          var lastValue = -1;
+
+          function formatUSD(n) {
+            return '$' + n.toLocaleString('en-US');
+          }
+
+          function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+          }
+
+          function tick(now) {
+            if (!startTime) startTime = now;
+            var elapsed = (now - startTime) % cycleDuration;
+            var phase = elapsed / cycleDuration;
+            var value = 0;
+
+            if (phase >= 0.42 && phase < 0.50) {
+              // Count up phase (42%-50% of cycle)
+              var countProgress = (phase - 0.42) / 0.08;
+              value = Math.round(easeOutQuart(countProgress) * target);
+            } else if (phase >= 0.50 && phase < 0.80) {
+              // Hold phase
+              value = target;
+            } else {
+              // Reset / idle phase
+              value = 0;
+            }
+
+            if (value !== lastValue) {
+              el.textContent = formatUSD(value);
+              lastValue = value;
+            }
+
+            requestAnimationFrame(tick);
+          }
+
+          // Start when the element is visible
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                startTime = null;
+                requestAnimationFrame(tick);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          observer.observe(el);
+        })();
+      </script>
+    </section>
+
     <div class="section-divider" aria-hidden="true"></div>
 
     <!-- FEATURES -->

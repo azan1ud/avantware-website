@@ -407,6 +407,474 @@
 
     <div class="section-divider" aria-hidden="true"></div>
 
+    <!-- ANIMATED COMPLIANCE DASHBOARD -->
+    <section class="cd-section reveal">
+      <style>
+        /* === Compliance Dashboard Animation === */
+        .cd-section {
+          padding: 6rem 2rem;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+        .cd-section .section-header { margin-bottom: 3rem; }
+
+        .cd-dashboard {
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+          transition: opacity 0.4s ease;
+        }
+        .cd-dashboard::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--amber), var(--rose), var(--green));
+          border-radius: 20px 20px 0 0;
+        }
+
+        /* Score Counter */
+        .cd-score-wrap {
+          text-align: center;
+          margin-bottom: 2.5rem;
+          opacity: 0;
+          animation: cdFadeIn 0.6s ease forwards;
+          animation-delay: 0.3s;
+        }
+        .cd-score-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--text-secondary);
+          margin-bottom: 0.5rem;
+        }
+        .cd-score-value {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 3rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          line-height: 1;
+        }
+        .cd-score-value .cd-pct {
+          font-size: 1.5rem;
+          color: var(--text-secondary);
+          margin-left: 2px;
+        }
+        .cd-score-bar-track {
+          width: 200px;
+          height: 4px;
+          background: var(--border);
+          border-radius: 4px;
+          margin: 0.75rem auto 0;
+          overflow: hidden;
+        }
+        .cd-score-bar-fill {
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(90deg, var(--amber), var(--green));
+          border-radius: 4px;
+          animation: cdScoreBar 1.5s ease forwards;
+          animation-delay: 0.8s;
+        }
+
+        /* Cards Grid */
+        .cd-cards {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+
+        /* Individual Card */
+        .cd-card {
+          background: rgba(255,255,255,0.02);
+          border: 1px solid var(--border);
+          border-radius: 14px;
+          padding: 1.5rem;
+          position: relative;
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        .cd-card--mtd {
+          border-left: 3px solid var(--amber);
+          animation: cdSlideIn 0.5s ease forwards;
+          animation-delay: 0.5s;
+        }
+        .cd-card--rra {
+          border-left: 3px solid var(--rose);
+          animation: cdSlideIn 0.5s ease forwards;
+          animation-delay: 0.8s;
+        }
+        .cd-card--epc {
+          border-left: 3px solid var(--green);
+          animation: cdSlideIn 0.5s ease forwards;
+          animation-delay: 1.1s;
+        }
+
+        .cd-card-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+        .cd-card-icon {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .cd-card-icon svg {
+          width: 18px;
+          height: 18px;
+        }
+        .cd-card--mtd .cd-card-icon { background: rgba(245,158,11,0.1); color: var(--amber); }
+        .cd-card--rra .cd-card-icon { background: rgba(244,63,94,0.1); color: var(--rose); }
+        .cd-card--epc .cd-card-icon { background: rgba(16,185,129,0.1); color: var(--green); }
+
+        .cd-card-title {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          line-height: 1.2;
+        }
+        .cd-card-date {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.6rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          letter-spacing: 0.5px;
+          margin-top: 2px;
+        }
+
+        /* Progress Bar */
+        .cd-progress {
+          margin-bottom: 1.25rem;
+        }
+        .cd-progress-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.4rem;
+        }
+        .cd-progress-label {
+          font-size: 0.65rem;
+          color: var(--text-secondary);
+          font-weight: 500;
+        }
+        .cd-progress-pct {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.65rem;
+          font-weight: 600;
+        }
+        .cd-card--mtd .cd-progress-pct { color: var(--amber); }
+        .cd-card--rra .cd-progress-pct { color: var(--rose); }
+        .cd-card--epc .cd-progress-pct { color: var(--green); }
+
+        .cd-progress-track {
+          width: 100%;
+          height: 5px;
+          background: var(--border);
+          border-radius: 5px;
+          overflow: hidden;
+        }
+        .cd-progress-fill {
+          height: 100%;
+          width: 0%;
+          border-radius: 5px;
+        }
+        .cd-card--mtd .cd-progress-fill {
+          background: var(--amber);
+          animation: cdFill75 1.2s ease forwards;
+          animation-delay: 1.8s;
+        }
+        .cd-card--rra .cd-progress-fill {
+          background: var(--rose);
+          animation: cdFill40 1.2s ease forwards;
+          animation-delay: 2.1s;
+        }
+        .cd-card--epc .cd-progress-fill {
+          background: var(--green);
+          animation: cdFill90 1.2s ease forwards;
+          animation-delay: 2.4s;
+        }
+
+        /* Task Checklist */
+        .cd-tasks {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .cd-task {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.7rem;
+          color: var(--text-secondary);
+          opacity: 0;
+        }
+        .cd-task-check {
+          width: 16px;
+          height: 16px;
+          border-radius: 4px;
+          border: 1.5px solid var(--border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: all 0.3s ease;
+        }
+        .cd-task-check svg {
+          width: 10px;
+          height: 10px;
+          opacity: 0;
+          transform: scale(0);
+        }
+        .cd-task.checked .cd-task-check {
+          border-color: transparent;
+        }
+        .cd-task.checked .cd-task-check svg {
+          opacity: 1;
+          transform: scale(1);
+          transition: all 0.3s ease;
+        }
+        .cd-card--mtd .cd-task.checked .cd-task-check { background: rgba(245,158,11,0.15); color: var(--amber); }
+        .cd-card--rra .cd-task.checked .cd-task-check { background: rgba(244,63,94,0.15); color: var(--rose); }
+        .cd-card--epc .cd-task.checked .cd-task-check { background: rgba(16,185,129,0.15); color: var(--green); }
+
+        /* Task staggered appear */
+        .cd-card--mtd .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.2s; }
+        .cd-card--mtd .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.5s; }
+        .cd-card--mtd .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.8s; }
+        .cd-card--rra .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.4s; }
+        .cd-card--rra .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.7s; }
+        .cd-card--rra .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.0s; }
+        .cd-card--epc .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.6s; }
+        .cd-card--epc .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.9s; }
+        .cd-card--epc .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.2s; }
+
+        /* Keyframes */
+        @keyframes cdFadeIn {
+          to { opacity: 1; }
+        }
+        @keyframes cdSlideIn {
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes cdScoreBar {
+          to { width: 68%; }
+        }
+        @keyframes cdFill75 {
+          to { width: 75%; }
+        }
+        @keyframes cdFill40 {
+          to { width: 40%; }
+        }
+        @keyframes cdFill90 {
+          to { width: 90%; }
+        }
+        @keyframes cdTaskIn {
+          0% { opacity: 0; transform: translateY(6px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Score counter animation via CSS @property */
+        .cd-counter {
+          display: inline-block;
+          animation: cdCountUp 1.5s steps(68, end) forwards;
+          animation-delay: 0.8s;
+        }
+        @keyframes cdCountUp {
+          from { --cd-num: 0; }
+          to { --cd-num: 68; }
+        }
+        @property --cd-num {
+          syntax: '<integer>';
+          inherits: false;
+          initial-value: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .cd-section { padding: 4.5rem 1.5rem; }
+          .cd-dashboard { padding: 1.5rem; }
+          .cd-cards { grid-template-columns: 1fr; }
+          .cd-score-value { font-size: 2.25rem; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .cd-card,
+          .cd-score-wrap,
+          .cd-progress-fill,
+          .cd-score-bar-fill,
+          .cd-task {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .cd-progress-fill { transition: none; }
+          .cd-card--mtd .cd-progress-fill { width: 75%; }
+          .cd-card--rra .cd-progress-fill { width: 40%; }
+          .cd-card--epc .cd-progress-fill { width: 90%; }
+          .cd-score-bar-fill { width: 68%; }
+          .cd-task { opacity: 1; transform: none; }
+          .cd-task.checked .cd-task-check svg { opacity: 1; transform: scale(1); }
+        }
+      </style>
+
+      <div class="section-header center reveal">
+        <div class="section-label">Dashboard Preview</div>
+        <h2 class="section-title">Your compliance, at a glance</h2>
+      </div>
+
+      <div class="cd-dashboard">
+        <!-- Score -->
+        <div class="cd-score-wrap">
+          <div class="cd-score-label">Overall Compliance Score</div>
+          <div class="cd-score-value">
+            <span class="cd-counter" style="counter-reset: cd var(--cd-num); font-variant-numeric: tabular-nums;" aria-label="68 percent">68</span><span class="cd-pct">%</span>
+          </div>
+          <div class="cd-score-bar-track">
+            <div class="cd-score-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="cd-cards">
+          <!-- MTD -->
+          <div class="cd-card cd-card--mtd">
+            <div class="cd-card-header">
+              <div class="cd-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+              </div>
+              <div>
+                <div class="cd-card-title">Making Tax Digital</div>
+                <div class="cd-card-date">6 April 2026</div>
+              </div>
+            </div>
+            <div class="cd-progress">
+              <div class="cd-progress-header">
+                <span class="cd-progress-label">Readiness</span>
+                <span class="cd-progress-pct">75%</span>
+              </div>
+              <div class="cd-progress-track">
+                <div class="cd-progress-fill"></div>
+              </div>
+            </div>
+            <div class="cd-tasks">
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>HMRC compatible software linked</span>
+              </div>
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Income records digitalised</span>
+              </div>
+              <div class="cd-task">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Quarterly submission schedule set</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Renters' Rights Act -->
+          <div class="cd-card cd-card--rra">
+            <div class="cd-card-header">
+              <div class="cd-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <div class="cd-card-title">Renters' Rights Act</div>
+                <div class="cd-card-date">1 May 2026</div>
+              </div>
+            </div>
+            <div class="cd-progress">
+              <div class="cd-progress-header">
+                <span class="cd-progress-label">Readiness</span>
+                <span class="cd-progress-pct">40%</span>
+              </div>
+              <div class="cd-progress-track">
+                <div class="cd-progress-fill"></div>
+              </div>
+            </div>
+            <div class="cd-tasks">
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Tenancy agreements reviewed</span>
+              </div>
+              <div class="cd-task">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Section 21 alternatives identified</span>
+              </div>
+              <div class="cd-task">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Tenant portal configured</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- EPC -->
+          <div class="cd-card cd-card--epc">
+            <div class="cd-card-header">
+              <div class="cd-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div>
+                <div class="cd-card-title">EPC Band C</div>
+                <div class="cd-card-date">Oct 2030</div>
+              </div>
+            </div>
+            <div class="cd-progress">
+              <div class="cd-progress-header">
+                <span class="cd-progress-label">Readiness</span>
+                <span class="cd-progress-pct">90%</span>
+              </div>
+              <div class="cd-progress-track">
+                <div class="cd-progress-fill"></div>
+              </div>
+            </div>
+            <div class="cd-tasks">
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>EPC assessments completed</span>
+              </div>
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Insulation upgrades scheduled</span>
+              </div>
+              <div class="cd-task checked">
+                <span class="cd-task-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span>Boiler replacements ordered</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function() {
+          var dash = document.querySelector('.cd-dashboard');
+          if (!dash || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var original = dash.innerHTML;
+          function restart() {
+            dash.style.opacity = '0';
+            setTimeout(function() {
+              dash.innerHTML = original;
+              dash.style.opacity = '';
+            }, 400);
+          }
+          setInterval(restart, 10000);
+        })();
+      </script>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- FEATURES -->
     <section class="features-section" id="how-it-works">
       <div class="section-header center reveal">

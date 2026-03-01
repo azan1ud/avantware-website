@@ -435,6 +435,477 @@
 
     <div class="section-divider" aria-hidden="true"></div>
 
+    <!-- ANIMATED CALCULATOR DIAGRAM -->
+    <section class="fc-anim-section reveal">
+      <style>
+        /* ── Forex Calculator Animated Diagram ── */
+        .fc-anim-section {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 4rem 1.5rem;
+        }
+        .fc-anim-header {
+          text-align: center;
+          margin-bottom: 2.5rem;
+        }
+        .fc-anim-header .section-label {
+          margin-bottom: 0.75rem;
+        }
+        .fc-anim-header h2 {
+          font-family: 'Outfit', sans-serif;
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
+        /* popup shell */
+        .fc-popup {
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 24px 64px rgba(0,0,0,.35);
+          max-width: 420px;
+          margin: 0 auto;
+        }
+
+        /* title bar */
+        .fc-popup-bar {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 16px;
+          border-bottom: 1px solid var(--border);
+          background: var(--bg-card);
+        }
+        .fc-popup-dot {
+          width: 10px; height: 10px; border-radius: 50%;
+        }
+        .fc-popup-dot:nth-child(1) { background: #ff5f57; }
+        .fc-popup-dot:nth-child(2) { background: #febc2e; }
+        .fc-popup-dot:nth-child(3) { background: #28c840; }
+        .fc-popup-bar-title {
+          flex: 1;
+          text-align: center;
+          font-family: 'Outfit', sans-serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          letter-spacing: 0.02em;
+        }
+        .fc-popup-bar-icon {
+          width: 16px; height: 16px;
+          border-radius: 4px;
+          background: var(--accent);
+          opacity: 0.6;
+        }
+
+        /* body */
+        .fc-popup-body {
+          padding: 20px;
+        }
+
+        /* input rows */
+        .fc-input-row {
+          margin-bottom: 12px;
+        }
+        .fc-input-label {
+          font-family: 'Outfit', sans-serif;
+          font-size: 0.72rem;
+          font-weight: 500;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          margin-bottom: 4px;
+        }
+        .fc-input-field {
+          position: relative;
+          background: rgba(255,255,255,.04);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 10px 14px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: var(--text-primary);
+          height: 42px;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+        }
+        .fc-input-field::after {
+          content: '';
+          display: inline-block;
+          width: 2px;
+          height: 1.1em;
+          background: var(--accent);
+          margin-left: 1px;
+          vertical-align: middle;
+          opacity: 0;
+          animation: fc-blink 0.6s step-end infinite;
+        }
+
+        /* typing animation per row */
+        .fc-input-row:nth-child(1) .fc-typed { animation: fc-type-balance 9s infinite; }
+        .fc-input-row:nth-child(2) .fc-typed { animation: fc-type-risk 9s infinite; }
+        .fc-input-row:nth-child(3) .fc-typed { animation: fc-type-sl 9s infinite; }
+        .fc-input-row:nth-child(4) .fc-typed { animation: fc-type-pair 9s infinite; }
+
+        /* cursor visible only while typing */
+        .fc-input-row:nth-child(1) .fc-input-field::after { animation: fc-cursor-1 9s infinite; }
+        .fc-input-row:nth-child(2) .fc-input-field::after { animation: fc-cursor-2 9s infinite; }
+        .fc-input-row:nth-child(3) .fc-input-field::after { animation: fc-cursor-3 9s infinite; }
+        .fc-input-row:nth-child(4) .fc-input-field::after { animation: fc-cursor-4 9s infinite; }
+
+        /* typed text span */
+        .fc-typed {
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          width: 0;
+        }
+
+        /* --- TYPING KEYFRAMES ---
+           Timeline (9s cycle):
+           0.0s-1.0s  : row 1 types "$10,000" (7 chars)
+           1.0s-1.7s  : row 2 types "2%" (2 chars)
+           1.7s-2.5s  : row 3 types "50" (2 chars)
+           2.5s-3.4s  : row 4 types "EUR/USD" (7 chars)
+           3.4s-4.0s  : processing pulse
+           4.0s-6.0s  : results appear
+           6.0s-7.0s  : risk bar fills
+           7.0s-8.5s  : hold
+           8.5s-9.0s  : reset
+        */
+
+        /* Row 1: "$10,000" — type from 0% to ~11% */
+        @keyframes fc-type-balance {
+          0%      { width: 0; }
+          2%      { width: 0; }
+          11.1%   { width: 5.6ch; }
+          94%     { width: 5.6ch; }
+          97%     { width: 0; }
+          100%    { width: 0; }
+        }
+        @keyframes fc-cursor-1 {
+          0%      { opacity: 0; }
+          2%      { opacity: 1; }
+          11.1%   { opacity: 1; }
+          11.2%   { opacity: 0; }
+          94%     { opacity: 0; }
+          100%    { opacity: 0; }
+        }
+
+        /* Row 2: "2%" — type from ~11% to ~19% */
+        @keyframes fc-type-risk {
+          0%      { width: 0; }
+          11.1%   { width: 0; }
+          18.9%   { width: 2ch; }
+          94%     { width: 2ch; }
+          97%     { width: 0; }
+          100%    { width: 0; }
+        }
+        @keyframes fc-cursor-2 {
+          0%      { opacity: 0; }
+          11.1%   { opacity: 1; }
+          18.9%   { opacity: 1; }
+          19%     { opacity: 0; }
+          94%     { opacity: 0; }
+          100%    { opacity: 0; }
+        }
+
+        /* Row 3: "50" — type from ~19% to ~28% */
+        @keyframes fc-type-sl {
+          0%      { width: 0; }
+          18.9%   { width: 0; }
+          27.8%   { width: 2ch; }
+          94%     { width: 2ch; }
+          97%     { width: 0; }
+          100%    { width: 0; }
+        }
+        @keyframes fc-cursor-3 {
+          0%      { opacity: 0; }
+          18.9%   { opacity: 1; }
+          27.8%   { opacity: 1; }
+          28%     { opacity: 0; }
+          94%     { opacity: 0; }
+          100%    { opacity: 0; }
+        }
+
+        /* Row 4: "EUR/USD" — type from ~28% to ~38% */
+        @keyframes fc-type-pair {
+          0%      { width: 0; }
+          27.8%   { width: 0; }
+          37.8%   { width: 7ch; }
+          94%     { width: 7ch; }
+          97%     { width: 0; }
+          100%    { width: 0; }
+        }
+        @keyframes fc-cursor-4 {
+          0%      { opacity: 0; }
+          27.8%   { opacity: 1; }
+          37.8%   { opacity: 1; }
+          38%     { opacity: 0; }
+          94%     { opacity: 0; }
+          100%    { opacity: 0; }
+        }
+
+        @keyframes fc-blink {
+          50% { opacity: 0; }
+        }
+
+        /* processing pulse */
+        .fc-processing {
+          text-align: center;
+          padding: 10px 0 6px;
+          opacity: 0;
+          animation: fc-pulse-show 9s infinite;
+        }
+        .fc-processing-dot {
+          display: inline-block;
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: var(--accent);
+          margin: 0 4px;
+          animation: fc-dot-bounce 0.6s ease-in-out infinite alternate;
+        }
+        .fc-processing-dot:nth-child(2) { animation-delay: 0.15s; }
+        .fc-processing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fc-dot-bounce {
+          to { transform: translateY(-6px); opacity: 0.4; }
+        }
+        @keyframes fc-pulse-show {
+          0%     { opacity: 0; }
+          37.8%  { opacity: 0; }
+          39%    { opacity: 1; }
+          43%    { opacity: 1; }
+          44.4%  { opacity: 0; }
+          100%   { opacity: 0; }
+        }
+
+        /* divider */
+        .fc-divider {
+          height: 1px;
+          background: var(--border);
+          margin: 16px 0;
+          opacity: 0;
+          animation: fc-divider-show 9s infinite;
+        }
+        @keyframes fc-divider-show {
+          0%     { opacity: 0; }
+          44%    { opacity: 0; }
+          46%    { opacity: 1; }
+          94%    { opacity: 1; }
+          97%    { opacity: 0; }
+          100%   { opacity: 0; }
+        }
+
+        /* result rows */
+        .fc-results {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .fc-result-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          opacity: 0;
+          transform: translateX(20px);
+          font-family: 'Outfit', sans-serif;
+          font-size: 0.88rem;
+        }
+        .fc-result-label {
+          color: var(--text-secondary);
+          font-weight: 500;
+        }
+        .fc-result-value {
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 600;
+          color: var(--accent);
+          font-size: 0.95rem;
+        }
+
+        /* staggered result appearance */
+        .fc-result-row:nth-child(1) { animation: fc-result-in 9s infinite; animation-delay: 0s; }
+        .fc-result-row:nth-child(2) { animation: fc-result-in 9s infinite; animation-delay: 0.2s; }
+        .fc-result-row:nth-child(3) { animation: fc-result-in 9s infinite; animation-delay: 0.4s; }
+
+        @keyframes fc-result-in {
+          0%     { opacity: 0; transform: translateX(20px); }
+          44.4%  { opacity: 0; transform: translateX(20px); }
+          50%    { opacity: 1; transform: translateX(0); }
+          94%    { opacity: 1; transform: translateX(0); }
+          97%    { opacity: 0; transform: translateX(20px); }
+          100%   { opacity: 0; transform: translateX(20px); }
+        }
+
+        /* risk bar */
+        .fc-risk-bar-wrap {
+          margin-top: 16px;
+          opacity: 0;
+          animation: fc-riskbar-show 9s infinite;
+        }
+        .fc-risk-bar-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 6px;
+        }
+        .fc-risk-bar-label {
+          font-family: 'Outfit', sans-serif;
+          font-size: 0.72rem;
+          font-weight: 500;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        .fc-risk-bar-pct {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--green);
+        }
+        .fc-risk-bar-track {
+          width: 100%;
+          height: 10px;
+          border-radius: 5px;
+          background: rgba(255,255,255,.06);
+          overflow: hidden;
+          position: relative;
+        }
+        .fc-risk-bar-fill {
+          height: 100%;
+          border-radius: 5px;
+          background: linear-gradient(90deg, var(--accent), var(--green));
+          width: 0%;
+          animation: fc-bar-fill 9s infinite;
+        }
+
+        @keyframes fc-riskbar-show {
+          0%     { opacity: 0; }
+          55%    { opacity: 0; }
+          60%    { opacity: 1; }
+          94%    { opacity: 1; }
+          97%    { opacity: 0; }
+          100%   { opacity: 0; }
+        }
+        @keyframes fc-bar-fill {
+          0%     { width: 0%; }
+          60%    { width: 0%; }
+          68%    { width: 2%; }
+          94%    { width: 2%; }
+          97%    { width: 0%; }
+          100%   { width: 0%; }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 520px) {
+          .fc-popup { max-width: 100%; }
+          .fc-popup-body { padding: 16px; }
+          .fc-input-field { font-size: 0.85rem; padding: 8px 12px; height: 38px; }
+          .fc-result-row { font-size: 0.82rem; }
+          .fc-result-value { font-size: 0.88rem; }
+        }
+
+        /* ── Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+          .fc-typed,
+          .fc-input-field::after,
+          .fc-processing,
+          .fc-processing-dot,
+          .fc-divider,
+          .fc-result-row,
+          .fc-risk-bar-wrap,
+          .fc-risk-bar-fill {
+            animation: none !important;
+          }
+          .fc-typed { width: auto; }
+          .fc-processing { opacity: 0; }
+          .fc-divider { opacity: 1; }
+          .fc-result-row { opacity: 1; transform: none; }
+          .fc-risk-bar-wrap { opacity: 1; }
+          .fc-risk-bar-fill { width: 2%; }
+        }
+      </style>
+
+      <div class="fc-anim-header">
+        <div class="section-label">See It in Action</div>
+        <h2>Instant risk calculations, visualized</h2>
+      </div>
+
+      <div class="fc-popup" aria-label="Animated calculator demonstration">
+        <!-- title bar -->
+        <div class="fc-popup-bar" aria-hidden="true">
+          <span class="fc-popup-dot"></span>
+          <span class="fc-popup-dot"></span>
+          <span class="fc-popup-dot"></span>
+          <span class="fc-popup-bar-title">Forex Calculator</span>
+          <span class="fc-popup-bar-icon"></span>
+        </div>
+
+        <div class="fc-popup-body">
+          <!-- inputs -->
+          <div class="fc-input-row">
+            <div class="fc-input-label">Account Balance</div>
+            <div class="fc-input-field"><span class="fc-typed">$10,000</span></div>
+          </div>
+          <div class="fc-input-row">
+            <div class="fc-input-label">Risk %</div>
+            <div class="fc-input-field"><span class="fc-typed">2%</span></div>
+          </div>
+          <div class="fc-input-row">
+            <div class="fc-input-label">Stop Loss (pips)</div>
+            <div class="fc-input-field"><span class="fc-typed">50</span></div>
+          </div>
+          <div class="fc-input-row">
+            <div class="fc-input-label">Pair</div>
+            <div class="fc-input-field"><span class="fc-typed">EUR/USD</span></div>
+          </div>
+
+          <!-- processing pulse -->
+          <div class="fc-processing" aria-hidden="true">
+            <span class="fc-processing-dot"></span>
+            <span class="fc-processing-dot"></span>
+            <span class="fc-processing-dot"></span>
+          </div>
+
+          <div class="fc-divider"></div>
+
+          <!-- results -->
+          <div class="fc-results">
+            <div class="fc-result-row">
+              <span class="fc-result-label">Position Size</span>
+              <span class="fc-result-value">0.40 lots</span>
+            </div>
+            <div class="fc-result-row">
+              <span class="fc-result-label">Pip Value</span>
+              <span class="fc-result-value">$4.00</span>
+            </div>
+            <div class="fc-result-row">
+              <span class="fc-result-label">Risk Amount</span>
+              <span class="fc-result-value">$200.00</span>
+            </div>
+          </div>
+
+          <!-- risk bar -->
+          <div class="fc-risk-bar-wrap">
+            <div class="fc-risk-bar-header">
+              <span class="fc-risk-bar-label">Account Risk</span>
+              <span class="fc-risk-bar-pct">2.0%</span>
+            </div>
+            <div class="fc-risk-bar-track">
+              <div class="fc-risk-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
     <!-- TECH DETAILS -->
     <section class="tech-section reveal">
       <div class="section-header">
