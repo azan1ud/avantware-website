@@ -41,68 +41,81 @@
       margin: 0 auto;
     }
 
-    .blog-coming-soon {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin-bottom: 3rem;
-      padding: 1rem 0;
-    }
-
-    /* Placeholder post grid */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1.5rem;
     }
 
-    .blog-card-placeholder {
+    .blog-card {
       background: var(--bg-card);
-      border: 1px dashed var(--border);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.2s ease;
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
-    .blog-card-placeholder:hover {
+    .blog-card:hover {
       border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
 
     .blog-card-img {
       width: 100%;
-      height: 140px;
+      height: 160px;
+      overflow: hidden;
       background: var(--bg-secondary);
-      border-radius: 8px;
-      margin-bottom: 1rem;
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .blog-card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
     }
 
     .blog-card-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
-      color: var(--accent-light);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
     }
+    .blog-card-tag.green { color: var(--green); background: rgba(16,185,129,0.1); }
+    .blog-card-tag.rose { color: var(--rose); background: rgba(244,63,94,0.1); }
+    .blog-card-tag.blue { color: var(--blue); background: rgba(59,130,246,0.1); }
 
     .blog-card-title {
-      height: 1.2rem;
-      width: 75%;
-      background: var(--border);
-      border-radius: 4px;
-      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.2px;
     }
 
-    .blog-card-desc {
-      height: 0.8rem;
-      width: 100%;
-      background: var(--border);
-      border-radius: 4px;
-      margin-bottom: 0.4rem;
-      opacity: 0.5;
+    .blog-card-excerpt {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
     }
-    .blog-card-desc:last-child {
-      width: 60%;
+
+    .blog-card-meta {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     @media (max-width: 480px) {
@@ -180,30 +193,52 @@
         <p>Insights on trading, software development, and product updates.</p>
       </div>
 
-      <p class="blog-coming-soon">Coming soon — we're working on our first posts.</p>
-
       <div class="blog-grid">
-        <div class="blog-card-placeholder" aria-hidden="true">
-          <div class="blog-card-img"></div>
-          <div class="blog-card-tag">Trading</div>
-          <div class="blog-card-title"></div>
-          <div class="blog-card-desc"></div>
-          <div class="blog-card-desc"></div>
-        </div>
-        <div class="blog-card-placeholder" aria-hidden="true">
-          <div class="blog-card-img"></div>
-          <div class="blog-card-tag">Engineering</div>
-          <div class="blog-card-title"></div>
-          <div class="blog-card-desc"></div>
-          <div class="blog-card-desc"></div>
-        </div>
-        <div class="blog-card-placeholder" aria-hidden="true">
-          <div class="blog-card-img"></div>
-          <div class="blog-card-tag">Product</div>
-          <div class="blog-card-title"></div>
-          <div class="blog-card-desc"></div>
-          <div class="blog-card-desc"></div>
-        </div>
+        <a href="blog/your-1099-da-is-wrong.html" class="blog-card">
+          <div class="blog-card-img">
+            <img src="images/basisguard/promo.png" alt="BasisGuard promo" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-tag green">Product</span>
+            <h2 class="blog-card-title">Your 1099-DA Is Wrong: How BasisGuard Catches What Your Exchange Missed</h2>
+            <p class="blog-card-excerpt">Exchanges routinely report missing or zero cost basis on 1099-DA forms, inflating your crypto tax bill. Here's how to catch it before the IRS does.</p>
+            <div class="blog-card-meta">
+              <span>1 Mar 2026</span>
+              <span>&middot;</span>
+              <span>7 min read</span>
+            </div>
+          </div>
+        </a>
+        <a href="blog/tiktok-blocked-37-million-listings.html" class="blog-card">
+          <div class="blog-card-img">
+            <img src="images/tiktokshopguard/promo.png" alt="TikTok Shop Guard promo" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-tag rose">Product</span>
+            <h2 class="blog-card-title">Why TikTok Blocked 37 Million Listings — And How to Protect Yours</h2>
+            <p class="blog-card-excerpt">TikTok Shop removed over 37 million listings in 2024 for policy violations. Most sellers had no warning. Here's how to stay ahead of it.</p>
+            <div class="blog-card-meta">
+              <span>1 Mar 2026</span>
+              <span>&middot;</span>
+              <span>6 min read</span>
+            </div>
+          </div>
+        </a>
+        <a href="blog/uk-landlord-compliance-2026.html" class="blog-card">
+          <div class="blog-card-img">
+            <img src="images/landlordshield/promo.png" alt="LandlordShield promo" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-tag blue">Product</span>
+            <h2 class="blog-card-title">MTD, EPC C, and the Renters' Rights Act: What UK Landlords Need to Know in 2026</h2>
+            <p class="blog-card-excerpt">Three major regulatory changes are converging on UK landlords. Here's what's changing and the deadlines you can't afford to miss.</p>
+            <div class="blog-card-meta">
+              <span>1 Mar 2026</span>
+              <span>&middot;</span>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
   </main>

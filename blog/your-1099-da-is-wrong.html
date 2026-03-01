@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your 1099-DA Is Wrong: How BasisGuard Catches What Your Exchange Missed — Avantware</title>
+  <meta name="description" content="Most crypto sold in 2026 is 'noncovered' on your 1099-DA — meaning the IRS sees your cost basis as zero. Learn how BasisGuard detects and fixes these gaps before you file.">
+  <meta property="og:title" content="Your 1099-DA Is Wrong: How BasisGuard Catches What Your Exchange Missed">
+  <meta property="og:description" content="Exchanges routinely report missing or zero cost basis on 1099-DA forms, inflating your crypto tax bill. Learn how BasisGuard detects and fixes these errors.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://avantware.uk/images/basisguard/promo.png">
+  <meta property="og:url" content="https://avantware.uk/blog/your-1099-da-is-wrong.html">
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="canonical" href="https://avantware.uk/blog/your-1099-da-is-wrong.html">
+  <meta name="view-transition" content="same-origin">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <style>
+    .blog-post { max-width: 720px; margin: 0 auto; padding: 8rem 1.5rem 4rem; }
+    .blog-post-header { margin-bottom: 2.5rem; }
+    .blog-post-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .blog-post-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px; color: var(--green);
+      background: rgba(16,185,129,0.1); padding: 0.25rem 0.65rem; border-radius: 4px;
+    }
+    .blog-post-date, .blog-post-read { font-size: 0.82rem; color: var(--text-dim); }
+    .blog-post-dot { color: var(--text-dim); }
+    .blog-post-header h1 {
+      font-size: clamp(1.75rem, 4.5vw, 2.5rem); font-weight: 800;
+      letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .blog-post-header .lead {
+      font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;
+    }
+
+    .blog-post-body h2 {
+      font-size: 1.4rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem;
+      letter-spacing: -0.3px;
+    }
+    .blog-post-body h3 {
+      font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem;
+    }
+    .blog-post-body p {
+      color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .blog-post-body ul, .blog-post-body ol {
+      color: var(--text-secondary); font-size: 1rem; line-height: 1.8;
+      margin-bottom: 1.25rem; padding-left: 1.5rem;
+    }
+    .blog-post-body li { margin-bottom: 0.4rem; }
+    .blog-post-body strong { color: var(--text-primary); font-weight: 600; }
+    .blog-post-body blockquote {
+      border-left: 3px solid var(--accent); padding: 1rem 1.25rem; margin: 1.5rem 0;
+      background: rgba(124,58,237,0.04); border-radius: 0 8px 8px 0;
+    }
+    .blog-post-body blockquote p { margin-bottom: 0; color: var(--text-primary); font-style: italic; }
+    .blog-post-body code {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85em;
+      background: var(--bg-secondary); padding: 0.15em 0.4em; border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .blog-cta {
+      margin-top: 3rem; padding: 2rem; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(6,182,212,0.06));
+      border: 1px solid rgba(16,185,129,0.15); text-align: center;
+    }
+    .blog-cta h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .blog-cta p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6; }
+    .blog-cta .btn { font-size: 0.85rem; }
+
+    .blog-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--text-dim); text-decoration: none; font-size: 0.82rem; font-weight: 500;
+      margin-bottom: 2rem; transition: color 0.2s;
+    }
+    .blog-back:hover { color: var(--text-primary); }
+    .blog-back svg { width: 16px; height: 16px; }
+
+    @media (max-width: 480px) {
+      .blog-post { padding-top: 6rem; }
+      .blog-post-header h1 { font-size: 1.5rem; }
+    }
+  </style>
+  <script>var t=localStorage.getItem('avantware-theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+  </div>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+          <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+          <div class="nav-logo-text">avant<span>ware</span></div>
+        </a>
+        <div class="nav-menu" role="menubar">
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="../index.html#products" role="menuitem">Products</a>
+          </div>
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="../index.html#trading" role="menuitem">Trading</a>
+          </div>
+          <div class="nav-item" role="none">
+            <a class="nav-trigger" href="../index.html#about" role="menuitem">About</a>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="nav-cta-btn desktop-only" aria-label="Get in touch">Get in Touch</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+  <!-- Mobile menu -->
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-menu-header">
+      <a href="../index.html" class="nav-logo" aria-label="Avantware home">
+        <img src="../Logo.png" alt="Avantware logo" height="32" width="32">
+        <div class="nav-logo-text">avant<span>ware</span></div>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <a href="../index.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Home</span></div></a>
+    <a href="../index.html#products" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Products</span></div></a>
+    <a href="../index.html#trading" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Trading</span></div></a>
+    <a href="../index.html#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+    <a href="../index.html#contact" class="nav-cta-btn" aria-label="Get in touch">Get in Touch</a>
+  </aside>
+
+  <main id="main-content">
+    <article class="blog-post">
+      <a href="../blog.html" class="blog-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Blog
+      </a>
+
+      <header class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Product</span>
+          <span class="blog-post-date">1 Mar 2026</span>
+          <span class="blog-post-dot">&middot;</span>
+          <span class="blog-post-read">7 min read</span>
+        </div>
+        <h1>Your 1099-DA Is Wrong: How BasisGuard Catches What Your Exchange Missed</h1>
+        <p class="lead">Crypto exchanges started issuing 1099-DA forms for the 2025 tax year — but they only reported your proceeds, not your cost basis. Starting in 2026, brokers must report cost basis too, but only for "covered" assets. Everything else? The IRS sees your basis as zero, and that means they think you owe taxes on 100% of your proceeds.</p>
+      </header>
+
+      <div class="blog-post-body">
+        <h2>The 1099-DA cost basis problem</h2>
+        <p>The IRS introduced Form 1099-DA to bring crypto reporting in line with traditional brokerage 1099-Bs. The rollout is phased:</p>
+        <ul>
+          <li><strong>2025 tax year</strong> (forms you received in early 2026): Exchanges reported <strong>gross proceeds only</strong> — no cost basis at all. You were entirely responsible for tracking and reporting your own basis.</li>
+          <li><strong>2026 tax year</strong> (forms you'll receive in early 2027): Exchanges must now report cost basis, but <strong>only for "covered" assets</strong> — digital assets purchased on or after January 1, 2026 <em>and</em> held on the same exchange until sold. Everything else is classified as "noncovered" and the basis field is left blank.</li>
+        </ul>
+        <p>When the IRS receives a 1099-DA with blank or zero cost basis, it treats your basis as <strong>$0</strong>. Every dollar of proceeds looks like pure profit.</p>
+
+        <blockquote><p>Sold $10,000 of ETH that you originally bought for $8,000? If your 1099-DA shows no cost basis, the IRS sees a $10,000 gain instead of $2,000.</p></blockquote>
+
+        <h2>Why most of your assets are "noncovered"</h2>
+        <p>The "covered" label only applies to a narrow set of transactions. In practice, the majority of crypto sold in 2026 will be noncovered — and here's why:</p>
+
+        <h3>1. Anything bought before 2026</h3>
+        <p>If you purchased crypto before January 1, 2026 — which most active traders did — those assets are automatically noncovered. Your exchange will report the proceeds when you sell but <strong>will not report cost basis</strong>, even if you bought and sold on the same platform.</p>
+
+        <h3>2. Transfers between exchanges</h3>
+        <p>If you bought BTC on Coinbase and then sent it to Kraken, Kraken has no idea what you originally paid. When you eventually sell on Kraken, it reports proceeds but <strong>cannot report your cost basis</strong> because the asset wasn't acquired on their platform. The 1099-DA goes out with a blank basis field marked "noncovered."</p>
+
+        <h3>3. Wallet moves and self-custody</h3>
+        <p>Moving coins to a hardware wallet and back creates the same gap. From the exchange's perspective, the deposit looks like new coins with unknown origin. Your original purchase price is lost in their records, even though you've been holding the same asset the entire time.</p>
+
+        <h3>4. DeFi activity and chain swaps</h3>
+        <p>If you've used DEXs, bridges, or staking protocols, the on-chain trail becomes fragmented. When those tokens eventually land back on a centralised exchange and get sold, the exchange has no visibility into the prior history. The result: noncovered status with zero cost basis on the 1099-DA.</p>
+
+        <h2>The real cost of doing nothing</h2>
+        <p>Many traders assume the IRS won't notice or that they can sort it out later. Here's why that's risky:</p>
+        <ul>
+          <li><strong>Automatic matching:</strong> The IRS will match your 1099-DA against your tax return. If the numbers don't line up, you'll hear from them.</li>
+          <li><strong>Burden of proof is on you:</strong> You need to prove your actual cost basis. If you can't, the IRS defaults to $0.</li>
+          <li><strong>Penalties compound:</strong> Underreported income triggers accuracy-related penalties of 20% on top of the additional tax owed, plus interest.</li>
+        </ul>
+
+        <h2>How BasisGuard fixes this</h2>
+        <p>BasisGuard was built specifically to catch these 1099-DA discrepancies before they become a problem. Here's how it works:</p>
+        <ul>
+          <li><strong>Upload your 1099-DA:</strong> Paste or upload the data from your exchange-issued form.</li>
+          <li><strong>Add your actual cost basis:</strong> Enter your original purchase prices from your records, CSVs, or other exchanges.</li>
+          <li><strong>Instant mismatch detection:</strong> BasisGuard flags every transaction where the reported basis is missing, zero, or clearly wrong.</li>
+          <li><strong>See your real tax liability:</strong> Compare what the IRS thinks you owe vs. what you actually owe with correct cost basis.</li>
+          <li><strong>Export a corrected Form 8949:</strong> Generate an accurate Schedule D / Form 8949 you can file or hand to your CPA.</li>
+        </ul>
+
+        <p>The average BasisGuard user discovers <strong>thousands of dollars in over-reported gains</strong> — money they'd have paid in unnecessary taxes if they'd filed with the exchange's numbers as-is.</p>
+
+        <h2>Don't assume your 1099-DA is complete</h2>
+        <p>The 1099-DA is a step forward for crypto tax reporting, but the "covered" vs. "noncovered" distinction means most traders will still receive forms with missing cost basis for years to come. Any asset bought before 2026 or moved between platforms falls into the gap. That's not your exchange's fault — the rules are designed this way — but it <strong>is</strong> your problem to fix before filing.</p>
+        <p>The good news: it's fixable. You just need to check before you file.</p>
+      </div>
+
+      <div class="blog-cta">
+        <h3>Check your 1099-DA for free</h3>
+        <p>Upload your exchange data and see exactly how much your cost basis is off — before the IRS does.</p>
+        <a href="https://basisguard.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Try BasisGuard</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-newsletter">
+        <h4>Stay in the loop</h4>
+        <p>Product updates, new launches, and trading insights. No spam.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-msg"></p>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" id="cookie-banner">
+    <p>We use cookies to improve your experience. <a href="../privacy-policy.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+      <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="../js/shared.js" defer></script>
+</body>
+</html>
