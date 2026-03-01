@@ -427,9 +427,7 @@
           overflow: hidden;
           transition: opacity 0.4s ease;
         }
-        .cd-dashboard:not(.cd-playing) * {
-          animation-play-state: paused !important;
-        }
+        /* Animations only apply when .cd-playing is present */
         .cd-dashboard::before {
           content: '';
           position: absolute;
@@ -444,6 +442,8 @@
           text-align: center;
           margin-bottom: 2.5rem;
           opacity: 0;
+        }
+        .cd-playing .cd-score-wrap {
           animation: cdFadeIn 0.6s ease forwards;
           animation-delay: 0.3s;
         }
@@ -481,6 +481,8 @@
           width: 0%;
           background: linear-gradient(90deg, var(--amber), var(--green));
           border-radius: 4px;
+        }
+        .cd-playing .cd-score-bar-fill {
           animation: cdScoreBar 1.5s ease forwards;
           animation-delay: 0.8s;
         }
@@ -502,18 +504,18 @@
           opacity: 0;
           transform: translateX(-30px);
         }
-        .cd-card--mtd {
-          border-left: 3px solid var(--amber);
+        .cd-card--mtd { border-left: 3px solid var(--amber); }
+        .cd-card--rra { border-left: 3px solid var(--rose); }
+        .cd-card--epc { border-left: 3px solid var(--green); }
+        .cd-playing .cd-card--mtd {
           animation: cdSlideIn 0.5s ease forwards;
           animation-delay: 0.5s;
         }
-        .cd-card--rra {
-          border-left: 3px solid var(--rose);
+        .cd-playing .cd-card--rra {
           animation: cdSlideIn 0.5s ease forwards;
           animation-delay: 0.8s;
         }
-        .cd-card--epc {
-          border-left: 3px solid var(--green);
+        .cd-playing .cd-card--epc {
           animation: cdSlideIn 0.5s ease forwards;
           animation-delay: 1.1s;
         }
@@ -592,18 +594,18 @@
           width: 0%;
           border-radius: 5px;
         }
-        .cd-card--mtd .cd-progress-fill {
-          background: var(--amber);
+        .cd-card--mtd .cd-progress-fill { background: var(--amber); }
+        .cd-card--rra .cd-progress-fill { background: var(--rose); }
+        .cd-card--epc .cd-progress-fill { background: var(--green); }
+        .cd-playing .cd-card--mtd .cd-progress-fill {
           animation: cdFill75 1.2s ease forwards;
           animation-delay: 1.8s;
         }
-        .cd-card--rra .cd-progress-fill {
-          background: var(--rose);
+        .cd-playing .cd-card--rra .cd-progress-fill {
           animation: cdFill40 1.2s ease forwards;
           animation-delay: 2.1s;
         }
-        .cd-card--epc .cd-progress-fill {
-          background: var(--green);
+        .cd-playing .cd-card--epc .cd-progress-fill {
           animation: cdFill90 1.2s ease forwards;
           animation-delay: 2.4s;
         }
@@ -651,16 +653,16 @@
         .cd-card--rra .cd-task.checked .cd-task-check { background: rgba(244,63,94,0.15); color: var(--rose); }
         .cd-card--epc .cd-task.checked .cd-task-check { background: rgba(16,185,129,0.15); color: var(--green); }
 
-        /* Task staggered appear */
-        .cd-card--mtd .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.2s; }
-        .cd-card--mtd .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.5s; }
-        .cd-card--mtd .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.8s; }
-        .cd-card--rra .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.4s; }
-        .cd-card--rra .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.7s; }
-        .cd-card--rra .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.0s; }
-        .cd-card--epc .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.6s; }
-        .cd-card--epc .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.9s; }
-        .cd-card--epc .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.2s; }
+        /* Task staggered appear — only when playing */
+        .cd-playing .cd-card--mtd .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.2s; }
+        .cd-playing .cd-card--mtd .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.5s; }
+        .cd-playing .cd-card--mtd .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.8s; }
+        .cd-playing .cd-card--rra .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.4s; }
+        .cd-playing .cd-card--rra .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.7s; }
+        .cd-playing .cd-card--rra .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.0s; }
+        .cd-playing .cd-card--epc .cd-task:nth-child(1) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.6s; }
+        .cd-playing .cd-card--epc .cd-task:nth-child(2) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 3.9s; }
+        .cd-playing .cd-card--epc .cd-task:nth-child(3) { animation: cdTaskIn 0.4s ease forwards; animation-delay: 4.2s; }
 
         /* Keyframes */
         @keyframes cdFadeIn {
@@ -688,6 +690,8 @@
         /* Score counter animation via CSS @property */
         .cd-counter {
           display: inline-block;
+        }
+        .cd-playing .cd-counter {
           animation: cdCountUp 1.5s steps(68, end) forwards;
           animation-delay: 0.8s;
         }
