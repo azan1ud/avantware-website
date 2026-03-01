@@ -18,5 +18,8 @@
   <url><loc>https://avantware.uk/terms-of-service.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://avantware.uk/changelog</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://avantware.uk/blog</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://avantware.uk/blog/your-1099-da-is-wrong.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://avantware.uk/blog/tiktok-blocked-37-million-listings.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://avantware.uk/blog/uk-landlord-compliance-2026.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://avantware.uk/404.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>

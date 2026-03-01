@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Avantware Blog</title>
+    <link>https://avantware.uk/blog</link>
+    <description>Insights on trading, software development, and product updates from the Avantware team.</description>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://avantware.uk/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Your 1099-DA Is Wrong: How BasisGuard Catches What Your Exchange Missed</title>
+      <link>https://avantware.uk/blog/your-1099-da-is-wrong.html</link>
+      <guid>https://avantware.uk/blog/your-1099-da-is-wrong.html</guid>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Most crypto sold in 2026 is 'noncovered' on your 1099-DA — meaning the IRS sees your cost basis as zero. Learn how BasisGuard detects and fixes these gaps before you file.</description>
+    </item>
+
+    <item>
+      <title>Why TikTok Blocked 37 Million Listings — And How to Protect Yours</title>
+      <link>https://avantware.uk/blog/tiktok-blocked-37-million-listings.html</link>
+      <guid>https://avantware.uk/blog/tiktok-blocked-37-million-listings.html</guid>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <description>TikTok Shop removed 37M+ listings in 2024 and took down 2M more products in just H1 2025. Learn why sellers get blindsided and how to scan your listings before they go live.</description>
+    </item>
+
+    <item>
+      <title>MTD, EPC C, and the Renters' Rights Act: What UK Landlords Need to Know in 2026</title>
+      <link>https://avantware.uk/blog/uk-landlord-compliance-2026.html</link>
+      <guid>https://avantware.uk/blog/uk-landlord-compliance-2026.html</guid>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <description>MTD starts 6 April 2026, Section 21 is abolished 1 May 2026, and EPC Band C is confirmed for October 2030. Here's what UK landlords need to do right now.</description>
+    </item>
+  </channel>
+</rss>
