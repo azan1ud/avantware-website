@@ -381,7 +381,7 @@ body {
 .footer-col ul li a:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; border-radius: 2px; }
 
 .footer-social {
-  display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem;
+  display: flex; gap: 1rem; margin-top: 1.5rem; padding: 1.5rem 0;
   border-top: 1px solid var(--border);
 }
 .footer-social a {
