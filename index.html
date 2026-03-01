@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="canonical" href="https://avantware.uk/">
+  <meta name="view-transition" content="same-origin">
   <noscript><style>.reveal{opacity:1;transform:none}.section-divider{width:100%}</style></noscript>
   <script type="application/ld+json">
   {
@@ -44,6 +45,7 @@
     }
   }
   </script>
+  <script>var t=localStorage.getItem('avantware-theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
 </head>
 <body>
   <!-- Scroll Progress -->
@@ -1065,8 +1067,19 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
             <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay in the loop</h4>
+        <p>Product updates, new launches, and trading insights. No spam.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-msg"></p>
       </div>
       <div class="footer-social" aria-label="Social media links">
         <a href="#" aria-label="Follow us on Twitter">
@@ -1091,6 +1104,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" id="cookie-banner">
+    <p>We use cookies to improve your experience. <a href="privacy-policy.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+      <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+    </div>
+  </div>
 
   <!-- Back to Top -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">

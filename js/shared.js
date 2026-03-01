@@ -290,4 +290,63 @@
     });
   }
 
+  // ===== NEWSLETTER SIGNUP =====
+  var newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = newsletterForm.querySelector('input[type="email"]');
+      var msgEl = newsletterForm.querySelector('.newsletter-msg');
+      var btn = newsletterForm.querySelector('button');
+      if (!emailInput.value) return;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      var formData = new FormData();
+      formData.append('access_key', 'f1621d67-20e5-4397-bee5-23c498cdf498');
+      formData.append('subject', 'Newsletter Signup — avantware.uk');
+      formData.append('email', emailInput.value);
+      formData.append('from_name', 'Newsletter Subscriber');
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            if (msgEl) { msgEl.textContent = 'Subscribed! We\'ll be in touch.'; msgEl.style.color = 'var(--cyan)'; }
+            emailInput.value = '';
+          } else {
+            if (msgEl) { msgEl.textContent = 'Something went wrong. Try again.'; msgEl.style.color = 'var(--rose)'; }
+          }
+          btn.textContent = 'Subscribe';
+          btn.disabled = false;
+        })
+        .catch(function() {
+          if (msgEl) { msgEl.textContent = 'Network error. Try again.'; msgEl.style.color = 'var(--rose)'; }
+          btn.textContent = 'Subscribe';
+          btn.disabled = false;
+        });
+    });
+  }
+
+  // ===== COOKIE CONSENT =====
+  (function() {
+    var consent = localStorage.getItem('avantware-cookies');
+    if (consent) return;
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    setTimeout(function() { banner.classList.add('visible'); }, 1500);
+    var acceptBtn = document.getElementById('cookie-accept');
+    var declineBtn = document.getElementById('cookie-decline');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('avantware-cookies', 'accepted');
+        banner.classList.remove('visible');
+      });
+    }
+    if (declineBtn) {
+      declineBtn.addEventListener('click', function() {
+        localStorage.setItem('avantware-cookies', 'declined');
+        banner.classList.remove('visible');
+      });
+    }
+  })();
+
 })();

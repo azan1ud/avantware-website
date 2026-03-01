@@ -3,46 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found — Avantware</title>
-  <meta name="description" content="The page you're looking for doesn't exist. Return to Avantware's homepage.">
-  <meta property="og:title" content="Page Not Found — Avantware">
+  <title>Changelog — Avantware</title>
+  <meta name="description" content="Product updates, new releases, and improvements across all Avantware tools.">
+  <meta property="og:title" content="Changelog — Avantware">
+  <meta property="og:description" content="Product updates, new releases, and improvements across all Avantware tools.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://avantware.uk/404.html">
+  <meta property="og:url" content="https://avantware.uk/changelog">
   <link rel="icon" type="image/png" href="Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
-  <link rel="canonical" href="https://avantware.uk/404.html">
+  <link rel="canonical" href="https://avantware.uk/changelog">
   <meta name="view-transition" content="same-origin">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <style>
-    .error-page {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 2rem; text-align: center; position: relative; overflow: hidden;
+    .changelog-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
     }
-    .error-page::before {
-      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 600px; height: 600px; border-radius: 50%; filter: blur(120px);
-      background: linear-gradient(135deg, #7c3aed, #3b82f6); opacity: 0.1; pointer-events: none;
+    .changelog-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
     }
-    .error-content { position: relative; z-index: 1; max-width: 480px; }
-    .error-code {
-      font-family: 'JetBrains Mono', monospace; font-size: clamp(5rem, 15vw, 10rem);
-      font-weight: 800; letter-spacing: -4px; line-height: 1;
-      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 40%, #06b6d4 70%, #22d3ee 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 1rem;
-    }
-    .error-content h1 {
-      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.5px;
+    .changelog-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -1px;
       margin-bottom: 0.75rem;
     }
-    .error-content p {
-      color: var(--text-secondary); font-size: 1rem; line-height: 1.7;
-      margin-bottom: 2rem;
+    .changelog-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
-    .error-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Dot */
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .timeline-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.3px;
+    }
+    .timeline-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 480px) {
+      .changelog-section { padding-top: 6rem; }
+      .timeline { padding-left: 1.5rem; }
+      .timeline-entry::before { left: -1.5rem; width: 10px; height: 10px; }
+      .timeline::before { left: 4px; }
+    }
   </style>
   <script>var t=localStorage.getItem('avantware-theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
 </head>
@@ -108,17 +183,51 @@
   </aside>
 
   <main id="main-content">
-    <section class="error-page">
-      <div class="error-content">
-        <div class="error-code" aria-hidden="true">404</div>
-        <h1>Page not found</h1>
-        <p>The page you're looking for doesn't exist or has been moved. Head back to the homepage to explore our products and tools.</p>
-        <div class="error-actions">
-          <a href="index.html" class="btn btn-primary">
-            Back to Home
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <a href="mailto:contact@avantware.uk" class="btn btn-ghost">Contact Support</a>
+    <section class="changelog-section">
+      <div class="changelog-header">
+        <h1>Changelog</h1>
+        <p>A timeline of product updates, new releases, and improvements across Avantware.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-entry">
+          <div class="timeline-date">March 2026</div>
+          <div class="timeline-card">
+            <h3>Website redesign</h3>
+            <p>New dark theme, product showcases, and improved navigation across the entire Avantware site.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">February 2026</div>
+          <div class="timeline-card">
+            <h3>BasisGuard v2.0</h3>
+            <p>Added portfolio-wide cost basis analysis and CSV export for streamlined tax reporting.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">January 2026</div>
+          <div class="timeline-card">
+            <h3>TikTok Shop Guard</h3>
+            <p>Chrome extension launched on the Chrome Web Store — automated seller verification and scam detection.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">December 2025</div>
+          <div class="timeline-card">
+            <h3>LandlordShield</h3>
+            <p>UK landlord compliance platform launched — certificate tracking, tenant management, and automated reminders.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-date">November 2025</div>
+          <div class="timeline-card">
+            <h3>Forex Calculator</h3>
+            <p>Free Chrome extension for position sizing released — pip value calculations, risk management, and lot sizing.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -135,7 +244,7 @@
         </form>
         <p class="newsletter-msg"></p>
       </div>
-      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+      <div class="footer-bottom">
         <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="privacy-policy.html">Privacy Policy</a>

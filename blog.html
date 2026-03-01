@@ -3,46 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found — Avantware</title>
-  <meta name="description" content="The page you're looking for doesn't exist. Return to Avantware's homepage.">
-  <meta property="og:title" content="Page Not Found — Avantware">
+  <title>Blog — Avantware</title>
+  <meta name="description" content="Insights on trading, software development, and product updates from the Avantware team.">
+  <meta property="og:title" content="Blog — Avantware">
+  <meta property="og:description" content="Insights on trading, software development, and product updates from the Avantware team.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://avantware.uk/404.html">
+  <meta property="og:url" content="https://avantware.uk/blog">
   <link rel="icon" type="image/png" href="Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
-  <link rel="canonical" href="https://avantware.uk/404.html">
+  <link rel="canonical" href="https://avantware.uk/blog">
   <meta name="view-transition" content="same-origin">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <style>
-    .error-page {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 2rem; text-align: center; position: relative; overflow: hidden;
+    .blog-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
     }
-    .error-page::before {
-      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 600px; height: 600px; border-radius: 50%; filter: blur(120px);
-      background: linear-gradient(135deg, #7c3aed, #3b82f6); opacity: 0.1; pointer-events: none;
+    .blog-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
     }
-    .error-content { position: relative; z-index: 1; max-width: 480px; }
-    .error-code {
-      font-family: 'JetBrains Mono', monospace; font-size: clamp(5rem, 15vw, 10rem);
-      font-weight: 800; letter-spacing: -4px; line-height: 1;
-      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 40%, #06b6d4 70%, #22d3ee 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 1rem;
-    }
-    .error-content h1 {
-      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.5px;
+    .blog-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -1px;
       margin-bottom: 0.75rem;
     }
-    .error-content p {
-      color: var(--text-secondary); font-size: 1rem; line-height: 1.7;
-      margin-bottom: 2rem;
+    .blog-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto;
     }
-    .error-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .blog-coming-soon {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+      padding: 1rem 0;
+    }
+
+    /* Placeholder post grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card-placeholder {
+      background: var(--bg-card);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s ease;
+    }
+    .blog-card-placeholder:hover {
+      border-color: var(--border-hover);
+    }
+
+    .blog-card-img {
+      width: 100%;
+      height: 140px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card-title {
+      height: 1.2rem;
+      width: 75%;
+      background: var(--border);
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    .blog-card-desc {
+      height: 0.8rem;
+      width: 100%;
+      background: var(--border);
+      border-radius: 4px;
+      margin-bottom: 0.4rem;
+      opacity: 0.5;
+    }
+    .blog-card-desc:last-child {
+      width: 60%;
+    }
+
+    @media (max-width: 480px) {
+      .blog-section { padding-top: 6rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <script>var t=localStorage.getItem('avantware-theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
 </head>
@@ -108,17 +174,35 @@
   </aside>
 
   <main id="main-content">
-    <section class="error-page">
-      <div class="error-content">
-        <div class="error-code" aria-hidden="true">404</div>
-        <h1>Page not found</h1>
-        <p>The page you're looking for doesn't exist or has been moved. Head back to the homepage to explore our products and tools.</p>
-        <div class="error-actions">
-          <a href="index.html" class="btn btn-primary">
-            Back to Home
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <a href="mailto:contact@avantware.uk" class="btn btn-ghost">Contact Support</a>
+    <section class="blog-section">
+      <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Insights on trading, software development, and product updates.</p>
+      </div>
+
+      <p class="blog-coming-soon">Coming soon — we're working on our first posts.</p>
+
+      <div class="blog-grid">
+        <div class="blog-card-placeholder" aria-hidden="true">
+          <div class="blog-card-img"></div>
+          <div class="blog-card-tag">Trading</div>
+          <div class="blog-card-title"></div>
+          <div class="blog-card-desc"></div>
+          <div class="blog-card-desc"></div>
+        </div>
+        <div class="blog-card-placeholder" aria-hidden="true">
+          <div class="blog-card-img"></div>
+          <div class="blog-card-tag">Engineering</div>
+          <div class="blog-card-title"></div>
+          <div class="blog-card-desc"></div>
+          <div class="blog-card-desc"></div>
+        </div>
+        <div class="blog-card-placeholder" aria-hidden="true">
+          <div class="blog-card-img"></div>
+          <div class="blog-card-tag">Product</div>
+          <div class="blog-card-title"></div>
+          <div class="blog-card-desc"></div>
+          <div class="blog-card-desc"></div>
         </div>
       </div>
     </section>
@@ -135,7 +219,7 @@
         </form>
         <p class="newsletter-msg"></p>
       </div>
-      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+      <div class="footer-bottom">
         <span>&copy; 2026 Avantware LTD. All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="privacy-policy.html">Privacy Policy</a>
