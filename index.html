@@ -21,12 +21,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/shared.min.css">
-  <link rel="stylesheet" href="css/homepage.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/homepage.css">
   <link rel="canonical" href="https://avantware.uk/">
   <meta name="view-transition" content="same-origin">
-  <noscript><style>.reveal{opacity:1;transform:none}.section-divider{width:100%}</style></noscript>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -168,7 +168,7 @@
             <div class="nav-dropdown dropdown-1col" role="menu" aria-label="Services submenu">
               <a href="#web-services" class="dropdown-item" role="menuitem">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO & Google Ads</span></div>
+                <div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO &amp; Google Ads</span></div>
               </a>
               <a href="#hire" class="dropdown-item" role="menuitem">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -231,99 +231,57 @@
       </button>
     </div>
 
-    <!-- Products accordion -->
     <div class="mobile-accordion">
       <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Products menu">
         Products
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mobile-accordion-content">
-        <a href="products/basisguard.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div>
-        </a>
-        <a href="products/megascan.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div>
-        </a>
-        <a href="products/landlordshield.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div>
-        </a>
-        <a href="products/zerocloudai.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div>
-        </a>
-        <a href="#apps" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div>
-        </a>
+        <a href="products/basisguard.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">BasisGuard</span><span class="dropdown-item-desc">Crypto tax compliance</span></div></a>
+        <a href="products/megascan.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">MegaScan</span><span class="dropdown-item-desc">MegaETH token screener</span></div></a>
+        <a href="products/landlordshield.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">LandlordShield</span><span class="dropdown-item-desc">UK landlord compliance</span></div></a>
+        <a href="products/zerocloudai.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">ZeroCloudAI</span><span class="dropdown-item-desc">Privacy-first AI</span></div></a>
+        <a href="products/tiktokshopguard.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">TikTok Shop Guard</span><span class="dropdown-item-desc">Seller compliance</span></div></a>
+        <a href="#apps" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">27+ Flutter Apps</span><span class="dropdown-item-desc">Live on Google Play</span></div></a>
       </div>
     </div>
 
-    <!-- Trading accordion -->
     <div class="mobile-accordion">
       <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Trading menu">
         Trading
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mobile-accordion-content">
-        <a href="products/pinescript-indicators.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div>
-        </a>
-        <a href="products/ai-trading-journal.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div>
-        </a>
-        <a href="#trading" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div>
-        </a>
-        <a href="products/forex-calculator.html" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div>
-        </a>
-        <a href="#" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div>
-        </a>
+        <a href="products/pinescript-indicators.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">PineScript V6 Indicators</span></div></a>
+        <a href="products/ai-trading-journal.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">AI Trading Journal</span></div></a>
+        <a href="#trading" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Prop Firm Dashboard</span></div></a>
+        <a href="products/forex-calculator.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Forex Calculator</span></div></a>
+        <a href="#" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">YouTube Channel</span></div></a>
       </div>
     </div>
 
-    <!-- Services accordion -->
     <div class="mobile-accordion">
       <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Services menu">
         Services
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mobile-accordion-content">
-        <a href="#web-services" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO & Google Ads</span></div>
-        </a>
-        <a href="#hire" class="dropdown-item" role="menuitem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">Build Your App</span><span class="dropdown-item-desc">Hire us for custom apps</span></div>
-        </a>
-        <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-          <div class="dropdown-item-text"><span class="dropdown-item-name">Hire on Upwork</span><span class="dropdown-item-desc">View freelancer profile</span></div>
-        </a>
+        <a href="#web-services" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Web Services</span><span class="dropdown-item-desc">Design, SEO &amp; Google Ads</span></div></a>
+        <a href="#hire" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Build Your App</span><span class="dropdown-item-desc">Hire us for custom apps</span></div></a>
+        <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="dropdown-item" target="_blank" rel="noopener noreferrer"><div class="dropdown-item-text"><span class="dropdown-item-name">Hire on Upwork</span><span class="dropdown-item-desc">View freelancer profile</span></div></a>
       </div>
     </div>
 
-    <!-- Company accordion -->
     <div class="mobile-accordion">
       <button class="mobile-accordion-trigger" aria-expanded="false" aria-label="Toggle Company menu">
         Company
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mobile-accordion-content">
-        <a href="#about" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
-        <a href="#contact" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
-        <a href="privacy-policy.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
-        <a href="terms-of-service.html" class="dropdown-item" role="menuitem"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
+        <a href="#about" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">About</span></div></a>
+        <a href="#contact" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Contact</span></div></a>
+        <a href="privacy-policy.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Privacy Policy</span></div></a>
+        <a href="terms-of-service.html" class="dropdown-item"><div class="dropdown-item-text"><span class="dropdown-item-name">Terms of Service</span></div></a>
       </div>
     </div>
 
@@ -332,36 +290,12 @@
 
   <main id="main-content">
 
-    <!-- 1. HERO -->
+    <!-- HERO -->
     <section class="hero" id="hero">
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow-3" aria-hidden="true"></div>
-      <div class="hero-floaters" id="heroFloaters" aria-hidden="true">
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <div class="floater">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-      </div>
       <div class="hero-content">
         <div class="hero-badge">UK-Based Software Studio</div>
-        <h1>Building tools that<br><span class="accent-word">actually ship</span></h1>
-        <p class="hero-subtitle">Trading indicators, SaaS platforms, Chrome extensions, and mobile apps -- built for real markets with real demand.</p>
+        <h1>Building tools that<br><span class="accent">actually ship</span></h1>
+        <p class="hero-subtitle">Trading indicators, SaaS platforms, Chrome extensions, and mobile apps &mdash; built for real markets with real demand.</p>
         <div class="hero-actions">
           <a href="#products" class="btn btn-primary" aria-label="Explore our products">
             Explore Products
@@ -410,17 +344,15 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 2. WHAT WE BUILD -->
+    <!-- WHAT WE BUILD -->
     <section class="section" id="verticals" aria-labelledby="verticals-title">
       <div class="section-header reveal">
         <div class="section-label">What We Build</div>
         <h2 class="section-title" id="verticals-title">Four verticals.<br>One studio.</h2>
-        <p class="section-desc">We identify gaps in underserved markets, then build focused tools to fill them -- fast.</p>
+        <p class="section-desc">We identify gaps in underserved markets, then build focused tools to fill them &mdash; fast.</p>
       </div>
       <div class="verticals-grid">
-        <a href="#trading" class="vertical-card card-shine reveal reveal-stagger-1" data-accent="indigo" aria-label="Trading and Quant tools - 5 products">
+        <a href="#trading" class="vertical-card reveal reveal-stagger-1" aria-label="Trading and Quant tools - 5 products">
           <div class="vertical-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
@@ -428,7 +360,7 @@
           <p>PineScript indicators, AI trading journals, prop firm tools, quant strategies, and educational content for futures and forex traders.</p>
           <div class="vertical-count">5 products</div>
         </a>
-        <a href="#products" class="vertical-card card-shine reveal reveal-stagger-2" data-accent="green" aria-label="SaaS Products - 6 products">
+        <a href="#products" class="vertical-card reveal reveal-stagger-2" aria-label="SaaS Products - 6 products">
           <div class="vertical-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
@@ -436,15 +368,15 @@
           <p>Web-based tools for crypto tax compliance, landlord regulation tracking, TikTok Shop monitoring, and e-commerce operations.</p>
           <div class="vertical-count">6 products</div>
         </a>
-        <a href="#products" class="vertical-card card-shine reveal reveal-stagger-3" data-accent="amber" aria-label="Chrome Extensions - 5 extensions">
+        <a href="#products" class="vertical-card reveal reveal-stagger-3" aria-label="Chrome Extensions - 5 extensions">
           <div class="vertical-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </div>
           <h3>Chrome Extensions</h3>
-          <p>Browser-based tools for AI assistance, compliance scanning, wellness tracking, and productivity -- on the Chrome Web Store.</p>
+          <p>Browser-based tools for AI assistance, compliance scanning, wellness tracking, and productivity &mdash; on the Chrome Web Store.</p>
           <div class="vertical-count">5 extensions</div>
         </a>
-        <a href="#apps" class="vertical-card card-shine reveal reveal-stagger-4" data-accent="cyan" aria-label="Mobile Apps - 27 published">
+        <a href="#apps" class="vertical-card reveal reveal-stagger-4" aria-label="Mobile Apps - 27 published">
           <div class="vertical-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           </div>
@@ -455,190 +387,186 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 3. FEATURED PRODUCTS -->
+    <!-- FEATURED PRODUCTS -->
     <section class="section" id="featured" aria-labelledby="featured-title">
       <div class="section-header center reveal">
         <div class="section-label">Featured</div>
         <h2 class="section-title" id="featured-title">Flagship products</h2>
-        <p class="section-desc">Our most ambitious builds -- solving real compliance and e-commerce problems at scale.</p>
+        <p class="section-desc">Our most ambitious builds &mdash; solving real compliance and e-commerce problems at scale.</p>
       </div>
       <div class="featured-grid">
         <article class="featured-card reveal reveal-stagger-1">
           <div class="featured-mockup"><picture>
-  <source srcset="images/basisguard/promo.webp" type="image/webp">
-  <img src="images/basisguard/promo.png" alt="BasisGuard — Stop Overpaying on Crypto Taxes. Detect missing cost basis on your 1099-DA and save thousands in taxes.">
-</picture></div>
-          <div class="featured-card-head">
-            <div class="featured-icon icon-green">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <source srcset="images/basisguard/promo.webp" type="image/webp">
+            <img src="images/basisguard/promo.png" alt="BasisGuard — Detect missing cost basis on your 1099-DA" loading="lazy">
+          </picture></div>
+          <div class="featured-card-body">
+            <div class="featured-card-head">
+              <div class="featured-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <h3>BasisGuard</h3>
+              <span class="status-live">Live</span>
             </div>
-            <h3>BasisGuard</h3>
-            <span class="featured-status status-live">Live</span>
+            <p class="desc">Your 1099-DA is wrong. BasisGuard detects missing cost basis on your crypto tax forms and shows you exactly how much you'd overpay.</p>
+            <div class="featured-tags">
+              <span class="ftag">1099-DA</span><span class="ftag">Cost Basis</span><span class="ftag">Form 8949</span>
+            </div>
+            <a href="products/basisguard.html" class="btn btn-ghost" aria-label="Learn more about BasisGuard">Learn More</a>
           </div>
-          <p class="desc">Your 1099-DA is wrong. BasisGuard detects missing cost basis on your crypto tax forms and shows you exactly how much you'd overpay. Fix your Form 8949 in minutes.</p>
-          <div class="featured-tags">
-            <span class="ftag">1099-DA</span><span class="ftag">Cost Basis</span><span class="ftag">Form 8949</span><span class="ftag">Crypto Tax</span>
-          </div>
-          <a href="products/basisguard.html" class="btn btn-ghost" aria-label="Learn more about BasisGuard">Learn More</a>
         </article>
 
         <article class="featured-card reveal reveal-stagger-2">
           <div class="featured-mockup"><picture>
-  <source srcset="images/landlordshield/promo.webp" type="image/webp">
-  <img src="images/landlordshield/promo.png" alt="LandlordShield — UK Landlord Compliance Dashboard for certificates, MTD tax, and EPC ratings">
-</picture></div>
-          <div class="featured-card-head">
-            <div class="featured-icon icon-amber">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <source srcset="images/landlordshield/promo.webp" type="image/webp">
+            <img src="images/landlordshield/promo.png" alt="LandlordShield — UK Landlord Compliance Dashboard" loading="lazy">
+          </picture></div>
+          <div class="featured-card-body">
+            <div class="featured-card-head">
+              <div class="featured-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <h3>LandlordShield</h3>
+              <span class="status-live">Live</span>
             </div>
-            <h3>LandlordShield</h3>
-            <span class="featured-status status-live">Live</span>
+            <p class="desc">Three deadlines. One dashboard. MTD, Renters' Rights Act, EPC C &mdash; track compliance across all three in one place.</p>
+            <div class="featured-tags">
+              <span class="ftag">MTD</span><span class="ftag">Renters' Rights</span><span class="ftag">EPC</span>
+            </div>
+            <a href="products/landlordshield.html" class="btn btn-ghost" aria-label="Learn more about LandlordShield">Learn More</a>
           </div>
-          <p class="desc">Three deadlines. One dashboard. MTD, Renters' Rights Act, EPC C &mdash; UK landlords face the biggest regulatory shake-up in 35 years. Track compliance across all three in one place.</p>
-          <div class="featured-tags">
-            <span class="ftag">MTD</span><span class="ftag">Renters' Rights</span><span class="ftag">EPC</span><span class="ftag">UK Landlord</span>
-          </div>
-          <a href="products/landlordshield.html" class="btn btn-ghost" aria-label="Learn more about LandlordShield">Learn More</a>
         </article>
 
         <article class="featured-card reveal reveal-stagger-3">
           <div class="featured-mockup"><picture>
-  <source srcset="images/tiktokshopguard/promo.webp" type="image/webp">
-  <img src="images/tiktokshopguard/promo.png" alt="TikTok Shop Guard — Scan listings for policy violations before you hit publish">
-</picture></div>
-          <div class="featured-card-head">
-            <div class="featured-icon icon-rose">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <source srcset="images/tiktokshopguard/promo.webp" type="image/webp">
+            <img src="images/tiktokshopguard/promo.png" alt="TikTok Shop Guard — Scan listings for policy violations" loading="lazy">
+          </picture></div>
+          <div class="featured-card-body">
+            <div class="featured-card-head">
+              <div class="featured-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <h3>TikTok Shop Guard</h3>
+              <span class="status-live">Live</span>
             </div>
-            <h3>TikTok Shop Guard</h3>
-            <span class="featured-status status-live">Live</span>
+            <p class="desc">TikTok Shop blocked 37 million listings in 2024. Scan yours for compliance before publishing &mdash; free Chrome extension.</p>
+            <div class="featured-tags">
+              <span class="ftag">TikTok Shop</span><span class="ftag">Compliance</span><span class="ftag">AI</span>
+            </div>
+            <a href="products/tiktokshopguard.html" class="btn btn-ghost" aria-label="Learn more about TikTok Shop Guard">Learn More</a>
           </div>
-          <p class="desc">TikTok Shop blocked 37 million listings in 2024. Scan yours for compliance before publishing — avoid rejections and protect your seller account. Free Chrome extension.</p>
-          <div class="featured-tags">
-            <span class="ftag">TikTok Shop</span><span class="ftag">Compliance</span><span class="ftag">Chrome Extension</span><span class="ftag">AI</span>
-          </div>
-          <a href="products/tiktokshopguard.html" class="btn btn-ghost" aria-label="Learn more about TikTok Shop Guard">Learn More</a>
         </article>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 4. TRADING -->
+    <!-- TRADING -->
     <section class="section" id="trading" aria-labelledby="trading-title">
       <div class="section-header reveal">
         <div class="section-label">Trading &amp; Quant</div>
         <h2 class="section-title" id="trading-title">Tools for serious traders</h2>
-        <p class="section-desc">Indicators, analytics, journals, and education -- built by a trader, for traders.</p>
+        <p class="section-desc">Indicators, analytics, journals, and education &mdash; built by a trader, for traders.</p>
       </div>
       <div class="trading-content">
         <div class="trading-features reveal">
-          <div class="trading-feature tf-indigo card-shine">
+          <div class="trading-feature">
             <div class="trading-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
             <div>
               <h4>PineScript V6 Indicators</h4>
-              <p>Custom TradingView indicators for futures and forex. Precision entries, exits, and risk management overlays built on proven logic.</p>
+              <p>Custom TradingView indicators for futures and forex. Precision entries, exits, and risk management overlays.</p>
             </div>
           </div>
-          <div class="trading-feature tf-green card-shine">
+          <div class="trading-feature">
             <div class="trading-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
             <div>
               <h4>AI Trading Journal</h4>
-              <p>Automated journalling with trade import, pattern recognition, and AI-driven performance insights. Stop guessing, start learning.</p>
+              <p>Automated journalling with trade import, pattern recognition, and AI-driven performance insights.</p>
             </div>
           </div>
-          <div class="trading-feature tf-amber card-shine">
+          <div class="trading-feature">
             <div class="trading-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
             </div>
             <div>
               <h4>Prop Firm Dashboard</h4>
-              <p>Track challenge progress across multiple prop firms. Real-time drawdown monitoring, rule tracking, and performance analytics.</p>
+              <p>Track challenge progress across multiple prop firms. Real-time drawdown monitoring, rule tracking, and analytics.</p>
             </div>
           </div>
-          <div class="trading-feature tf-cyan card-shine">
+          <div class="trading-feature">
             <div class="trading-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
             </div>
             <div>
-              <h4>Forex Calculator Extension</h4>
-              <p>Instant position sizing, pip value, and risk calculations right in your browser. Supports all major and exotic pairs.</p>
+              <h4>Forex Calculator</h4>
+              <p>7 calculators &mdash; pip value, lot size, margin, profit/loss, swap, position size, risk/reward. Free web app.</p>
             </div>
           </div>
-          <div class="trading-feature tf-rose card-shine">
+          <div class="trading-feature">
             <div class="trading-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
             </div>
             <div>
               <h4>Quant Signals &amp; Education</h4>
-              <p>Order flow analysis, cross-exchange latency strategies, and educational content. YouTube channel with indicator tutorials and market breakdowns.</p>
+              <p>Order flow analysis, cross-exchange latency strategies, and educational content via YouTube.</p>
             </div>
           </div>
-          <a href="#trading" class="trading-link" aria-label="View all trading tools">
-            View all trading tools
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
         </div>
         <div class="trading-visual reveal reveal-stagger-2">
           <div class="trading-card-stack">
-            <div class="t-card card-shine">
+            <div class="t-card">
               <div class="t-card-header">
-                <div class="t-card-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+                <div class="t-card-icon" style="background:var(--accent-soft);color:var(--accent);">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                 </div>
                 <div class="t-card-title">Indicator Suite</div>
                 <span class="t-card-tag tag-soon">Coming Soon</span>
               </div>
-              <div class="t-card-body">Multi-timeframe trend analysis, order blocks, liquidity zones, and momentum filters -- all configurable via TradingView settings panel.</div>
+              <div class="t-card-body">Multi-timeframe trend analysis, order blocks, liquidity zones, and momentum filters.</div>
               <div class="mini-chart" aria-hidden="true">
-                <div class="bar" style="height:20%;background:#7c3aed;"></div>
-                <div class="bar" style="height:35%;background:#7c3aed;"></div>
-                <div class="bar" style="height:25%;background:#6d28d9;"></div>
-                <div class="bar" style="height:60%;background:#3b82f6;"></div>
-                <div class="bar" style="height:45%;background:#3b82f6;"></div>
-                <div class="bar" style="height:80%;background:#06b6d4;"></div>
-                <div class="bar" style="height:55%;background:#06b6d4;"></div>
-                <div class="bar" style="height:90%;background:#06b6d4;"></div>
-                <div class="bar" style="height:70%;background:#22d3ee;"></div>
-                <div class="bar" style="height:95%;background:#22d3ee;"></div>
-                <div class="bar" style="height:75%;background:#10b981;"></div>
-                <div class="bar" style="height:100%;background:#10b981;"></div>
+                <div class="bar" style="height:20%"></div>
+                <div class="bar" style="height:35%"></div>
+                <div class="bar" style="height:25%"></div>
+                <div class="bar" style="height:60%"></div>
+                <div class="bar" style="height:45%"></div>
+                <div class="bar" style="height:80%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:90%"></div>
+                <div class="bar" style="height:70%"></div>
+                <div class="bar" style="height:95%"></div>
+                <div class="bar" style="height:75%"></div>
+                <div class="bar" style="height:100%"></div>
               </div>
             </div>
-            <div class="t-card card-shine">
+            <div class="t-card">
               <div class="t-card-header">
-                <div class="t-card-icon" style="background:rgba(245,158,11,0.12);color:var(--amber);">
+                <div class="t-card-icon" style="background:rgba(245,158,11,0.1);color:var(--amber);">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="14" rx="2"/><path d="M1 10h22"/><line x1="6" y1="14" x2="8" y2="14"/></svg>
                 </div>
                 <div class="t-card-title">Prop Firm Tracker</div>
                 <span class="t-card-tag tag-soon">Coming Soon</span>
               </div>
-              <div class="t-card-body">Track your evaluation progress across FTMO, TopStep, Apex, and more. See daily P&amp;L, drawdown limits, and days remaining at a glance.</div>
+              <div class="t-card-body">Track evaluation progress across FTMO, TopStep, Apex, and more. Daily P&amp;L, drawdown limits, days remaining.</div>
             </div>
-            <div class="t-card card-shine">
+            <div class="t-card">
               <div class="t-card-header">
-                <div class="t-card-icon" style="background:rgba(244,63,94,0.12);color:var(--rose);">
+                <div class="t-card-icon" style="background:rgba(244,63,94,0.1);color:var(--rose);">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
                 </div>
                 <div class="t-card-title">YouTube Channel</div>
                 <span class="t-card-tag tag-dev">Building</span>
               </div>
-              <div class="t-card-body">Indicator walkthroughs, market analysis, trade recaps, and quant strategy deep dives. Subscribe for weekly content.</div>
+              <div class="t-card-body">Indicator walkthroughs, market analysis, trade recaps, and quant strategy deep dives.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 5. ALL PRODUCTS GRID -->
+    <!-- ALL PRODUCTS GRID -->
     <section class="section" id="products" aria-labelledby="products-title">
       <div class="section-header reveal">
         <div class="section-label">Products</div>
@@ -648,7 +576,7 @@
 
       <div class="product-category-label reveal">SaaS Platforms</div>
       <div class="products-grid">
-        <article class="product-card card-shine reveal reveal-stagger-1" data-color="green">
+        <article class="product-card reveal reveal-stagger-1">
           <div class="product-card-top">
             <div class="product-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -656,10 +584,10 @@
             <span class="product-status status-live">Live</span>
           </div>
           <h3>BasisGuard</h3>
-          <p class="product-desc">Your 1099-DA is missing cost basis. BasisGuard detects the errors and generates corrected Form 8949 in minutes. One-time fee, no subscriptions.</p>
+          <p class="product-desc">Your 1099-DA is missing cost basis. BasisGuard detects the errors and generates corrected Form 8949 in minutes.</p>
           <div class="product-tags"><span class="ptag">1099-DA</span><span class="ptag">Form 8949</span><span class="ptag">Cost Basis</span></div>
         </article>
-        <article class="product-card card-shine reveal reveal-stagger-2" data-color="cyan">
+        <article class="product-card reveal reveal-stagger-2">
           <div class="product-card-top">
             <div class="product-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -667,10 +595,10 @@
             <span class="product-status status-live">Live</span>
           </div>
           <h3>MegaScan</h3>
-          <p class="product-desc">Token screener and analytics dashboard for the MegaETH ecosystem. Real-time scanning, filtering, and tracking of new token launches.</p>
+          <p class="product-desc">Token screener and analytics dashboard for the MegaETH ecosystem. Real-time scanning and tracking.</p>
           <div class="product-tags"><span class="ptag">Crypto</span><span class="ptag">Analytics</span><span class="ptag">DeFi</span></div>
         </article>
-        <article class="product-card card-shine reveal reveal-stagger-3" data-color="amber">
+        <article class="product-card reveal reveal-stagger-3">
           <div class="product-card-top">
             <div class="product-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -678,14 +606,14 @@
             <span class="product-status status-live">Live</span>
           </div>
           <h3>LandlordShield</h3>
-          <p class="product-desc">Three deadlines. One dashboard. Track MTD, Renters' Rights Act, and EPC C compliance. 864,000 landlords affected &mdash; only 30% are ready.</p>
+          <p class="product-desc">Three deadlines. One dashboard. Track MTD, Renters' Rights Act, and EPC C compliance.</p>
           <div class="product-tags"><span class="ptag">MTD</span><span class="ptag">Renters' Rights</span><span class="ptag">EPC</span></div>
         </article>
       </div>
 
       <div class="product-category-label reveal">Chrome Extensions</div>
       <div class="products-grid">
-        <article class="product-card card-shine reveal reveal-stagger-1" data-color="purple">
+        <article class="product-card reveal reveal-stagger-1">
           <div class="product-card-top">
             <div class="product-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
@@ -693,10 +621,10 @@
             <span class="product-status status-live">Live</span>
           </div>
           <h3>ZeroCloudAI</h3>
-          <p class="product-desc">Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Privacy-first AI assistance for everyday workflows.</p>
+          <p class="product-desc">Chrome extension providing AI capabilities directly in your browser with zero cloud dependency. Privacy-first.</p>
           <div class="product-tags"><span class="ptag">AI</span><span class="ptag">Extension</span><span class="ptag">Privacy</span></div>
         </article>
-        <article class="product-card card-shine reveal reveal-stagger-2" data-color="rose">
+        <article class="product-card reveal reveal-stagger-2">
           <div class="product-card-top">
             <div class="product-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
@@ -704,15 +632,13 @@
             <span class="product-status status-live">Live</span>
           </div>
           <h3>TikTok Shop Guard</h3>
-          <p class="product-desc">37M listings blocked in 2024. Scan yours for compliance before publishing. Free Chrome extension with AI-powered fix suggestions.</p>
+          <p class="product-desc">37M listings blocked in 2024. Scan yours for compliance before publishing. Free Chrome extension with AI-powered fixes.</p>
           <div class="product-tags"><span class="ptag">TikTok Shop</span><span class="ptag">Compliance</span><span class="ptag">Chrome Extension</span></div>
         </article>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 6. MOBILE APPS -->
+    <!-- MOBILE APPS -->
     <section class="section" id="apps" aria-labelledby="apps-title">
       <div class="section-header reveal">
         <div class="section-label">Mobile Apps</div>
@@ -734,57 +660,57 @@
           </a>
         </div>
         <div class="apps-scroll-container reveal reveal-stagger-2">
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(16,185,129,0.12);color:var(--green);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(16,185,129,0.1);color:var(--green);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
             <h4>FastTrack</h4>
             <span>Nutrition</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(168,85,247,0.1);color:var(--purple);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <h4>Sabr</h4>
             <span>Lifestyle</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(6,182,212,0.12);color:var(--cyan);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(6,182,212,0.1);color:var(--cyan);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
             </div>
             <h4>AquaFlow</h4>
             <span>Hydration</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(244,63,94,0.12);color:var(--rose);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(244,63,94,0.1);color:var(--rose);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
             <h4>StepUp</h4>
             <span>Fitness</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(168,85,247,0.12);color:var(--purple);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(168,85,247,0.1);color:var(--purple);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </div>
             <h4>DreamScape</h4>
             <span>Sleep</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(245,158,11,0.12);color:var(--amber);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(245,158,11,0.1);color:var(--amber);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
             </div>
             <h4>VoiceVault</h4>
             <span>Recorder</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(16,185,129,0.12);color:var(--green);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:rgba(16,185,129,0.1);color:var(--green);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             </div>
             <h4>TaskFlow</h4>
             <span>Productivity</span>
           </div>
-          <div class="app-mini-card card-shine">
-            <div class="app-mini-icon" style="background:rgba(124,58,237,0.12);color:var(--accent-light);">
+          <div class="app-mini-card">
+            <div class="app-mini-icon" style="background:var(--accent-soft);color:var(--accent);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
             <h4>BudgetWise</h4>
@@ -794,8 +720,6 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
     <!-- HIRE / BUILD YOUR APP -->
     <section class="hire-section" id="hire" aria-labelledby="hire-title">
       <div class="section-header center reveal">
@@ -804,7 +728,6 @@
         <p class="section-desc">27+ apps shipped to Google Play. From concept to store listing &mdash; get a free quote or hire directly on Upwork.</p>
       </div>
       <div class="hire-grid">
-        <!-- FORM -->
         <div class="hire-form-card reveal reveal-stagger-1">
           <h3>Get a Free Quote</h3>
           <p class="form-subtitle">Tell me about your project and I'll get back to you within 24 hours.</p>
@@ -840,11 +763,11 @@
                 <label for="hire-budget">Budget Range</label>
                 <select id="hire-budget" name="budget" required>
                   <option value="" disabled selected>Select range</option>
-                  <option value="Under £500">Under &pound;500</option>
-                  <option value="£500 - £1,000">&pound;500 &ndash; &pound;1,000</option>
-                  <option value="£1,000 - £3,000">&pound;1,000 &ndash; &pound;3,000</option>
-                  <option value="£3,000 - £5,000">&pound;3,000 &ndash; &pound;5,000</option>
-                  <option value="£5,000+">&pound;5,000+</option>
+                  <option value="Under £500">Under £500</option>
+                  <option value="£500 - £1,000">£500 – £1,000</option>
+                  <option value="£1,000 - £3,000">£1,000 – £3,000</option>
+                  <option value="£3,000 - £5,000">£3,000 – £5,000</option>
+                  <option value="£5,000+">£5,000+</option>
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
@@ -864,7 +787,6 @@
           </div>
         </div>
 
-        <!-- UPWORK -->
         <div class="hire-upwork-card reveal reveal-stagger-2">
           <h3>Hire on Upwork</h3>
           <p class="upwork-subtitle">Prefer Upwork's escrow and payment protection? Hire me directly.</p>
@@ -898,63 +820,61 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
     <!-- WEB SERVICES -->
     <section class="web-services-section" id="web-services" aria-labelledby="ws-title">
       <div class="section-header center reveal">
-        <div class="section-label" style="color:#3b82f6;">Web Services</div>
+        <div class="section-label">Web Services</div>
         <h2 class="section-title" id="ws-title">Grow your business online</h2>
-        <p class="section-desc">From building your website to getting it ranking on Google &mdash; we handle the full digital presence so you can focus on your business.</p>
+        <p class="section-desc">From building your website to getting it ranking on Google &mdash; we handle the full digital presence.</p>
       </div>
 
       <div class="ws-grid">
-        <div class="ws-card card-shine reveal reveal-stagger-1">
+        <div class="ws-card reveal reveal-stagger-1">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <h3>Website Design &amp; Build</h3>
-          <p>Custom, responsive websites built from scratch. Fast, modern, and designed to convert visitors into customers.</p>
-          <span class="ws-tag">From &pound;500</span>
+          <p>Custom, responsive websites built from scratch. Fast, modern, and designed to convert.</p>
+          <span class="ws-tag">From £500</span>
         </div>
-        <div class="ws-card card-shine reveal reveal-stagger-2">
+        <div class="ws-card reveal reveal-stagger-2">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
           </div>
           <h3>SEO Optimisation</h3>
-          <p>On-page SEO, technical audits, keyword research, and content strategy to get your site ranking higher on Google.</p>
+          <p>On-page SEO, technical audits, keyword research, and content strategy.</p>
           <span class="ws-tag">Monthly Retainer</span>
         </div>
-        <div class="ws-card card-shine reveal reveal-stagger-3">
+        <div class="ws-card reveal reveal-stagger-3">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
           </div>
           <h3>Google Ads Management</h3>
-          <p>PPC campaigns that drive real leads. Keyword targeting, ad copy, bid management, and ongoing optimisation.</p>
+          <p>PPC campaigns that drive real leads. Keyword targeting, ad copy, and bid management.</p>
           <span class="ws-tag">Monthly Retainer</span>
         </div>
-        <div class="ws-card card-shine reveal reveal-stagger-4">
+        <div class="ws-card reveal reveal-stagger-4">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
           <h3>Page Speed &amp; Core Web Vitals</h3>
-          <p>Performance audits and fixes. Faster load times, better mobile scores, and improved user experience.</p>
+          <p>Performance audits and fixes. Faster load times and better mobile scores.</p>
           <span class="ws-tag">One-Off</span>
         </div>
-        <div class="ws-card card-shine reveal reveal-stagger-5">
+        <div class="ws-card reveal reveal-stagger-5">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           </div>
           <h3>Content &amp; Copywriting</h3>
-          <p>SEO-optimised landing pages, blog content, and product descriptions that rank and convert.</p>
+          <p>SEO-optimised landing pages, blog content, and product descriptions.</p>
           <span class="ws-tag">Per Project</span>
         </div>
-        <div class="ws-card card-shine reveal reveal-stagger-6">
+        <div class="ws-card reveal reveal-stagger-6">
           <div class="ws-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
           </div>
           <h3>Analytics &amp; Reporting</h3>
-          <p>Google Analytics, Search Console, and Cloudflare setup. Monthly reports showing what's working and what to improve.</p>
+          <p>Google Analytics, Search Console, and Cloudflare setup with monthly reports.</p>
           <span class="ws-tag">Monthly Retainer</span>
         </div>
       </div>
@@ -962,7 +882,7 @@
       <div class="ws-cta-row">
         <div class="ws-cta-card reveal reveal-stagger-1">
           <h3>Get a Free Web Consultation</h3>
-          <p>Tell me about your business and I'll put together a plan to improve your online presence. No obligation.</p>
+          <p>Tell me about your business and I'll put together a plan to improve your online presence.</p>
           <a href="mailto:contact@avantware.uk?subject=Web Services Enquiry" class="btn-blue">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Email for Free Consultation
@@ -970,7 +890,7 @@
         </div>
         <div class="ws-cta-card reveal reveal-stagger-2">
           <h3>Hire on Upwork</h3>
-          <p>Prefer the security of Upwork's platform? View my profile and send a project invite directly.</p>
+          <p>Prefer the security of Upwork's platform? View my profile and send a project invite.</p>
           <a href="https://www.upwork.com/freelancers/~0178e61465b19c1413" class="btn-upwork" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
             View Profile on Upwork
@@ -979,45 +899,43 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <!-- 7. ABOUT -->
+    <!-- ABOUT -->
     <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="section" style="padding-top:7rem;padding-bottom:7rem;">
+      <div class="section" style="padding-top:0;padding-bottom:0;">
         <div class="section-header reveal">
           <div class="section-label">About</div>
           <h2 class="section-title" id="about-title">Built in Liverpool</h2>
         </div>
         <div class="about-grid">
           <div class="about-text reveal">
-            <p>Avantware is an indie software studio based in Liverpool, UK. We research underserved markets with real pain points and regulatory pressure -- then build focused, well-designed tools to solve them before anyone else does.</p>
-            <p>Every product targets a validated gap. We don't build where incumbents already dominate. Instead, we find the spaces where timing, regulation, or market shifts create genuine demand -- and we move fast to fill them.</p>
-            <p>Our stack spans web applications, Chrome extensions, mobile apps, and trading tools -- always with a bias toward problems where data-driven analysis reveals real opportunity.</p>
+            <p>Avantware is an indie software studio based in Liverpool, UK. We research underserved markets with real pain points and regulatory pressure &mdash; then build focused, well-designed tools to solve them before anyone else does.</p>
+            <p>Every product targets a validated gap. We don't build where incumbents already dominate. Instead, we find the spaces where timing, regulation, or market shifts create genuine demand &mdash; and we move fast to fill them.</p>
+            <p>Our stack spans web applications, Chrome extensions, mobile apps, and trading tools &mdash; always with a bias toward problems where data-driven analysis reveals real opportunity.</p>
           </div>
           <div class="values-grid reveal reveal-stagger-2">
             <div class="value-item">
-              <div class="value-icon vi-accent">
+              <div class="value-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
               <h4>Gap-First</h4>
               <p>Validated market gaps only. No building in crowded spaces.</p>
             </div>
             <div class="value-item">
-              <div class="value-icon vi-amber">
+              <div class="value-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
               <h4>Ship Fast</h4>
               <p>MVPs in weeks. Real user feedback drives everything.</p>
             </div>
             <div class="value-item">
-              <div class="value-icon vi-cyan">
+              <div class="value-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
               </div>
               <h4>Design Matters</h4>
               <p>Clean interfaces that respect users' time. No bloat.</p>
             </div>
             <div class="value-item">
-              <div class="value-icon vi-green">
+              <div class="value-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               </div>
               <h4>Privacy Default</h4>
@@ -1028,7 +946,7 @@
       </div>
     </section>
 
-    <!-- 8. CTA / CONTACT -->
+    <!-- CTA / CONTACT -->
     <section class="cta-section" id="contact" aria-labelledby="cta-title">
       <h2 class="reveal" id="cta-title">Let's build something</h2>
       <p class="reveal reveal-stagger-1">Questions, partnerships, product feedback, or just want to say hello.</p>
@@ -1040,7 +958,7 @@
 
   </main>
 
-  <!-- 9. FOOTER -->
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-top">
@@ -1130,11 +1048,9 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="js/shared.min.js" defer></script>
+  <script src="js/shared.js" defer></script>
   <script>
-    // ===== HOMEPAGE-SPECIFIC JS =====
-
-    // Counter animation (easeOutExpo)
+    // Counter animation
     function easeOutExpo(t) {
       return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
     }
@@ -1168,132 +1084,6 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-count]').forEach(function(el) { counterObs.observe(el); });
-
-    // Particle Canvas
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var canvas = document.getElementById('hero-canvas');
-    if (canvas && !prefersReducedMotion) {
-      var ctx = canvas.getContext('2d');
-      var particles = [];
-      var animId = null;
-
-      function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-      }
-
-      function createParticles() {
-        particles = [];
-        var colors = ['124,58,237', '59,130,246', '6,182,212', '168,85,247'];
-        var count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
-        for (var i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            size: Math.random() * 1.5 + 0.5,
-            opacity: Math.random() * 0.4 + 0.1,
-            color: colors[Math.floor(Math.random() * colors.length)]
-          });
-        }
-      }
-
-      function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(function(p, i) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
-          ctx.fill();
-          for (var j = i + 1; j < particles.length; j++) {
-            var dx = particles[j].x - p.x;
-            var dy = particles[j].y - p.y;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 120) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(124,58,237,' + (0.08 * (1 - dist / 120)) + ')';
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-        });
-        animId = requestAnimationFrame(drawParticles);
-      }
-
-      resizeCanvas();
-      createParticles();
-      drawParticles();
-      window.addEventListener('resize', function() { resizeCanvas(); createParticles(); });
-
-      // Pause particles when hero not visible
-      new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            if (!animId) drawParticles();
-          } else {
-            cancelAnimationFrame(animId);
-            animId = null;
-          }
-        });
-      }, { threshold: 0.01 }).observe(document.getElementById('hero'));
-    }
-
-    // Hero Floaters Parallax
-    var heroFloaters = document.getElementById('heroFloaters');
-    if (heroFloaters && !prefersReducedMotion) {
-      var lastScrollY = 0;
-      var ticking = false;
-
-      function updateParallax() {
-        heroFloaters.style.transform = 'translateY(' + (lastScrollY * 0.3) + 'px)';
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function() {
-        lastScrollY = window.scrollY;
-        if (!ticking) {
-          requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      });
-    }
-
-    // Hire Form: Web3Forms submission
-    var hireForm = document.getElementById('hireForm');
-    var formSuccess = document.getElementById('formSuccess');
-    if (hireForm) {
-      hireForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var submitBtn = hireForm.querySelector('button[type="submit"]');
-        var btnText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31" stroke-dashoffset="10"/></svg> Sending...';
-        var formData = new FormData(hireForm);
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData
-        }).then(function(res) { return res.json(); }).then(function(data) {
-          if (data.success) {
-            hireForm.style.display = 'none';
-            formSuccess.style.display = 'block';
-          }
-        }).catch(function() {
-          submitBtn.disabled = false;
-          submitBtn.textContent = btnText;
-          alert('Something went wrong. Please email contact@avantware.uk directly.');
-        });
-      });
-    }
   </script>
-  <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 </body>
 </html>
