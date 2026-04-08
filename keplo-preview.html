@@ -1,0 +1,408 @@
+<!--
+  aesthetic_dna: Editorial Brutalism, Financial Terminal, High-Contrast Structural
+  ui_paradigm: Seamless 1px Grid Bento, Macro-Typography, Monospace Data-Density
+  palette_choice: Deep Space Black (#000), Off-White (#EEE), Safety Orange (#FF4A00), Graphite Border (#222)
+-->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth selection:bg-orange-500 selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keplo | Software Engineering & AI Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        black: '#050505',
+                        brand: {
+                            orange: '#FF4A00',
+                            orange_hover: '#E04100'
+                        },
+                        ui: {
+                            line: '#2A2A2A',
+                            surface: '#0A0A0A',
+                            text: '#D1D5DB'
+                        }
+                    },
+                    gridTemplateColumns: {
+                        'bento': 'repeat(4, minmax(0, 1fr))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #D1D5DB; }
+
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .seamless-grid {
+            display: grid;
+            gap: 1px;
+            background-color: #2A2A2A;
+            border: 1px solid #2A2A2A;
+        }
+        .seamless-grid > div, .seamless-grid > a {
+            background-color: #050505;
+        }
+
+        .group:hover .target-orange { color: #FF4A00; }
+        .group:hover .target-border-orange { border-color: #FF4A00; }
+        .group:hover .target-bg-orange { background-color: #FF4A00; color: #000; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; border-left: 1px solid #2A2A2A; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF4A00; }
+
+        .marquee-container { overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="antialiased font-sans min-h-screen flex flex-col relative w-full overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-ui-line">
+        <div class="max-w-[1600px] mx-auto w-full flex justify-between items-center h-16 px-4 md:px-8">
+            <div class="flex items-center gap-8">
+                <a href="keplo-preview.html" class="font-display font-bold text-2xl tracking-tighter text-white uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-brand-orange block"></span> Keplo
+                </a>
+                <div class="hidden md:flex gap-6 font-mono text-xs text-gray-500 uppercase tracking-widest mt-1">
+                    <a href="ai-agents.html" class="hover:text-white transition-colors">AI Agents</a>
+                    <a href="fundedkit.html" class="hover:text-white transition-colors">FundedKit</a>
+                    <a href="development.html" class="hover:text-white transition-colors">Development</a>
+                    <a href="#about" class="hover:text-white transition-colors">About</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <span class="hidden lg:block font-mono text-[10px] text-gray-600 border border-ui-line px-2 py-1">SYS_STATUS: ONLINE</span>
+                <a href="#contact" class="group flex items-center font-mono text-xs uppercase tracking-wider border border-ui-line hover:border-brand-orange transition-all bg-black text-white px-4 py-2 hover:bg-brand-orange hover:text-black">
+                    Get In Touch <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-16">
+
+        <!-- HERO -->
+        <section class="relative min-h-[85vh] flex flex-col justify-end pb-24 px-4 md:px-8 max-w-[1600px] mx-auto bg-grid border-l border-r border-ui-line mt-8">
+
+            <div class="absolute top-8 right-8 text-right font-mono text-xs text-gray-500 hidden md:block leading-relaxed">
+                <div>LOC: 53.4084 N, 2.9916 W</div>
+                <div>BASE: LIVERPOOL, UK</div>
+                <div>ENTITY: LTD CORP</div>
+            </div>
+
+            <div class="max-w-5xl">
+                <div class="mb-6 flex items-center gap-3 font-mono text-sm text-brand-orange">
+                    <i class="ph-fill ph-check-circle"></i> SYSTEMS OPERATIONAL
+                </div>
+
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9] uppercase mb-8">
+                    We Build <br>
+                    <span class="text-gray-500">Software That</span> <br>
+                    Ships.
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-8 border-t border-ui-line items-end">
+                    <p class="font-sans text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-lg">
+                        AI agents, trading infrastructure, and custom software — engineered in Liverpool, deployed worldwide.
+                    </p>
+                    <div class="flex flex-col gap-2 font-mono text-xs text-gray-600">
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>AI AGENTS:</span> <span class="text-brand-orange">LIVE</span>
+                        </div>
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>FUNDEDKIT:</span> <span class="text-white">DEPLOYED</span>
+                        </div>
+                        <div class="flex justify-between pb-1">
+                            <span>DEV SERVICES:</span> <span class="text-brand-orange">ACCEPTING CLIENTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="border-y border-ui-line bg-black py-3 marquee-container font-mono text-xs uppercase tracking-widest text-gray-500 flex items-center">
+            <div class="marquee-content flex gap-8">
+                <span>/// KEPLO LTD</span>
+                <span>/// DINELINE AI AGENTS</span>
+                <span>/// FUNDEDKIT LIVE</span>
+                <span>/// CUSTOM DEVELOPMENT</span>
+                <span>/// LIVERPOOL UK</span>
+                <span>/// NOW ACCEPTING CLIENTS</span>
+                <span>/// KEPLO LTD</span>
+                <span>/// DINELINE AI AGENTS</span>
+                <span>/// FUNDEDKIT LIVE</span>
+                <span>/// CUSTOM DEVELOPMENT</span>
+                <span>/// LIVERPOOL UK</span>
+                <span>/// NOW ACCEPTING CLIENTS</span>
+            </div>
+        </div>
+
+        <!-- WHAT WE DO — BENTO GRID -->
+        <section id="products" class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-l border-r border-ui-line">
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">01</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">What We Build</h2>
+                </div>
+                <p class="font-mono text-sm text-gray-500 max-w-xs">Live products and services currently in production — generating revenue, solving problems.</p>
+            </div>
+
+            <div class="seamless-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-h-[600px]">
+
+                <!-- DINELINE — AI Agents (Large card) -->
+                <a href="ai-agents.html" class="group relative flex flex-col justify-between p-8 md:col-span-2 lg:col-span-1 lg:row-span-2 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 font-mono text-xs text-gray-600 transition-colors target-orange">AI_AGENT</div>
+                    <div class="z-10">
+                        <div class="w-12 h-12 bg-gray-900 border border-ui-line flex items-center justify-center mb-6 target-border-orange transition-colors">
+                            <i class="ph ph-robot text-2xl text-white"></i>
+                        </div>
+                        <span class="inline-block px-2 py-1 bg-brand-orange font-mono text-[10px] text-black w-max font-bold mb-4">FLAGSHIP PRODUCT</span>
+                        <h3 class="font-display text-3xl font-bold text-white mb-3">Dineline</h3>
+                        <p class="text-gray-400 max-w-md font-light leading-relaxed">AI-powered phone agents that handle calls, bookings, and customer inquiries 24/7. Currently deployed across UK restaurants and service businesses.</p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-dashed border-gray-800">
+                        <div class="flex justify-between items-center">
+                            <div class="font-mono text-xs text-gray-600">
+                                <div class="flex justify-between gap-6 mb-1"><span>CALLS HANDLED:</span> <span class="text-white">24/7</span></div>
+                                <div class="flex justify-between gap-6"><span>STATUS:</span> <span class="text-brand-orange">LIVE</span></div>
+                            </div>
+                            <i class="ph ph-arrow-up-right text-xl text-gray-600 group-hover:text-brand-orange transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- FUNDEDKIT -->
+                <a href="fundedkit.html" class="group relative flex flex-col justify-between p-8 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 font-mono text-xs text-gray-600 transition-colors target-orange">FINTECH</div>
+                    <div>
+                        <div class="w-10 h-10 bg-gray-900 border border-ui-line flex items-center justify-center mb-6">
+                            <i class="ph ph-chart-line-up text-xl text-white group-hover:text-brand-orange transition-colors"></i>
+                        </div>
+                        <span class="inline-block px-2 py-1 bg-gray-900 border border-ui-line font-mono text-[10px] text-gray-400 mb-4">PROP TRADING</span>
+                        <h3 class="font-display text-2xl font-bold text-white mb-2">FundedKit</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">The most comprehensive prop firm comparison platform. Analyse payout rules, drawdown limits, and evaluation metrics across every major firm.</p>
+                    </div>
+                    <div class="mt-6 flex justify-between items-end">
+                        <div class="font-mono text-xs text-gray-600">
+                            <div class="flex justify-between gap-4"><span>FIRMS TRACKED:</span> <span class="text-white">50+</span></div>
+                        </div>
+                        <i class="ph ph-arrow-up-right text-gray-600 group-hover:text-brand-orange transition-colors duration-300"></i>
+                    </div>
+                </a>
+
+                <!-- WEB & APP DEVELOPMENT -->
+                <a href="development.html" class="group relative flex flex-col justify-between p-8 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 font-mono text-xs text-gray-600 transition-colors target-orange">SERVICE</div>
+                    <div>
+                        <div class="w-10 h-10 bg-gray-900 border border-ui-line flex items-center justify-center mb-6">
+                            <i class="ph ph-code text-xl text-white group-hover:text-brand-orange transition-colors"></i>
+                        </div>
+                        <span class="inline-block px-2 py-1 bg-gray-900 border border-ui-line font-mono text-[10px] text-gray-400 mb-4">AGENCY</span>
+                        <h3 class="font-display text-2xl font-bold text-white mb-2">Web & App Development</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Custom websites, web apps, and mobile applications. From landing pages to full-stack platforms — built fast, built right.</p>
+                    </div>
+                    <div class="mt-6 flex justify-between items-end">
+                        <div class="flex flex-wrap gap-1">
+                            <span class="px-1.5 py-0.5 border border-ui-line text-[10px] font-mono text-gray-500">REACT</span>
+                            <span class="px-1.5 py-0.5 border border-ui-line text-[10px] font-mono text-gray-500">NEXT.JS</span>
+                            <span class="px-1.5 py-0.5 border border-ui-line text-[10px] font-mono text-gray-500">FLUTTER</span>
+                        </div>
+                        <i class="ph ph-arrow-up-right text-gray-600 group-hover:text-brand-orange transition-colors duration-300"></i>
+                    </div>
+                </a>
+
+                <!-- COMING SOON — Amazon / More -->
+                <div class="group relative flex flex-col justify-center items-center p-8 lg:col-span-2 overflow-hidden" style="background-color: #080808;">
+                    <div class="text-center">
+                        <div class="font-mono text-xs text-gray-600 mb-3 tracking-widest">PIPELINE</div>
+                        <p class="font-display text-xl text-gray-700 font-bold uppercase">More products shipping soon</p>
+                        <div class="flex justify-center gap-1 mt-4">
+                            <div class="w-1.5 h-1.5 bg-gray-800 rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-gray-800 rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-gray-800 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SERVICES DETAIL -->
+        <section id="services" class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line bg-[#080808]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                <div class="lg:col-span-4 flex flex-col items-start lg:sticky lg:top-24 h-max">
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">02</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2 mb-6">How We Work</h2>
+                    <p class="font-sans text-gray-400 mb-8 max-w-sm">Keplo builds products in-house and delivers solutions for clients. Three lanes, one standard of engineering.</p>
+                    <a href="#contact" class="hidden lg:flex items-center gap-2 font-mono text-sm text-brand-orange border-b border-brand-orange pb-1 hover:text-white hover:border-white transition-colors">
+                        START A PROJECT <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="lg:col-span-8 flex flex-col">
+
+                    <a href="ai-agents.html" class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/SRV_01</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3 group-hover:text-brand-orange transition-colors">AI Agent Deployment</h3>
+                            <p class="text-gray-400 font-light leading-relaxed mb-4 max-w-2xl">
+                                We build and deploy AI phone agents that answer calls, take bookings, and handle customer service — so businesses never miss a lead. Powered by Dineline.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">VOICE_AI</span>
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">24/7_COVERAGE</span>
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">BOOKING_INTEGRATION</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="development.html" class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/SRV_02</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3 group-hover:text-brand-orange transition-colors">Custom Software Development</h3>
+                            <p class="text-gray-400 font-light leading-relaxed mb-4 max-w-2xl">
+                                Websites, web applications, and mobile apps built from scratch. Performance-first architecture, clean code, rapid delivery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">REACT</span>
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">NEXT.JS</span>
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">FLUTTER</span>
+                                <span class="px-2 py-1 border border-ui-line text-xs font-mono text-gray-400">TAILWIND</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="fundedkit.html" class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/SRV_03</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3 group-hover:text-brand-orange transition-colors">Trading Infrastructure</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">
+                                FundedKit — the most detailed prop firm comparison tool on the market. Built for traders who need real data, not marketing fluff.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="max-w-[1600px] mx-auto border-t border-l border-r border-ui-line bg-black">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 seamless-grid">
+
+                <div class="p-8 lg:p-12 flex flex-col justify-center">
+                    <div class="font-mono text-sm text-gray-400 space-y-2 mb-8">
+                        <p>> root@keplo:~$ whoami</p>
+                        <p class="text-white">Keplo LTD.</p>
+                        <p>> root@keplo:~$ location --get</p>
+                        <p class="text-white">Liverpool, United Kingdom</p>
+                        <p>> root@keplo:~$ core_directive</p>
+                        <p class="text-white">Build software. Deploy AI. Ship fast.</p>
+                        <p>> root@keplo:~$ status<span class="inline-block w-2 h-4 bg-brand-orange align-middle ml-1 cursor-blink"></span></p>
+                    </div>
+                </div>
+
+                <div class="p-8 lg:p-12 lg:col-span-2 flex flex-col justify-center relative overflow-hidden" style="background-color: #0A0A0A;">
+                    <i class="ph ph-terminal-window absolute -right-12 -bottom-12 text-[200px] text-gray-900/50"></i>
+                    <div class="relative z-10">
+                        <span class="font-display font-bold text-5xl text-gray-800 leading-none">03</span>
+                        <h2 class="font-display text-4xl font-bold text-white uppercase mt-2 mb-6">The Keplo Standard</h2>
+                        <p class="font-sans text-xl text-gray-400 font-light leading-relaxed max-w-2xl">
+                            We're a software engineering company based in Liverpool. We build AI agents that handle business communications, trading tools that give traders an edge, and custom software for clients who need things done properly. No agencies, no middlemen — just engineers who ship.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="mt-auto border-t border-ui-line bg-black relative z-10">
+        <div class="max-w-[1600px] mx-auto border-l border-r border-ui-line grid grid-cols-1 lg:grid-cols-2">
+
+            <div class="p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-ui-line">
+                <h3 class="font-display text-2xl font-bold text-white uppercase mb-2">Start A Project</h3>
+                <p class="text-gray-500 font-mono text-sm mb-8">Need an AI agent, a website, or a custom app? Get in touch and we'll scope it out.</p>
+
+                <form class="flex w-full max-w-md group" onsubmit="event.preventDefault();">
+                    <div class="flex-grow flex items-center border border-ui-line bg-[#0A0A0A] focus-within:border-brand-orange transition-colors px-4 py-3">
+                        <span class="font-mono text-brand-orange mr-2">></span>
+                        <input type="email" placeholder="ENTER_EMAIL_ADDRESS" class="bg-transparent border-none outline-none w-full font-mono text-sm text-white placeholder-gray-700" required>
+                    </div>
+                    <button type="submit" class="bg-white text-black font-mono font-bold uppercase text-sm px-6 hover:bg-brand-orange hover:text-white transition-colors border-y border-r border-white hover:border-brand-orange">
+                        Send
+                    </button>
+                </form>
+            </div>
+
+            <div class="p-8 lg:p-16 flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-16">
+                    <div>
+                        <h4 class="font-mono text-xs text-gray-600 mb-4 uppercase">Direct Comm Link</h4>
+                        <a href="mailto:hello@keplo.co.uk" class="font-display text-3xl font-bold text-white hover:text-brand-orange transition-colors">hello@keplo.co.uk</a>
+                    </div>
+                    <div class="flex flex-col gap-2 font-mono text-xs text-gray-500 text-right">
+                        <a href="#" class="hover:text-white transition-colors">GITHUB</a>
+                        <a href="#" class="hover:text-white transition-colors">LINKEDIN</a>
+                        <a href="#" class="hover:text-white transition-colors">X</a>
+                    </div>
+                </div>
+
+                <div class="flex items-end justify-between">
+                    <div class="font-display font-bold text-6xl md:text-8xl tracking-tighter text-gray-900 leading-none select-none">
+                        KEPLO.
+                    </div>
+                    <div class="font-mono text-[10px] text-gray-600 uppercase text-right pb-2">
+                        &copy; 2026 Keplo LTD<br>
+                        All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth selection:bg-orange-500 selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundedKit — Prop Firm Analytics | Keplo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        black: '#050505',
+                        brand: { orange: '#FF4A00', orange_hover: '#E04100' },
+                        ui: { line: '#2A2A2A', surface: '#0A0A0A', text: '#D1D5DB' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #D1D5DB; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .seamless-grid { display: grid; gap: 1px; background-color: #2A2A2A; border: 1px solid #2A2A2A; }
+        .seamless-grid > div { background-color: #050505; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; border-left: 1px solid #2A2A2A; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF4A00; }
+    </style>
+</head>
+<body class="antialiased font-sans min-h-screen flex flex-col relative w-full overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-ui-line">
+        <div class="max-w-[1600px] mx-auto w-full flex justify-between items-center h-16 px-4 md:px-8">
+            <div class="flex items-center gap-8">
+                <a href="keplo-preview.html" class="font-display font-bold text-2xl tracking-tighter text-white uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-brand-orange block"></span> Keplo
+                </a>
+                <div class="hidden md:flex gap-6 font-mono text-xs text-gray-500 uppercase tracking-widest mt-1">
+                    <a href="ai-agents.html" class="hover:text-white transition-colors">AI Agents</a>
+                    <a href="fundedkit.html" class="text-white">FundedKit</a>
+                    <a href="development.html" class="hover:text-white transition-colors">Development</a>
+                    <a href="keplo-preview.html#about" class="hover:text-white transition-colors">About</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden lg:block font-mono text-[10px] text-gray-600 border border-ui-line px-2 py-1">SYS_STATUS: ONLINE</span>
+                <a href="#cta" class="group flex items-center font-mono text-xs uppercase tracking-wider border border-ui-line hover:border-brand-orange transition-all bg-black text-white px-4 py-2 hover:bg-brand-orange hover:text-black">
+                    Try FundedKit <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-16">
+
+        <!-- HERO -->
+        <section class="relative min-h-[80vh] flex flex-col justify-end pb-24 px-4 md:px-8 max-w-[1600px] mx-auto bg-grid border-l border-r border-ui-line mt-8">
+            <div class="absolute top-8 right-8 text-right font-mono text-xs text-gray-500 hidden md:block leading-relaxed">
+                <div>PRODUCT: FUNDEDKIT</div>
+                <div>TYPE: FINTECH_ANALYTICS</div>
+                <div>DATA: REAL-TIME</div>
+            </div>
+
+            <div class="max-w-5xl">
+                <div class="mb-6 flex items-center gap-3 font-mono text-sm text-brand-orange">
+                    <i class="ph-fill ph-chart-line-up"></i> DATA PIPELINE ACTIVE
+                </div>
+
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9] uppercase mb-8">
+                    Every Prop Firm. <br>
+                    <span class="text-gray-500">Every Rule.</span> <br>
+                    One Dashboard.
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-8 border-t border-ui-line items-end">
+                    <p class="font-sans text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-lg">
+                        FundedKit is the most comprehensive prop firm comparison platform. Compare payout structures, drawdown rules, evaluation costs, and fine print — before you risk a penny.
+                    </p>
+                    <div class="flex flex-col gap-2 font-mono text-xs text-gray-600">
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>FIRMS TRACKED:</span> <span class="text-white">50+</span>
+                        </div>
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>DATA POINTS:</span> <span class="text-white">200+ PER FIRM</span>
+                        </div>
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>UPDATES:</span> <span class="text-white">WEEKLY</span>
+                        </div>
+                        <div class="flex justify-between pb-1">
+                            <span>PRICE:</span> <span class="text-brand-orange">FREE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">01</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">Core Features</h2>
+                </div>
+            </div>
+
+            <div class="seamless-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="p-8">
+                    <i class="ph ph-scales text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Side-by-Side Comparison</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Compare any two firms head-to-head. Payout splits, profit targets, drawdown types, time limits — all in one view.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-funnel text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Smart Filters</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Filter by account size, instrument type, evaluation model, payout frequency, and more. Find the firm that matches your trading style.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-warning-circle text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Red Flag Detection</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Hidden fees, restrictive withdrawal clauses, and sketchy terms flagged automatically. We read the fine print so you don't have to.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-calculator text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Cost Calculator</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Calculate the true cost of each evaluation — including resets, add-ons, and monthly fees. Know exactly what you're paying.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-star text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">User Reviews</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Real trader reviews and payout proof. See which firms actually pay out — and which ones don't.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-bell-ringing text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Rule Change Alerts</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Get notified when firms change their rules, pricing, or terms. Stay ahead of changes that could affect your account.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="max-w-[1600px] mx-auto border-t border-l border-r border-ui-line bg-[#080808]">
+            <div class="seamless-grid grid-cols-2 lg:grid-cols-4">
+                <div class="p-8 md:p-12 text-center" style="background-color: #080808;">
+                    <div class="font-display text-4xl md:text-5xl font-bold text-white mb-2">50+</div>
+                    <div class="font-mono text-xs text-gray-500 uppercase">Firms Tracked</div>
+                </div>
+                <div class="p-8 md:p-12 text-center" style="background-color: #080808;">
+                    <div class="font-display text-4xl md:text-5xl font-bold text-white mb-2">200+</div>
+                    <div class="font-mono text-xs text-gray-500 uppercase">Data Points Per Firm</div>
+                </div>
+                <div class="p-8 md:p-12 text-center" style="background-color: #080808;">
+                    <div class="font-display text-4xl md:text-5xl font-bold text-white mb-2">Free</div>
+                    <div class="font-mono text-xs text-gray-500 uppercase">Core Access</div>
+                </div>
+                <div class="p-8 md:p-12 text-center" style="background-color: #080808;">
+                    <div class="font-display text-4xl md:text-5xl font-bold text-brand-orange mb-2">Live</div>
+                    <div class="font-mono text-xs text-gray-500 uppercase">Status</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO IT'S FOR -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 flex flex-col items-start lg:sticky lg:top-24 h-max">
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">02</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2 mb-6">Who It's For</h2>
+                    <p class="font-sans text-gray-400 mb-8 max-w-sm">Whether you're evaluating your first prop firm or managing multiple funded accounts, FundedKit saves you hours of research.</p>
+                </div>
+
+                <div class="lg:col-span-8 flex flex-col">
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/USR_01</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">New Traders</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Avoid scam firms and find the best evaluation for your skill level and budget. Start funded trading with confidence.</p>
+                        </div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/USR_02</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Experienced Traders</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Optimise your firm selection across multiple accounts. Find the best payout splits, lowest fees, and most flexible rules.</p>
+                        </div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/USR_03</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Trading Educators</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Recommend the right firms to your students with data, not opinions. Use FundedKit as a resource in your community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="max-w-[1600px] mx-auto border-t border-l border-r border-ui-line bg-black">
+            <div class="p-8 md:p-16 lg:p-24 text-center">
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter mb-6">Find Your Edge.</h2>
+                <p class="font-sans text-xl text-gray-400 font-light max-w-2xl mx-auto mb-10">Stop guessing which prop firm is right for you. Compare them all in one place — free.</p>
+                <a href="#" class="inline-flex items-center justify-center gap-2 font-mono text-sm uppercase tracking-wider bg-brand-orange text-white px-8 py-4 hover:bg-brand-orange_hover transition-colors">
+                    <i class="ph ph-arrow-square-out"></i> Launch FundedKit
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-ui-line bg-black relative z-10">
+        <div class="max-w-[1600px] mx-auto border-l border-r border-ui-line p-8 md:p-16 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div>
+                <a href="keplo-preview.html" class="font-display font-bold text-2xl tracking-tighter text-white uppercase flex items-center gap-2 mb-4">
+                    <span class="w-2 h-2 bg-brand-orange block"></span> Keplo
+                </a>
+                <div class="flex gap-6 font-mono text-xs text-gray-500">
+                    <a href="ai-agents.html" class="hover:text-white transition-colors">AI Agents</a>
+                    <a href="fundedkit.html" class="hover:text-white transition-colors">FundedKit</a>
+                    <a href="development.html" class="hover:text-white transition-colors">Development</a>
+                </div>
+            </div>
+            <div class="font-mono text-[10px] text-gray-600 uppercase text-right">
+                &copy; 2026 Keplo LTD<br>
+                All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

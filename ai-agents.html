@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth selection:bg-orange-500 selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents — Dineline | Keplo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        black: '#050505',
+                        brand: { orange: '#FF4A00', orange_hover: '#E04100' },
+                        ui: { line: '#2A2A2A', surface: '#0A0A0A', text: '#D1D5DB' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #D1D5DB; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .seamless-grid { display: grid; gap: 1px; background-color: #2A2A2A; border: 1px solid #2A2A2A; }
+        .seamless-grid > div { background-color: #050505; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; border-left: 1px solid #2A2A2A; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF4A00; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+        .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+    </style>
+</head>
+<body class="antialiased font-sans min-h-screen flex flex-col relative w-full overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-ui-line">
+        <div class="max-w-[1600px] mx-auto w-full flex justify-between items-center h-16 px-4 md:px-8">
+            <div class="flex items-center gap-8">
+                <a href="keplo-preview.html" class="font-display font-bold text-2xl tracking-tighter text-white uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-brand-orange block"></span> Keplo
+                </a>
+                <div class="hidden md:flex gap-6 font-mono text-xs text-gray-500 uppercase tracking-widest mt-1">
+                    <a href="ai-agents.html" class="text-white">AI Agents</a>
+                    <a href="fundedkit.html" class="hover:text-white transition-colors">FundedKit</a>
+                    <a href="development.html" class="hover:text-white transition-colors">Development</a>
+                    <a href="keplo-preview.html#about" class="hover:text-white transition-colors">About</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden lg:block font-mono text-[10px] text-gray-600 border border-ui-line px-2 py-1">SYS_STATUS: ONLINE</span>
+                <a href="#cta" class="group flex items-center font-mono text-xs uppercase tracking-wider border border-ui-line hover:border-brand-orange transition-all bg-black text-white px-4 py-2 hover:bg-brand-orange hover:text-black">
+                    Get A Demo <i class="ph ph-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-16">
+
+        <!-- HERO -->
+        <section class="relative min-h-[80vh] flex flex-col justify-end pb-24 px-4 md:px-8 max-w-[1600px] mx-auto bg-grid border-l border-r border-ui-line mt-8">
+            <div class="absolute top-8 right-8 text-right font-mono text-xs text-gray-500 hidden md:block leading-relaxed">
+                <div>PRODUCT: DYNALINE</div>
+                <div>TYPE: AI_VOICE_AGENT</div>
+                <div>AVAILABILITY: 24/7/365</div>
+            </div>
+
+            <div class="max-w-5xl">
+                <div class="mb-6 flex items-center gap-3 font-mono text-sm text-brand-orange">
+                    <span class="relative flex h-3 w-3">
+                        <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-orange"></span>
+                    </span>
+                    ACCEPTING CALLS NOW
+                </div>
+
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9] uppercase mb-8">
+                    Your AI <br>
+                    <span class="text-gray-500">Receptionist.</span> <br>
+                    Always On.
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-8 border-t border-ui-line items-end">
+                    <p class="font-sans text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-lg">
+                        Dineline is an AI phone agent that answers your business calls, takes bookings, handles inquiries, and never misses a customer. Built by Keplo, powered by advanced voice AI.
+                    </p>
+                    <div class="flex flex-col gap-2 font-mono text-xs text-gray-600">
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>RESPONSE TIME:</span> <span class="text-white">&lt; 1 SECOND</span>
+                        </div>
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>UPTIME:</span> <span class="text-white">99.9%</span>
+                        </div>
+                        <div class="flex justify-between border-b border-ui-line pb-1">
+                            <span>LANGUAGES:</span> <span class="text-white">ENGLISH</span>
+                        </div>
+                        <div class="flex justify-between pb-1">
+                            <span>BOOKING INTEGRATION:</span> <span class="text-brand-orange">ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">01</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">How It Works</h2>
+                </div>
+                <p class="font-mono text-sm text-gray-500 max-w-xs">Three steps. No complex setup. Live within 48 hours.</p>
+            </div>
+
+            <div class="seamless-grid grid-cols-1 md:grid-cols-3">
+                <div class="p-8 md:p-12">
+                    <div class="font-display text-6xl font-bold text-gray-800 mb-6">01</div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">We Learn Your Business</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">We map your services, pricing, FAQs, and booking flow. The AI agent is trained specifically on your business — not generic scripts.</p>
+                </div>
+                <div class="p-8 md:p-12">
+                    <div class="font-display text-6xl font-bold text-gray-800 mb-6">02</div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">We Build & Test</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Your AI agent is configured, tested with real scenarios, and fine-tuned until it handles every call the way you would.</p>
+                </div>
+                <div class="p-8 md:p-12">
+                    <div class="font-display text-6xl font-bold text-gray-800 mb-6">03</div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Go Live</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">We connect it to your phone line. Calls get answered instantly, bookings land in your calendar, and you never miss a lead again.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line bg-[#080808]">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">02</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">Capabilities</h2>
+                </div>
+            </div>
+
+            <div class="seamless-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="p-8">
+                    <i class="ph ph-phone-call text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Inbound Call Handling</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Answers every call within 1 second. Natural conversation, not robotic IVR menus. Customers think they're speaking to a real person.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-calendar-check text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Automated Bookings</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Checks availability, books appointments, and sends confirmation — all within the same call. Integrates with Google Calendar, Cal.com, and more.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-question text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">FAQ & Inquiry Handling</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Pricing, opening hours, menu details, service info — the agent knows your business inside out and answers accurately every time.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-translate text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Natural Conversation</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Advanced voice AI that understands context, accents, and intent. Handles interruptions, follow-up questions, and complex requests.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-clock text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">24/7 Availability</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Never miss a call again — evenings, weekends, bank holidays. Your AI agent works when you don't.</p>
+                </div>
+                <div class="p-8">
+                    <i class="ph ph-chart-bar text-3xl text-brand-orange mb-4 block"></i>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Call Analytics</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Full transcripts, call summaries, and performance data. Know exactly what customers are asking and how the agent is performing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- USE CASES -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">03</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">Built For</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 flex flex-col items-start lg:sticky lg:top-24 h-max">
+                    <p class="font-sans text-gray-400 mb-8 max-w-sm">Any business that takes phone calls and bookings. We're currently focused on restaurants and service businesses across the UK.</p>
+                </div>
+
+                <div class="lg:col-span-8 flex flex-col">
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/IND_01</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Restaurants & Takeaways</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Table reservations, takeaway orders, dietary questions, opening hours — handled automatically while your staff focus on service.</p>
+                        </div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/IND_02</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Salons & Barbers</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Appointment scheduling, service pricing, availability checks — your AI receptionist books clients while you're with clients.</p>
+                        </div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-ui-line">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/IND_03</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Dental & Medical Clinics</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Patient inquiries, appointment booking, prescription questions. Reduce receptionist workload and eliminate hold times.</p>
+                        </div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row gap-6 md:gap-12 py-10">
+                        <div class="font-mono text-gray-600 md:w-24 shrink-0 mt-1">/IND_04</div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-3">Any Service Business</h3>
+                            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">Gyms, spas, cleaning companies, plumbers, electricians — if you take phone bookings, Dineline can handle them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS (placeholder) -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-8 py-24 border-t border-l border-r border-ui-line bg-[#080808]">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="font-display font-bold text-5xl text-gray-800 leading-none">04</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-2">What Clients Say</h2>
+                </div>
+            </div>
+
+            <div class="seamless-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="p-8">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                    </div>
+                    <p class="text-gray-300 font-light leading-relaxed mb-6">"We were missing 30+ calls a week during busy hours. Since Dineline went live, every single call gets answered. Bookings are up 40%."</p>
+                    <div class="font-mono text-xs text-gray-500">
+                        <span class="text-white">Restaurant Owner</span> — Liverpool
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                    </div>
+                    <p class="text-gray-300 font-light leading-relaxed mb-6">"Customers don't even realise it's AI. The voice is natural, it knows our full menu, and it handles tricky questions perfectly."</p>
+                    <div class="font-mono text-xs text-gray-500">
+                        <span class="text-white">Takeaway Owner</span> — Manchester
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                        <i class="ph-fill ph-star text-brand-orange"></i>
+                    </div>
+                    <p class="text-gray-300 font-light leading-relaxed mb-6">"Setup was incredibly fast. Within 2 days we had a fully working AI receptionist. It's saved us hiring another staff member."</p>
+                    <div class="font-mono text-xs text-gray-500">
+                        <span class="text-white">Salon Owner</span> — London
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="max-w-[1600px] mx-auto border-t border-l border-r border-ui-line bg-black">
+            <div class="p-8 md:p-16 lg:p-24 text-center">
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter mb-6">Stop Missing Calls.</h2>
+                <p class="font-sans text-xl text-gray-400 font-light max-w-2xl mx-auto mb-10">Get a free demo of Dineline for your business. See exactly how it handles your calls before you commit to anything.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://getdineline.com" target="_blank" class="inline-flex items-center justify-center gap-2 font-mono text-sm uppercase tracking-wider bg-brand-orange text-white px-8 py-4 hover:bg-brand-orange_hover transition-colors">
+                        <i class="ph ph-phone-call"></i> Book A Free Demo
+                    </a>
+                    <a href="mailto:hello@keplo.co.uk" class="inline-flex items-center justify-center gap-2 font-mono text-sm uppercase tracking-wider border border-ui-line text-white px-8 py-4 hover:border-brand-orange transition-colors">
+                        <i class="ph ph-envelope"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-ui-line bg-black relative z-10">
+        <div class="max-w-[1600px] mx-auto border-l border-r border-ui-line p-8 md:p-16 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div>
+                <a href="keplo-preview.html" class="font-display font-bold text-2xl tracking-tighter text-white uppercase flex items-center gap-2 mb-4">
+                    <span class="w-2 h-2 bg-brand-orange block"></span> Keplo
+                </a>
+                <div class="flex gap-6 font-mono text-xs text-gray-500">
+                    <a href="ai-agents.html" class="hover:text-white transition-colors">AI Agents</a>
+                    <a href="fundedkit.html" class="hover:text-white transition-colors">FundedKit</a>
+                    <a href="development.html" class="hover:text-white transition-colors">Development</a>
+                </div>
+            </div>
+            <div class="font-mono text-[10px] text-gray-600 uppercase text-right">
+                &copy; 2026 Keplo LTD<br>
+                All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
